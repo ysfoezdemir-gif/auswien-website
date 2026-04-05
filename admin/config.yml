@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: ysfoezdemir-gif/iki-website
+  repo: ysfoezdemir-gif/auswien-website
   branch: main
 
 media_folder: "images"
@@ -62,7 +62,7 @@ collections:
           - "Prototyp"
           - "Konzept"
       - { label: "Ort", name: "location", widget: "string" }
-      - { label: "Hauptbild", name: "image", widget: "image", allow_multiple: false }
+            - { label: "Hauptbild", name: "image", widget: "image", multiple: false }
       - { label: "Beschreibung", name: "description", widget: "text" }
       - label: "Leistungen"
         name: "leistungen"

@@ -4,78 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>İKİ — Admin</title>
-  <style>
-    body { font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: #f5f5f5; }
-    .login-box { background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center; max-width: 400px; width: 90%; }
-    .login-box h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    .login-box p { color: #666; font-size: 0.9rem; margin-bottom: 1.5rem; }
-    .login-box input { width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 6px; font-size: 0.95rem; margin-bottom: 1rem; box-sizing: border-box; }
-    .login-box button { width: 100%; padding: 0.8rem; background: #0a0a0a; color: white; border: none; border-radius: 6px; font-size: 0.95rem; cursor: pointer; }
-    .login-box button:hover { background: #333; }
-    #cms-container { display: none; }
-  </style>
 </head>
 <body>
-
-  <div class="login-box" id="login-box">
-    <h1>İKİ Admin</h1>
-    <p>GitHub Personal Access Token eingeben:</p>
-    <input type="password" id="token-input" placeholder="ghp_..." />
-    <button onclick="doLogin()">Einloggen</button>
-  </div>
-
-  <div id="cms-container"></div>
-
-  <script>
-    // Prüfe ob Token schon gespeichert ist
-    var savedToken = localStorage.getItem('iki-github-token');
-    if (savedToken) {
-      startCMS(savedToken);
-    }
-
-    function doLogin() {
-      var token = document.getElementById('token-input').value.trim();
-      if (token) {
-        localStorage.setItem('iki-github-token', token);
-        startCMS(token);
-      }
-    }
-
-    function startCMS(token) {
-      // Token für Decap CMS setzen
-      document.getElementById('login-box').style.display = 'none';
-      document.getElementById('cms-container').style.display = 'block';
-
-      // Netlify Identity simulieren damit Decap den Token akzeptiert
-      window.netlifyIdentity = undefined;
-      document.head.insertAdjacentHTML('beforeend',
-        '<meta name="netlify-cms-backend-github" content="' + token + '">'
-      );
-
-      // Token direkt in localStorage für CMS setzen
-      localStorage.setItem('netlify-cms-user', JSON.stringify({
-        token: { access_token: token },
-        providers: { github: true }
-      }));
-
-      // Seite neu laden damit CMS den Token aufnimmt
-      if (!window.__cms_loaded) {
-        window.__cms_loaded = true;
-        location.reload();
-      }
-    }
-
-    // Wenn Token vorhanden, CMS laden
-    if (localStorage.getItem('iki-github-token')) {
-      var token = localStorage.getItem('iki-github-token');
-      localStorage.setItem('netlify-cms-user', JSON.stringify({
-        token: { access_token: token },
-        providers: { github: true }
-      }));
-    }
-  </script>
-
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-
+  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
 </body>
 </html>

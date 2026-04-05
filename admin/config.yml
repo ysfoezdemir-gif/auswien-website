@@ -1,0 +1,213 @@
+backend:
+  name: github
+  repo: ysfoezdemir-gif/iki-website
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+
+  - name: "projekte"
+    label: "Projekte"
+    label_singular: "Projekt"
+    folder: "content/projekte"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    editor:
+      preview: false
+    fields:
+      - { label: "ID (URL-Slug)", name: "id", widget: "string" }
+      - { label: "Titel", name: "title", widget: "string" }
+      - label: "Disziplin"
+        name: "discipline"
+        widget: "select"
+        options:
+          - { label: "Architektur", value: "architektur" }
+          - { label: "Museen & Ausstellungen", value: "museen" }
+          - { label: "Produkt & Innenarchitektur", value: "produkt" }
+          - { label: "Grafik & Branding", value: "grafik" }
+          - { label: "3D / Motion / Werbung", value: "motion" }
+          - { label: "İKİ LAB", value: "lab" }
+      - label: "Kategorie"
+        name: "category"
+        widget: "select"
+        options:
+          - "Kultur & Museen"
+          - "Wohnen"
+          - "Öffentlich"
+          - "Gewerbe"
+          - "Spezial"
+          - "Freiraum"
+          - "Wettbewerbe"
+          - "Möbel"
+          - "Innenarchitektur"
+          - "Produktdesign"
+          - "Branding"
+          - "Motion"
+          - "Forschung"
+      - { label: "Jahr", name: "year", widget: "number", value_type: "int", min: 2020, max: 2030 }
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options:
+          - "Realisiert"
+          - "Abgeschlossen"
+          - "In Entwicklung"
+          - "Planung"
+          - "Wettbewerb"
+          - "Eingereicht"
+          - "Prototyp"
+          - "Konzept"
+      - { label: "Ort", name: "location", widget: "string" }
+      - { label: "Hauptbild", name: "image", widget: "image", allow_multiple: false }
+      - { label: "Beschreibung", name: "description", widget: "text" }
+      - label: "Leistungen"
+        name: "leistungen"
+        widget: "list"
+        field: { label: "Leistung", name: "leistung", widget: "string" }
+      - label: "Details"
+        name: "details"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "Adresse", name: "ort", widget: "string", required: false }
+          - { label: "Größe", name: "groesse", widget: "string", required: false }
+          - { label: "Auftraggeber", name: "auftraggeber", widget: "string", required: false }
+          - { label: "Projektleitung", name: "projektleitung", widget: "string", required: false }
+          - { label: "Team", name: "team", widget: "string", required: false }
+          - { label: "Material", name: "material", widget: "string", required: false }
+      - label: "Bildergalerie"
+        name: "images"
+        widget: "list"
+        collapsed: true
+        fields:
+          - { label: "Bild", name: "url", widget: "image" }
+          - { label: "Bildunterschrift", name: "caption", widget: "string" }
+          - { label: "Größe", name: "size", widget: "select", options: ["full", "half"], default: "full" }
+
+  - name: "fassadenatlas"
+    label: "Fassadenatlas"
+    label_singular: "Material"
+    folder: "content/fassadenatlas"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    editor:
+      preview: false
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Untertitel", name: "subtitle", widget: "string" }
+      - { label: "Bild", name: "image", widget: "image" }
+      - { label: "Beschreibung", name: "description", widget: "text" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        field: { label: "Tag", name: "tag", widget: "string" }
+
+  - name: "experimente"
+    label: "Experimente"
+    label_singular: "Experiment"
+    folder: "content/experimente"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    editor:
+      preview: false
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Beschreibung", name: "description", widget: "text" }
+      - label: "Bereich"
+        name: "bereich"
+        widget: "select"
+        options: ["Struktur", "Klima", "Digital", "Prototyp", "Visualisierung", "Technologie", "Nachhaltigkeit"]
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["Laufend", "Aktiv", "Prototyp", "In Planung", "In Vorbereitung", "Forschung", "Geplant"]
+      - { label: "Tools", name: "tools", widget: "string", required: false }
+      - { label: "Bild", name: "image", widget: "image", required: false }
+
+  - name: "seiten"
+    label: "Seiten-Texte"
+    editor:
+      preview: false
+    files:
+      - label: "Homepage"
+        name: "homepage"
+        file: "content/seiten/homepage.json"
+        format: "json"
+        fields:
+          - { label: "Hero Zeile 1", name: "hero_line_1", widget: "string" }
+          - { label: "Hero Zeile 2", name: "hero_line_2", widget: "string" }
+          - { label: "Hero Unterzeile", name: "hero_subline", widget: "string" }
+          - { label: "Belief-Statement", name: "belief", widget: "text" }
+          - { label: "Studio Titel", name: "studio_title", widget: "string" }
+          - { label: "Studio Untertitel", name: "studio_subtitle", widget: "string" }
+          - { label: "Studio Text", name: "studio_text", widget: "text" }
+          - { label: "CTA Titel", name: "cta_title", widget: "string" }
+          - { label: "CTA Text", name: "cta_text", widget: "string" }
+      - label: "Produkt"
+        name: "produkt"
+        file: "content/disziplinen/produkt.json"
+        format: "json"
+        fields:
+          - { label: "Hero Titel", name: "hero_title", widget: "string" }
+          - { label: "Hero Beschreibung", name: "hero_desc", widget: "text" }
+          - { label: "Hero Bild", name: "hero_image", widget: "image" }
+          - { label: "Intro Titel", name: "intro_title", widget: "string" }
+          - { label: "Intro Text", name: "intro_text", widget: "text" }
+      - label: "Architektur"
+        name: "architektur"
+        file: "content/disziplinen/architektur.json"
+        format: "json"
+        fields:
+          - { label: "Hero Titel", name: "hero_title", widget: "string" }
+          - { label: "Hero Beschreibung", name: "hero_desc", widget: "text" }
+          - { label: "Hero Bild", name: "hero_image", widget: "image" }
+          - { label: "Intro Titel", name: "intro_title", widget: "string" }
+          - { label: "Intro Text", name: "intro_text", widget: "text" }
+      - label: "Museen"
+        name: "museen"
+        file: "content/disziplinen/museen.json"
+        format: "json"
+        fields:
+          - { label: "Hero Titel", name: "hero_title", widget: "string" }
+          - { label: "Hero Beschreibung", name: "hero_desc", widget: "text" }
+          - { label: "Hero Bild", name: "hero_image", widget: "image" }
+          - { label: "Intro Titel", name: "intro_title", widget: "string" }
+          - { label: "Intro Text", name: "intro_text", widget: "text" }
+      - label: "Grafik"
+        name: "grafik"
+        file: "content/disziplinen/grafik.json"
+        format: "json"
+        fields:
+          - { label: "Hero Titel", name: "hero_title", widget: "string" }
+          - { label: "Hero Beschreibung", name: "hero_desc", widget: "text" }
+          - { label: "Hero Bild", name: "hero_image", widget: "image" }
+          - { label: "Intro Titel", name: "intro_title", widget: "string" }
+          - { label: "Intro Text", name: "intro_text", widget: "text" }
+      - label: "Motion"
+        name: "motion"
+        file: "content/disziplinen/motion.json"
+        format: "json"
+        fields:
+          - { label: "Hero Titel", name: "hero_title", widget: "string" }
+          - { label: "Hero Beschreibung", name: "hero_desc", widget: "text" }
+          - { label: "Hero Bild", name: "hero_image", widget: "image" }
+          - { label: "Intro Titel", name: "intro_title", widget: "string" }
+          - { label: "Intro Text", name: "intro_text", widget: "text" }
+      - label: "Lab"
+        name: "lab"
+        file: "content/disziplinen/lab.json"
+        format: "json"
+        fields:
+          - { label: "Hero Titel", name: "hero_title", widget: "string" }
+          - { label: "Hero Beschreibung", name: "hero_desc", widget: "text" }
+          - { label: "Hero Bild", name: "hero_image", widget: "image" }
+          - { label: "Intro Titel", name: "intro_title", widget: "string" }
+          - { label: "Intro Text", name: "intro_text", widget: "text" }

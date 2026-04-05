@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İKİ — Architektur, Gestaltung & Forschung</title>
+  <meta name="description" content="İKİ ist ein interdisziplinäres Büro für Architektur, Museen, Produktdesign, Grafik, Motion und Materialforschung. Wir gestalten Räume, Objekte und Ideen, die berühren. Wien — Istanbul.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- HEADER with Discipline Switcher -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="/" class="logo">İKİ</a>
+        <nav class="discipline-switcher" aria-label="Disziplinen">
+          <a href="/architektur/">Arch</a>
+          <span class="disc-sep">·</span>
+          <a href="/museen/">Museen</a>
+          <span class="disc-sep">·</span>
+          <a href="/produkt/">Produkt</a>
+          <span class="disc-sep">·</span>
+          <a href="/grafik/">Grafik</a>
+          <span class="disc-sep">·</span>
+          <a href="/motion/">Motion</a>
+          <span class="disc-sep">·</span>
+          <a href="/lab/">Lab</a>
+        </nav>
+      </div>
+      <nav class="nav" id="nav">
+        <a href="studio.html">Studio</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO — Animated Statement -->
+  <section class="hero-statement">
+    <div class="hero-statement-inner">
+      <div class="hero-line">Wir gestalten nicht nur.</div>
+      <div class="hero-line">Wir <em>berühren.</em></div>
+      <div class="hero-sub-line">Interdisziplinäres Büro für Architektur, Gestaltung & Forschung — Wien</div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL — Featured Projects -->
+  <section class="hero-carousel" id="heroCarousel">
+    <div class="carousel-counter"><span id="carouselCurrent">01</span> / <span id="carouselTotal">05</span></div>
+
+    <div class="carousel-slide active" data-discipline="Wohnen" data-title="Wohnhaus Margareten" data-desc="Sanierung und Aufstockung eines Gründerzeithauses — Wien, 5. Bezirk" data-link="projekt.html?id=wohnhaus-margareten">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=85" alt="Wohnhaus Margareten" loading="eager">
+      <div class="carousel-overlay"></div>
+    </div>
+    <div class="carousel-slide" data-discipline="Gewerbe" data-title="Office Tower Donaucity" data-desc="Innenarchitektur und Leitsystem — Wien, Donaustadt" data-link="projekt.html?id=office-tower-donaucity">
+      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=85" alt="Office Tower Donaucity" loading="lazy">
+      <div class="carousel-overlay"></div>
+    </div>
+    <div class="carousel-slide" data-discipline="Forschung" data-title="VTC Klimavorhang" data-desc="Nicht-invasive Klimaregulierung für denkmalgeschützte Räume" data-link="projekt.html?id=vtc-klimavorhang-pilot">
+      <img src="https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=1920&q=85" alt="VTC Klimavorhang" loading="lazy">
+      <div class="carousel-overlay"></div>
+    </div>
+    <div class="carousel-slide" data-discipline="Freiraum" data-title="Stadtplatz Floridsdorf" data-desc="Klimaresilientes Platzkonzept — Wien, 21. Bezirk" data-link="projekt.html?id=stadtplatz-floridsdorf">
+      <img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=1920&q=85" alt="Stadtplatz Floridsdorf" loading="lazy">
+      <div class="carousel-overlay"></div>
+    </div>
+    <div class="carousel-slide" data-discipline="Öffentlich" data-title="Schulerweiterung Favoriten" data-desc="Erweiterung einer Volksschule — Wien, 10. Bezirk" data-link="projekt.html?id=schulerweiterung-favoriten">
+      <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1920&q=85" alt="Schulerweiterung Favoriten" loading="lazy">
+      <div class="carousel-overlay"></div>
+    </div>
+
+    <div class="carousel-caption">
+      <div class="carousel-discipline" id="carouselDisc">Wohnen</div>
+      <h2 class="carousel-title" id="carouselTitle">Wohnhaus Margareten</h2>
+      <p class="carousel-desc" id="carouselDesc">Sanierung und Aufstockung eines Gründerzeithauses — Wien, 5. Bezirk</p>
+      <a class="carousel-link" id="carouselLink" href="projekt.html?id=wohnhaus-margareten">Projekt ansehen →</a>
+    </div>
+
+    <div class="carousel-dots" id="carouselDots"></div>
+  </section>
+
+  <!-- DISCIPLINES — Full-width list -->
+  <section class="section-disciplines-home">
+    <div class="container">
+      <span class="section-label-sm">Disziplinen</span>
+      <h2 class="section-title-lg">Sechs Wege, eine Haltung</h2>
+      <p class="section-subtitle">Jede Disziplin denkt anders. Alle teilen denselben Anspruch: dass das, was wir schaffen, etwas im Menschen bewegt.</p>
+
+      <div class="disciplines-list">
+        <a href="/architektur/" class="discipline-list-item">
+          <span class="discipline-list-name">Architektur & Planung</span>
+          <span class="disc-arrow">→</span>
+        </a>
+        <a href="/museen/" class="discipline-list-item">
+          <span class="discipline-list-name">Museen & Ausstellungen</span>
+          <span class="disc-arrow">→</span>
+        </a>
+        <a href="/produkt/" class="discipline-list-item">
+          <span class="discipline-list-name">Produkt & Innenarchitektur</span>
+          <span class="disc-arrow">→</span>
+        </a>
+        <a href="/grafik/" class="discipline-list-item">
+          <span class="discipline-list-name">Grafik & Branding</span>
+          <span class="disc-arrow">→</span>
+        </a>
+        <a href="/motion/" class="discipline-list-item">
+          <span class="discipline-list-name">3D / Motion / Werbung</span>
+          <span class="disc-arrow">→</span>
+        </a>
+        <a href="/lab/" class="discipline-list-item">
+          <span class="discipline-list-name">İKİ LAB — Forschung & Material</span>
+          <span class="disc-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BELIEF STATEMENT -->
+  <section class="section-beliefs">
+    <div class="beliefs-inner">
+      <p class="belief-text">
+        Wir glauben an die Stille eines Raumes, der nichts beweisen muss. An den Mut, Dinge zu bauen, die es so noch nicht gab. An das Bewahren dessen, was schon da ist — und an die Freude, es neu zu sehen. <em>Jeder Ort verdient es, dass man hinspürt.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section class="section-featured">
+    <div class="featured-header">
+      <span class="section-label-sm">Ausgewählte Projekte</span>
+      <h2 class="section-title-lg">Projekte</h2>
+    </div>
+    <div class="featured-projects" id="homeProjectsGrid">
+      <!-- Filled by JS -->
+    </div>
+    <div class="featured-more">
+      <a href="projekte.html" class="btn-text-arrow">Alle Projekte ansehen →</a>
+    </div>
+  </section>
+
+  <!-- STUDIO PREVIEW -->
+  <section class="section-studio-preview">
+    <div class="container">
+      <span class="section-label-sm">Über uns</span>
+      <h2 class="section-title-lg">Zwei Welten, ein Blick</h2>
+      <p class="studio-preview-sub">Wien · Istanbul · Bestand · Experiment</p>
+      <p class="studio-preview-text">
+        İKİ bedeutet „zwei" auf Türkisch — und das ist Programm. Wir arbeiten an der Nahtstelle zwischen dem, was bleibt, und dem, was erst entsteht. Zwischen anatolischer Weisheit und Wiener Präzision. Zwischen der Stille eines Raumes und dem Mut, ihn neu zu denken. Unser Büro ist kein Ort für Routine. Es ist ein Ort für Resonanz.
+      </p>
+      <a href="studio.html" class="btn-text-arrow">Mehr über das Studio →</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-cta-dark">
+    <div class="container">
+      <span class="section-label-sm" style="color:rgba(255,255,255,0.4)">Zusammenarbeit</span>
+      <h2 class="cta-title">Gute Dinge beginnen im Gespräch.</h2>
+      <p class="cta-sub">Ein Gebäude, eine Marke, ein Experiment — erzählen Sie uns, was Sie bewegt.</p>
+      <a href="kontakt.html" class="btn-white">Kontakt aufnehmen →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>İKİ</h4>
+          <p>Interdisziplinäres Büro für<br>Architektur, Gestaltung & Forschung</p>
+          <p>Wien, Österreich</p>
+        </div>
+        <div class="footer-col">
+          <h4>Disziplinen</h4>
+          <p><a href="/architektur/">Architektur</a></p>
+          <p><a href="/museen/">Museen</a></p>
+          <p><a href="/produkt/">Produkt</a></p>
+          <p><a href="/grafik/">Grafik</a></p>
+          <p><a href="/motion/">Motion</a></p>
+          <p><a href="/lab/">Lab</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <p><a href="mailto:info@auswien.at">info@auswien.at</a></p>
+          <p><a href="kontakt.html">Kontaktformular</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Rechtliches</h4>
+          <p><a href="impressum.html">Impressum</a></p>
+          <p><a href="impressum.html#datenschutz">Datenschutz</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 İKİ. Alle Rechte vorbehalten.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/projects-data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // === CAROUSEL ===
+    (function() {
+      var slides = document.querySelectorAll('.carousel-slide');
+      var dotsContainer = document.getElementById('carouselDots');
+      var discEl = document.getElementById('carouselDisc');
+      var titleEl = document.getElementById('carouselTitle');
+      var descEl = document.getElementById('carouselDesc');
+      var linkEl = document.getElementById('carouselLink');
+      var currentEl = document.getElementById('carouselCurrent');
+      if (!slides.length || !dotsContainer) return;
+
+      var current = 0;
+      var total = slides.length;
+      document.getElementById('carouselTotal').textContent = ('0'+total).slice(-2);
+
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Slide ' + (i+1));
+        dot.dataset.index = i;
+        dotsContainer.appendChild(dot);
+      }
+      var dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+      function goTo(idx) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = idx;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+        var s = slides[current];
+        currentEl.textContent = ('0'+(current+1)).slice(-2);
+        discEl.textContent = s.dataset.discipline || '';
+        titleEl.textContent = s.dataset.title || '';
+        descEl.textContent = s.dataset.desc || '';
+        linkEl.href = s.dataset.link || '#';
+      }
+
+      dotsContainer.addEventListener('click', function(e) {
+        var dot = e.target.closest('.carousel-dot');
+        if (dot) goTo(parseInt(dot.dataset.index));
+      });
+
+      var autoTimer = setInterval(function() {
+        goTo((current + 1) % total);
+      }, 5000);
+
+      var carousel = document.getElementById('heroCarousel');
+      if (carousel) {
+        carousel.addEventListener('mouseenter', function() { clearInterval(autoTimer); });
+        carousel.addEventListener('mouseleave', function() {
+          autoTimer = setInterval(function() { goTo((current + 1) % total); }, 5000);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

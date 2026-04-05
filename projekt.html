@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projekt — İKİ Architektur Wien</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container header-content">
+      <a href="index.html" class="logo">İKİ</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="nav">
+        <a href="index.html">Home</a>
+        <a href="projekte.html" class="active">Projekte</a>
+        <a href="leistungen.html">Leistungen</a>
+        <a href="studio.html">Studio</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="project-detail" id="projectDetail">
+    <div class="container">
+      <div class="project-header">
+        <a href="projekte.html" class="back-link">← Zurück zu Projekte</a>
+        <h1 id="projectTitle">Projekt</h1>
+        <div class="project-meta" id="projectMeta"></div>
+      </div>
+      <div class="project-content" id="projectContent">
+        <div class="project-image-large" id="projectMainImage"></div>
+        <div class="project-description" id="projectDescription"></div>
+        <div class="project-services" id="projectServices"></div>
+        <div class="project-info-grid" id="projectInfoGrid"></div>
+        <div class="project-gallery" id="projectGallery"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>İKİ</h3>
+          <p>Ziviltechnikerbüro für Architektur</p>
+          <p class="text-muted">Ruhe in Bewegung</p>
+        </div>
+        <div class="footer-section">
+          <h4>Kontakt</h4>
+          <p>Simmelgasse 1, 3, 17<br>1210 Wien</p>
+          <p><a href="tel:+436801438091">+43 680 1438091</a><br>
+          <a href="mailto:info@auswien.at">info@auswien.at</a></p>
+        </div>
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <nav class="footer-nav">
+            <a href="index.html">Home</a>
+            <a href="projekte.html">Projekte</a>
+            <a href="leistungen.html">Leistungen</a>
+            <a href="studio.html">Studio</a>
+            <a href="kontakt.html">Kontakt</a>
+          </nav>
+        </div>
+        <div class="footer-section">
+          <h4>Rechtliches</h4>
+          <nav class="footer-nav">
+            <a href="impressum.html">Impressum & Datenschutz</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="text-muted">© 2026 İKİ Ziviltechnikerbüro für Architektur</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/projects-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/project-detail.js"></script>
+</body>
+</html>

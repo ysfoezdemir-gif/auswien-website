@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekte — İKİ Architektur Wien</title>
+    <meta name="description" content="Portfolio von İKİ — Architektur, Denkmalpflege, Ausstellungsgestaltung und Forschung in Wien.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">İKİ</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav" id="nav">
+                <a href="leistungen.html">Leistungen</a>
+                <a href="projekte.html" class="active">Projekte</a>
+                <a href="studio.html">Studio</a>
+                <a href="kontakt.html">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <span class="section-label-sm">Portfolio</span>
+                <h1>Projekte</h1>
+                <p class="page-hero-sub">Architektur, Forschung & Gestaltung</p>
+            </div>
+        </section>
+
+        <section class="projects-filter-section">
+            <div class="container">
+                <div class="discipline-pills" id="categoryPills"></div>
+            </div>
+        </section>
+
+        <section class="projects-grid-section">
+            <div class="container">
+                <div class="sno-projects-grid" id="projectsGrid"></div>
+                <div class="projects-empty" id="projectsEmpty" style="display:none;">
+                    <p>Keine Projekte in dieser Kategorie gefunden.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>İKİ</h4>
+                    <p>Ziviltechnikerbüro<br>für Architektur</p>
+                    <p>Wien, Österreich</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Seiten</h4>
+                    <p><a href="leistungen.html">Leistungen</a></p>
+                    <p><a href="projekte.html">Projekte</a></p>
+                    <p><a href="studio.html">Studio</a></p>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <p><a href="mailto:info@auswien.at">info@auswien.at</a></p>
+                    <p><a href="kontakt.html">Kontaktformular</a></p>
+                </div>
+                <div class="footer-col">
+                    <h4>Rechtliches</h4>
+                    <p><a href="impressum.html">Impressum</a></p>
+                    <p><a href="impressum.html#datenschutz">Datenschutz</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 İKİ Architektur. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/projects-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/projects.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt — İKİ Architektur Wien</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container header-content">
+      <a href="index.html" class="logo">İKİ</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="nav">
+        <a href="index.html">Home</a>
+        <a href="projekte.html">Projekte</a>
+        <a href="leistungen.html">Leistungen</a>
+        <a href="studio.html">Studio</a>
+        <a href="kontakt.html" class="active">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contact-page">
+    <div class="contact-hero">
+      <div class="container">
+        <h1>Kontakt</h1>
+        <p class="hero-subtitle">Wir freuen uns auf Ihre Nachricht</p>
+      </div>
+    </div>
+
+    <div class="contact-content container">
+      <div class="contact-grid">
+        <div class="contact-info-section">
+          <h2>İKİ</h2>
+          <p class="text-muted">Ziviltechnikerbüro für Architektur</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <h3>Adresse</h3>
+              <p>Simmelgasse 1, 3, 17<br>1210 Wien<br>Österreich</p>
+            </div>
+            <div class="contact-item">
+              <h3>Telefon</h3>
+              <p><a href="tel:+436801438091">+43 680 1438091</a></p>
+            </div>
+            <div class="contact-item">
+              <h3>E-Mail</h3>
+              <p><a href="mailto:info@auswien.at">info@auswien.at</a></p>
+            </div>
+            <div class="contact-item">
+              <h3>Kammer</h3>
+              <p class="text-muted">Ziviltechniker Kammer für Wien,<br>Niederösterreich und Burgenland</p>
+            </div>
+          </div>
+          <div class="opening-hours">
+            <h3>Bürozeiten</h3>
+            <p class="text-muted">Montag – Freitag: 09:00 – 17:00<br>Termine nach Vereinbarung</p>
+          </div>
+        </div>
+
+        <div class="contact-form-section">
+          <h2>Nachricht senden</h2>
+          <p class="text-muted form-intro">Haben Sie ein Projekt im Kopf? Kontaktieren Sie uns für ein unverbindliches Erstgespräch.</p>
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">E-Mail *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefon</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+              <label for="subject">Betreff</label>
+              <input type="text" id="subject" name="subject">
+            </div>
+            <div class="form-group">
+              <label for="message">Nachricht *</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="submit-button">Nachricht senden</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2657.0!2d16.4!3d48.27!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSimmelgasse%2C+1210+Wien!5e0!3m2!1sde!2sat!4v1" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" title="İKİ Büro Standort"></iframe>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>İKİ</h3>
+          <p>Ziviltechnikerbüro für Architektur</p>
+          <p class="text-muted">Ruhe in Bewegung</p>
+        </div>
+        <div class="footer-section">
+          <h4>Kontakt</h4>
+          <p>Simmelgasse 1, 3, 17<br>1210 Wien</p>
+          <p><a href="tel:+436801438091">+43 680 1438091</a><br>
+          <a href="mailto:info@auswien.at">info@auswien.at</a></p>
+        </div>
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <nav class="footer-nav">
+            <a href="index.html">Home</a>
+            <a href="projekte.html">Projekte</a>
+            <a href="leistungen.html">Leistungen</a>
+            <a href="studio.html">Studio</a>
+            <a href="kontakt.html">Kontakt</a>
+          </nav>
+        </div>
+        <div class="footer-section">
+          <h4>Rechtliches</h4>
+          <nav class="footer-nav">
+            <a href="impressum.html">Impressum & Datenschutz</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="text-muted">© 2026 İKİ Ziviltechnikerbüro für Architektur</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

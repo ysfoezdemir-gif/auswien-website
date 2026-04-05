@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architektur & Planung — İKİ</title>
+  <meta name="description" content="Wohnbau, Gewerbebau, öffentliche Bauten und Passivhaus-Planung. İKİ Architektur Wien.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="/" class="logo">İKİ</a>
+        <nav class="discipline-switcher">
+          <a href="/architektur/" class="disc-active">Arch</a>
+          <span class="disc-sep">·</span>
+          <a href="/museen/">Museen</a>
+          <span class="disc-sep">·</span>
+          <a href="/produkt/">Produkt</a>
+          <span class="disc-sep">·</span>
+          <a href="/grafik/">Grafik</a>
+          <span class="disc-sep">·</span>
+          <a href="/motion/">Motion</a>
+          <span class="disc-sep">·</span>
+          <a href="/lab/">Lab</a>
+        </nav>
+      </div>
+      <nav class="nav" id="nav">
+        <a href="/architektur/" class="active">Projekte</a>
+        <a href="/leistungen.html">Leistungen</a>
+        <a href="/studio.html">Studio</a>
+        <a href="/kontakt.html">Kontakt</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="disc-hero">
+    <div class="disc-hero-bg">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=85" alt="Architektur">
+    </div>
+    <div class="disc-hero-overlay"></div>
+    <div class="disc-hero-content">
+      <span class="disc-hero-label">Architektur & Planung</span>
+      <h1>Räume, die berühren und bestehen</h1>
+      <p class="disc-hero-desc">Vom Wohnbau bis zum öffentlichen Gebäude — wir entwerfen mit materialem Bewusstsein, klimatischer Verantwortung und dem Anspruch, dass jeder Raum etwas im Menschen auslöst.</p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="disc-intro">
+    <div class="container">
+      <h2>Architektur ist die Sprache des Raums</h2>
+      <p>Jedes Projekt beginnt mit Zuhören. Wir verstehen den Ort, die Menschen, die Geschichte — und entwickeln daraus Gebäude, die nicht nur funktionieren, sondern resonieren. Von der ersten Skizze bis zur letzten Fuge.</p>
+      <p>Unser Spektrum reicht vom Mehrfamilienhaus in Holzhybrid-Bauweise über denkmalgeschützte Sanierungen bis zu Schulbauten und Passivhäusern.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="disc-services">
+    <div class="container">
+      <h2>Leistungen</h2>
+      <div class="disc-services-grid">
+        <div class="disc-service-card">
+          <h3>Wohnbau</h3>
+          <p>Mehrgeschoßiger Wohnbau, Aufstockungen und Sanierungen — vom Entwurf bis zur Bauaufsicht.</p>
+        </div>
+        <div class="disc-service-card">
+          <h3>Gewerbebau</h3>
+          <p>Bürogebäude, Geschäftslokale und Innenarchitektur mit Fokus auf Nutzbarkeit und Ästhetik.</p>
+        </div>
+        <div class="disc-service-card">
+          <h3>Öffentliche Bauten</h3>
+          <p>Schulen, Kindergärten, Gemeindezentren — barrierefreie Gebäude für alle.</p>
+        </div>
+        <div class="disc-service-card">
+          <h3>Passivhaus</h3>
+          <p>Klimaneutrales Bauen mit zirkulärer Materialstrategie und Passivhaus-Zertifizierung.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS PREVIEW -->
+  <section class="disc-projects">
+    <div class="container">
+      <div class="disc-projects-header">
+        <h2>Ausgewählte Projekte</h2>
+        <a href="/projekte.html?filter=Wohnen" class="btn-text-arrow">Alle Projekte →</a>
+      </div>
+      <div class="sno-projects-grid" id="discProjectsGrid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-cta-dark">
+    <div class="container">
+      <span class="section-label-sm" style="color:rgba(255,255,255,0.4)">Zusammenarbeit</span>
+      <h2 class="cta-title">Ihr Projekt beginnt hier.</h2>
+      <p class="cta-sub">Wir begleiten Sie von der Idee bis zur Schlüsselübergabe.</p>
+      <a href="/kontakt.html" class="btn-white">Kontakt aufnehmen →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col"><h4>İKİ</h4><p>Ziviltechnikerbüro<br>für Architektur</p><p>Wien, Österreich</p></div>
+        <div class="footer-col"><h4>Disziplinen</h4><p><a href="/architektur/">Architektur</a></p><p><a href="/museen/">Museen</a></p><p><a href="/produkt/">Produkt</a></p><p><a href="/grafik/">Grafik</a></p><p><a href="/motion/">Motion</a></p><p><a href="/lab/">Lab</a></p></div>
+        <div class="footer-col"><h4>Kontakt</h4><p><a href="mailto:info@auswien.at">info@auswien.at</a></p><p><a href="/kontakt.html">Kontaktformular</a></p></div>
+        <div class="footer-col"><h4>Rechtliches</h4><p><a href="/impressum.html">Impressum</a></p><p><a href="/impressum.html#datenschutz">Datenschutz</a></p></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 İKİ Architektur. Alle Rechte vorbehalten.</p></div>
+    </div>
+  </footer>
+
+  <script src="../js/projects-data.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    // Show architecture-related projects
+    (function() {
+      var grid = document.getElementById('discProjectsGrid');
+      if (!grid || typeof projects === 'undefined') return;
+      var archCats = ['Wohnen', 'Gewerbe', 'Öffentlich'];
+      var filtered = projects.filter(function(p) { return archCats.indexOf(p.category) !== -1; });
+      var show = filtered.slice(0, 4);
+      for (var i = 0; i < show.length; i++) {
+        var card = createProjectCard(show[i], i);
+        if (i === 0) card.classList.add('sno-card-large');
+        grid.appendChild(card);
+      }
+    })();
+  </script>
+</body>
+</html>

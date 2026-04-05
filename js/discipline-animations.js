@@ -91,7 +91,7 @@
       nodePositions = [];
       for (var j = 0; j < disciplines.length; j++) {
         var disc = disciplines[j];
-        disc.angle += disc.speed * (60);
+        disc.angle += disc.speed;
         var orbitRadius = baseR * disc.orbit;
         var nx = cx + Math.cos(disc.angle) * orbitRadius;
         var ny = cy + Math.sin(disc.angle) * orbitRadius;

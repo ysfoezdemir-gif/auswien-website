@@ -1,140 +1,280 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontakt — İKİ Architektur Wien</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontakt — İKİ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .kontakt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding: 2rem 0 6rem;
+    }
+    .kontakt-info h3 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gray-400);
+      margin-bottom: 0.5rem;
+      margin-top: 2rem;
+    }
+    .kontakt-info h3:first-child {
+      margin-top: 0;
+    }
+    .kontakt-info p, .kontakt-info a {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--gray-600);
+    }
+    .kontakt-info a:hover {
+      color: var(--black);
+    }
+    .kontakt-form label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-500);
+      margin-bottom: 0.4rem;
+      margin-top: 1.5rem;
+    }
+    .kontakt-form label:first-child {
+      margin-top: 0;
+    }
+    .kontakt-form input,
+    .kontakt-form textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border-strong, #ddd);
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-family: var(--font-sans);
+      background: var(--surface, #fff);
+      color: var(--text, #0a0a0a);
+      transition: border-color 0.2s;
+    }
+    .kontakt-form input:focus,
+    .kontakt-form textarea:focus {
+      outline: none;
+      border-color: var(--accent, #0a0a0a);
+    }
+    .kontakt-form textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+    .kontakt-form .required {
+      color: #e63946;
+    }
+    .kontakt-form button {
+      margin-top: 2rem;
+      padding: 0.9rem 2.5rem;
+      background: var(--accent, #0a0a0a);
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .kontakt-form button:hover {
+      opacity: 0.85;
+    }
+    .kontakt-map {
+      margin-top: 2rem;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border, #eee);
+    }
+    .kontakt-map iframe {
+      width: 100%;
+      height: 250px;
+      border: none;
+    }
+    @media (max-width: 768px) {
+      .kontakt-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <header class="header" id="header">
-    <div class="container header-content">
-      <a href="index.html" class="logo">İKİ</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
-        <span></span><span></span><span></span>
-      </button>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="./" class="logo">İKİ</a>
+        <nav class="discipline-switcher">
+          <a href="./architektur/">Arch</a>
+          <span class="disc-sep">·</span>
+          <a href="./museen/">Museen</a>
+          <span class="disc-sep">·</span>
+          <a href="./produkt/">Produkt</a>
+          <span class="disc-sep">·</span>
+          <a href="./grafik/">Grafik</a>
+          <span class="disc-sep">·</span>
+          <a href="./motion/">Motion</a>
+          <span class="disc-sep">·</span>
+          <a href="./lab/">Lab</a>
+        </nav>
+      </div>
       <nav class="nav" id="nav">
-        <a href="index.html">Home</a>
         <a href="projekte.html">Projekte</a>
-        <a href="leistungen.html">Leistungen</a>
         <a href="studio.html">Studio</a>
         <a href="kontakt.html" class="active">Kontakt</a>
       </nav>
+      <button class="menu-toggle" id="menuToggle">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <main class="contact-page">
-    <div class="contact-hero">
-      <div class="container">
-        <h1>Kontakt</h1>
-        <p class="hero-subtitle">Wir freuen uns auf Ihre Nachricht</p>
-      </div>
+  <!-- PAGE INTRO -->
+  <section class="page-intro">
+    <div class="container">
+      <span class="section-label-sm">Kontakt</span>
+      <h1 class="page-intro-title">Gute Dinge beginnen<br>im Gespräch.</h1>
+      <p class="page-intro-text">Haben Sie ein Projekt im Kopf? Kontaktieren Sie uns für ein unverbindliches Erstgespräch.</p>
     </div>
+  </section>
 
-    <div class="contact-content container">
-      <div class="contact-grid">
-        <div class="contact-info-section">
-          <h2>İKİ</h2>
-          <p class="text-muted">Ziviltechnikerbüro für Architektur</p>
-          <div class="contact-details">
-            <div class="contact-item">
-              <h3>Adresse</h3>
-              <p>Simmelgasse 1, 3, 17<br>1210 Wien<br>Österreich</p>
-            </div>
-            <div class="contact-item">
-              <h3>Telefon</h3>
-              <p><a href="tel:+436801438091">+43 680 1438091</a></p>
-            </div>
-            <div class="contact-item">
-              <h3>E-Mail</h3>
-              <p><a href="mailto:info@auswien.at">info@auswien.at</a></p>
-            </div>
-            <div class="contact-item">
-              <h3>Kammer</h3>
-              <p class="text-muted">Ziviltechniker Kammer für Wien,<br>Niederösterreich und Burgenland</p>
-            </div>
-          </div>
-          <div class="opening-hours">
-            <h3>Bürozeiten</h3>
-            <p class="text-muted">Montag – Freitag: 09:00 – 17:00<br>Termine nach Vereinbarung</p>
+  <!-- KONTAKT CONTENT -->
+  <section>
+    <div class="container">
+      <div class="kontakt-grid">
+
+        <!-- LINKE SPALTE: INFO -->
+        <div class="kontakt-info">
+          <h3>Büro</h3>
+          <p>
+            <strong>İKİ</strong><br>
+            Interdisziplinäres Büro für<br>
+            Architektur, Gestaltung & Forschung
+          </p>
+
+          <h3>Adresse</h3>
+          <p>
+            Simmelgasse 1, 3, 17<br>
+            1210 Wien<br>
+            Österreich
+          </p>
+
+          <h3>Telefon</h3>
+          <p><a href="tel:+436801438091">+43 680 1438091</a></p>
+
+          <h3>E-Mail</h3>
+          <p><a href="mailto:info@auswien.at">info@auswien.at</a></p>
+
+          <h3>Kammer</h3>
+          <p>
+            Ziviltechniker Kammer für Wien,<br>
+            Niederösterreich und Burgenland
+          </p>
+
+          <h3>Bürozeiten</h3>
+          <p>
+            Montag – Freitag: 09:00 – 17:00<br>
+            Termine nach Vereinbarung
+          </p>
+
+          <!-- KARTE -->
+          <div class="kontakt-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2657.5!2d16.3738!3d48.2906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDE3JzI2LjIiTiAxNsKwMjInMjUuNyJF!5e0!3m2!1sde!2sat!4v1" allowfullscreen="" loading="lazy"></iframe>
           </div>
         </div>
 
-        <div class="contact-form-section">
-          <h2>Nachricht senden</h2>
-          <p class="text-muted form-intro">Haben Sie ein Projekt im Kopf? Kontaktieren Sie uns für ein unverbindliches Erstgespräch.</p>
-          <form class="contact-form" id="contactForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Name *</label>
-                <input type="text" id="name" name="name" required>
-              </div>
-              <div class="form-group">
-                <label for="email">E-Mail *</label>
-                <input type="email" id="email" name="email" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="phone">Telefon</label>
-              <input type="tel" id="phone" name="phone">
-            </div>
-            <div class="form-group">
-              <label for="subject">Betreff</label>
-              <input type="text" id="subject" name="subject">
-            </div>
-            <div class="form-group">
-              <label for="message">Nachricht *</label>
-              <textarea id="message" name="message" rows="6" required></textarea>
-            </div>
-            <button type="submit" class="submit-button">Nachricht senden</button>
-          </form>
+        <!-- RECHTE SPALTE: FORMULAR -->
+        <div class="kontakt-form" id="kontaktForm">
+          <label>Name <span class="required">*</span></label>
+          <input type="text" id="formName" required />
+
+          <label>E-Mail <span class="required">*</span></label>
+          <input type="email" id="formEmail" required />
+
+          <label>Telefon</label>
+          <input type="tel" id="formTel" />
+
+          <label>Betreff</label>
+          <input type="text" id="formSubject" />
+
+          <label>Nachricht <span class="required">*</span></label>
+          <textarea id="formMessage" required></textarea>
+
+          <button onclick="sendForm()">Nachricht senden</button>
         </div>
+
       </div>
     </div>
+  </section>
 
-    <div class="contact-map">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2657.0!2d16.4!3d48.27!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSimmelgasse%2C+1210+Wien!5e0!3m2!1sde!2sat!4v1" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" title="İKİ Büro Standort"></iframe>
-    </div>
-  </main>
-
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>İKİ</h3>
-          <p>Ziviltechnikerbüro für Architektur</p>
-          <p class="text-muted">Ruhe in Bewegung</p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>İKİ</h4>
+          <p>Interdisziplinäres Büro für<br>Architektur, Gestaltung & Forschung</p>
         </div>
-        <div class="footer-section">
+        <div class="footer-col">
+          <h4>Disziplinen</h4>
+          <p><a href="./architektur/">Architektur</a></p>
+          <p><a href="./museen/">Museen</a></p>
+          <p><a href="./produkt/">Produkt</a></p>
+          <p><a href="./grafik/">Grafik</a></p>
+          <p><a href="./motion/">Motion</a></p>
+          <p><a href="./lab/">Lab</a></p>
+        </div>
+        <div class="footer-col">
           <h4>Kontakt</h4>
-          <p>Simmelgasse 1, 3, 17<br>1210 Wien</p>
-          <p><a href="tel:+436801438091">+43 680 1438091</a><br>
-          <a href="mailto:info@auswien.at">info@auswien.at</a></p>
+          <p>info@auswien.at</p>
+          <p>Wien, Österreich</p>
         </div>
-        <div class="footer-section">
-          <h4>Navigation</h4>
-          <nav class="footer-nav">
-            <a href="index.html">Home</a>
-            <a href="projekte.html">Projekte</a>
-            <a href="leistungen.html">Leistungen</a>
-            <a href="studio.html">Studio</a>
-            <a href="kontakt.html">Kontakt</a>
-          </nav>
-        </div>
-        <div class="footer-section">
+        <div class="footer-col">
           <h4>Rechtliches</h4>
-          <nav class="footer-nav">
-            <a href="impressum.html">Impressum & Datenschutz</a>
-          </nav>
+          <p><a href="impressum.html">Impressum</a></p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="text-muted">© 2026 İKİ Ziviltechnikerbüro für Architektur</p>
+        <p>© 2026 İKİ Architektur Wien</p>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    function sendForm() {
+      var name = document.getElementById('formName').value;
+      var email = document.getElementById('formEmail').value;
+      var tel = document.getElementById('formTel').value;
+      var subject = document.getElementById('formSubject').value || 'Anfrage über Website';
+      var message = document.getElementById('formMessage').value;
+
+      if (!name || !email || !message) {
+        alert('Bitte füllen Sie die Pflichtfelder aus (Name, E-Mail, Nachricht).');
+        return;
+      }
+
+      var body = 'Name: ' + name + '\n'
+        + 'E-Mail: ' + email + '\n'
+        + 'Telefon: ' + tel + '\n\n'
+        + message;
+
+      var mailtoLink = 'mailto:info@auswien.at'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+
+      window.location.href = mailtoLink;
+    }
+  </script>
+
 </body>
 </html>

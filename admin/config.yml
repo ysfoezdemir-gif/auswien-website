@@ -19,30 +19,29 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "ID (URL-Slug)", name: "id", widget: "string" }
+      - { label: "ID", name: "id", widget: "string" }
       - { label: "Titel", name: "title", widget: "string" }
       - label: "Disziplin"
         name: "discipline"
         widget: "select"
         options:
           - { label: "Architektur", value: "architektur" }
-          - { label: "Museen & Ausstellungen", value: "museen" }
-          - { label: "Produkt & Innenarchitektur", value: "produkt" }
-          - { label: "Grafik & Branding", value: "grafik" }
-          - { label: "3D / Motion / Werbung", value: "motion" }
-          - { label: "İKİ LAB", value: "lab" }
+          - { label: "Museen", value: "museen" }
+          - { label: "Produkt", value: "produkt" }
+          - { label: "Grafik", value: "grafik" }
+          - { label: "Motion", value: "motion" }
+          - { label: "Lab", value: "lab" }
       - label: "Kategorie"
         name: "category"
         widget: "select"
         options:
-          - "Kultur & Museen"
           - "Wohnen"
-          - "Öffentlich"
           - "Gewerbe"
-          - "Spezial"
+          - "Oeffentlich"
           - "Freiraum"
           - "Wettbewerbe"
-          - "Möbel"
+          - "Kultur"
+          - "Moebel"
           - "Innenarchitektur"
           - "Produktdesign"
           - "Branding"
@@ -62,19 +61,22 @@ collections:
           - "Prototyp"
           - "Konzept"
       - { label: "Ort", name: "location", widget: "string" }
-            - { label: "Hauptbild", name: "image", widget: "image", multiple: false }
+      - { label: "Hauptbild", name: "image", widget: "image" }
       - { label: "Beschreibung", name: "description", widget: "text" }
       - label: "Leistungen"
         name: "leistungen"
         widget: "list"
-        field: { label: "Leistung", name: "leistung", widget: "string" }
+        field:
+          label: "Leistung"
+          name: "leistung"
+          widget: "string"
       - label: "Details"
         name: "details"
         widget: "object"
         collapsed: true
         fields:
           - { label: "Adresse", name: "ort", widget: "string", required: false }
-          - { label: "Größe", name: "groesse", widget: "string", required: false }
+          - { label: "Groesse", name: "groesse", widget: "string", required: false }
           - { label: "Auftraggeber", name: "auftraggeber", widget: "string", required: false }
           - { label: "Projektleitung", name: "projektleitung", widget: "string", required: false }
           - { label: "Team", name: "team", widget: "string", required: false }
@@ -86,7 +88,11 @@ collections:
         fields:
           - { label: "Bild", name: "url", widget: "image" }
           - { label: "Bildunterschrift", name: "caption", widget: "string" }
-          - { label: "Größe", name: "size", widget: "select", options: ["full", "half"], default: "full" }
+          - label: "Groesse"
+            name: "size"
+            widget: "select"
+            options: ["full", "half"]
+            default: "full"
 
   - name: "fassadenatlas"
     label: "Fassadenatlas"
@@ -106,7 +112,10 @@ collections:
       - label: "Tags"
         name: "tags"
         widget: "list"
-        field: { label: "Tag", name: "tag", widget: "string" }
+        field:
+          label: "Tag"
+          name: "tag"
+          widget: "string"
 
   - name: "experimente"
     label: "Experimente"

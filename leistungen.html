@@ -4,77 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leistungen — İKİ Architektur Wien</title>
-    <meta name="description" content="Leistungsübersicht İKİ Ziviltechnikerbüro — Objektplanung, Baumanagement, Beratung, Forschung.">
+    <meta name="description" content="Objektplanung, Baumanagement, Beratung, Forschung — İKİ Ziviltechnikerbüro Wien.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .l-page {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
+        *,*::before,*::after{box-sizing:border-box;}
+
+        .l-wrap {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
+
+        /* ===== HERO ===== */
         .l-hero {
-            padding-top: 180px;
-            padding-bottom: var(--space-xl);
-            text-align: center;
+            padding: 200px var(--space-lg) 80px;
+            max-width: 700px;
         }
         .l-hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
             font-weight: 400;
-            margin-bottom: 1rem;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
         }
         .l-hero p {
-            font-size: 1rem;
-            color: #666;
-            max-width: 500px;
-            margin: 0 auto;
-            line-height: 1.6;
+            font-size: 1.05rem;
+            color: #777;
+            line-height: 1.65;
         }
 
         /* ===== SPOTLIGHT GRID ===== */
-        .spotlight-grid {
+        .spot-section {
+            padding: 0 var(--space-lg) 100px;
+        }
+        .spot-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2px;
-            padding-bottom: var(--space-xl);
+            gap: 16px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
-        @media (max-width: 700px) {
-            .spotlight-grid {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 750px) {
+            .spot-grid { grid-template-columns: 1fr; }
         }
 
-        /* Spotlight Card */
+        /* Card */
         .spot-card {
             position: relative;
-            background: #0a0a0a;
-            border: 1px solid #1a1a1a;
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
+            background: #080808;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 40px 36px;
             overflow: hidden;
-            cursor: default;
-            transition: border-color 0.4s;
+            transition: border-color 0.5s ease;
         }
         .spot-card:hover {
-            border-color: #2a2a2a;
+            border-color: rgba(255,255,255,0.12);
         }
 
-        /* The glow effect */
+        /* Spotlight glow (background) */
         .spot-card::before {
             content: '';
             position: absolute;
             inset: 0;
+            border-radius: 20px;
             background: radial-gradient(
-                600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-                rgba(255,255,255,0.04),
+                650px circle at var(--mx, 50%) var(--my, 50%),
+                var(--glow, rgba(255,255,255,0.03)),
                 transparent 40%
             );
             opacity: 0;
-            transition: opacity 0.4s;
-            z-index: 0;
+            transition: opacity 0.5s ease;
             pointer-events: none;
+            z-index: 0;
         }
         .spot-card:hover::before {
             opacity: 1;
@@ -85,120 +89,127 @@
             content: '';
             position: absolute;
             inset: -1px;
+            border-radius: 20px;
             background: radial-gradient(
-                300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-                var(--glow-color, rgba(200,190,160,0.3)),
+                400px circle at var(--mx, 50%) var(--my, 50%),
+                var(--glow-border, rgba(200,190,160,0.15)),
                 transparent 40%
             );
-            border-radius: 16px;
-            z-index: -1;
             opacity: 0;
-            transition: opacity 0.4s;
+            transition: opacity 0.5s ease;
             pointer-events: none;
+            z-index: -1;
         }
         .spot-card:hover::after {
             opacity: 1;
         }
 
-        .spot-card > * {
-            position: relative;
-            z-index: 1;
-        }
+        .spot-card > * { position: relative; z-index: 1; }
 
-        .spot-card-nr {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.8rem;
-            color: #444;
-            margin-bottom: 1rem;
+        .spot-nr {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: #333;
+            text-transform: uppercase;
+            margin-bottom: 16px;
         }
         .spot-card h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 400;
-            margin-bottom: 1.5rem;
             color: #eee;
+            margin-bottom: 28px;
         }
 
-        .spot-item {
+        .spot-row {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            padding: 0.6rem 0;
+            padding: 10px 0;
             border-bottom: 1px solid rgba(255,255,255,0.04);
-            gap: 1rem;
+            gap: 16px;
         }
-        .spot-item:last-child {
-            border-bottom: none;
-        }
-        .spot-item h3 {
+        .spot-row:last-child { border-bottom: none; }
+        .spot-row h3 {
             font-family: 'Inter', sans-serif;
             font-size: 0.88rem;
-            font-weight: 500;
-            color: #ccc;
-            white-space: nowrap;
+            font-weight: 400;
+            color: #bbb;
+            flex-shrink: 0;
         }
-        .spot-item p {
+        .spot-row span {
             font-size: 0.78rem;
             color: #555;
             text-align: right;
-            line-height: 1.4;
-            margin: 0;
-        }
-        @media (max-width: 500px) {
-            .spot-item {
-                flex-direction: column;
-                gap: 0.15rem;
-            }
-            .spot-item p {
-                text-align: left;
-            }
         }
 
-        /* ===== ZT NOTE ===== */
-        .l-note {
-            text-align: center;
-            padding: var(--space-lg) 0;
-            border-top: 1px solid #1a1a1a;
+        @media (max-width: 500px) {
+            .spot-card { padding: 28px 24px; }
+            .spot-row { flex-direction: column; gap: 2px; }
+            .spot-row span { text-align: left; }
         }
-        .l-note p {
-            font-size: 0.85rem;
+
+        /* ===== ZT BAR ===== */
+        .zt-bar {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+            padding: 0 var(--space-lg);
+            text-align: center;
+        }
+        .zt-bar p {
+            font-size: 0.8rem;
             color: #444;
             line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto;
         }
-        .l-note a {
-            color: #888;
+        .zt-bar a {
+            color: #666;
             text-decoration: none;
             border-bottom: 1px solid #333;
+            transition: color 0.3s;
         }
-        .l-note a:hover {
-            border-color: #888;
-        }
+        .zt-bar a:hover { color: #aaa; }
 
         /* ===== CTA ===== */
         .l-cta {
-            text-align: center;
-            padding: var(--space-xl) 0;
-            border-top: 1px solid #1a1a1a;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px var(--space-lg) 120px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
         }
-        .l-cta a {
-            font-size: 0.9rem;
-            color: var(--color-text);
+        .l-cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            font-weight: 400;
+            color: #aaa;
+        }
+        .l-cta-btn {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: #fff;
             text-decoration: none;
-            border: 1px solid #333;
-            padding: 0.8rem 2.5rem;
-            border-radius: 0;
-            letter-spacing: 0.04em;
-            transition: border-color 0.3s;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 14px 36px;
+            border-radius: 60px;
+            letter-spacing: 0.03em;
+            transition: all 0.4s ease;
         }
-        .l-cta a:hover {
+        .l-cta-btn:hover {
+            background: #fff;
+            color: #000;
             border-color: #fff;
         }
     </style>
 </head>
 <body>
 
+    <!-- HEADER -->
     <header class="site-header">
         <div class="header-inner">
             <a href="/" class="logo">İKİ</a>
@@ -222,126 +233,77 @@
         </div>
     </header>
 
-    <main class="l-page">
+    <main class="l-wrap">
 
+        <!-- HERO -->
         <section class="l-hero">
             <h1>Leistungen</h1>
-            <p>Ziviltechnikerbüro für Architektur — von der ersten Idee bis zur Fertigstellung.</p>
+            <p>Ziviltechnikerbüro für Architektur mit Sitz in Wien. Von der ersten Idee bis zur Fertigstellung — als Planer, als Bauaufsicht, als Berater.</p>
         </section>
 
-        <!-- SPOTLIGHT GRID -->
-        <div class="spotlight-grid">
+        <!-- SPOTLIGHT CARDS -->
+        <section class="spot-section">
+            <div class="spot-grid">
 
-            <!-- 01 Objektplanung -->
-            <div class="spot-card" style="--glow-color: rgba(200,190,160,0.25);">
-                <div class="spot-card-nr">01</div>
-                <h2>Objektplanung</h2>
-                <div class="spot-item">
-                    <h3>Vorentwurf & Entwurf</h3>
-                    <p>Konzept, Machbarkeit, Varianten</p>
+                <!-- 01 -->
+                <div class="spot-card" style="--glow: rgba(200,190,160,0.04); --glow-border: rgba(200,190,160,0.18);">
+                    <div class="spot-nr">01</div>
+                    <h2>Objektplanung</h2>
+                    <div class="spot-row"><h3>Vorentwurf & Entwurf</h3><span>Konzept, Machbarkeit</span></div>
+                    <div class="spot-row"><h3>Einreichplanung</h3><span>Behörden, Baubewilligung</span></div>
+                    <div class="spot-row"><h3>Ausführungsplanung</h3><span>Werkpläne, Ausschreibung</span></div>
+                    <div class="spot-row"><h3>Generalplanung</h3><span>Alle Fachplaner, ein Dach</span></div>
+                    <div class="spot-row"><h3>Innenarchitektur</h3><span>Raum, Material, Detail</span></div>
+                    <div class="spot-row"><h3>Wettbewerbe</h3><span>Offen, geladen, Kooperation</span></div>
                 </div>
-                <div class="spot-item">
-                    <h3>Einreichplanung</h3>
-                    <p>Behörden, Baubewilligung</p>
+
+                <!-- 02 -->
+                <div class="spot-card" style="--glow: rgba(180,140,90,0.04); --glow-border: rgba(180,140,90,0.18);">
+                    <div class="spot-nr">02</div>
+                    <h2>Baumanagement</h2>
+                    <div class="spot-row"><h3>Örtliche Bauaufsicht</h3><span>Qualität, Koordination</span></div>
+                    <div class="spot-row"><h3>Begleitende Kontrolle</h3><span>Vier-Augen-Prinzip</span></div>
+                    <div class="spot-row"><h3>BauKG-Koordination</h3><span>Sicherheit auf der Baustelle</span></div>
+                    <div class="spot-row"><h3>Kosten- & Terminsteuerung</h3><span>Budget, Zeitplan</span></div>
                 </div>
-                <div class="spot-item">
-                    <h3>Ausführungsplanung</h3>
-                    <p>Werkpläne, Ausschreibung</p>
+
+                <!-- 03 -->
+                <div class="spot-card" style="--glow: rgba(160,170,200,0.04); --glow-border: rgba(160,170,200,0.18);">
+                    <div class="spot-nr">03</div>
+                    <h2>Beratung & Gutachten</h2>
+                    <div class="spot-row"><h3>Baugenehmigungen</h3><span>Behördliche Verfahren</span></div>
+                    <div class="spot-row"><h3>Denkmalschutz</h3><span>BDA, Restaurierung</span></div>
+                    <div class="spot-row"><h3>Energieberatung</h3><span>Ausweis, Passivhaus</span></div>
+                    <div class="spot-row"><h3>Barrierefreiheit</h3><span>Audits, inklusive Gestaltung</span></div>
                 </div>
-                <div class="spot-item">
-                    <h3>Generalplanung</h3>
-                    <p>Alle Fachplaner, ein Dach</p>
+
+                <!-- 04 -->
+                <div class="spot-card" style="--glow: rgba(0,220,168,0.03); --glow-border: rgba(0,220,168,0.15);">
+                    <div class="spot-nr">04</div>
+                    <h2>Forschung & Entwicklung</h2>
+                    <div class="spot-row"><h3>Klimatechnik</h3><span>VTC-System, Simulation</span></div>
+                    <div class="spot-row"><h3>Materialforschung</h3><span>Fassadenatlas, 3D-Druck</span></div>
+                    <div class="spot-row"><h3>Computational Design</h3><span>Grasshopper, AI-Analyse</span></div>
+                    <div class="spot-row"><h3>Kreislaufwirtschaft</h3><span>LCA, Urban Mining, CO₂</span></div>
                 </div>
-                <div class="spot-item">
-                    <h3>Innenarchitektur</h3>
-                    <p>Raum, Material, Detail</p>
-                </div>
-                <div class="spot-item">
-                    <h3>Wettbewerbe</h3>
-                    <p>Offen, geladen, Kooperation</p>
-                </div>
+
             </div>
+        </section>
 
-            <!-- 02 Baumanagement -->
-            <div class="spot-card" style="--glow-color: rgba(180,140,90,0.25);">
-                <div class="spot-card-nr">02</div>
-                <h2>Baumanagement</h2>
-                <div class="spot-item">
-                    <h3>Örtliche Bauaufsicht</h3>
-                    <p>Qualität, Koordination, Kontrolle</p>
-                </div>
-                <div class="spot-item">
-                    <h3>Begleitende Kontrolle</h3>
-                    <p>Vier-Augen-Prinzip</p>
-                </div>
-                <div class="spot-item">
-                    <h3>BauKG-Koordination</h3>
-                    <p>Sicherheit auf der Baustelle</p>
-                </div>
-                <div class="spot-item">
-                    <h3>Kosten- & Terminsteuerung</h3>
-                    <p>Budget, Zeitplan, Steuerung</p>
-                </div>
-            </div>
-
-            <!-- 03 Beratung -->
-            <div class="spot-card" style="--glow-color: rgba(160,160,180,0.25);">
-                <div class="spot-card-nr">03</div>
-                <h2>Beratung & Gutachten</h2>
-                <div class="spot-item">
-                    <h3>Baugenehmigungen</h3>
-                    <p>Behördliche Verfahren</p>
-                </div>
-                <div class="spot-item">
-                    <h3>Denkmalschutz</h3>
-                    <p>BDA, Restaurierung</p>
-                </div>
-                <div class="spot-item">
-                    <h3>Energieberatung</h3>
-                    <p>Ausweis, Passivhaus, Sanierung</p>
-                </div>
-                <div class="spot-item">
-                    <h3>Barrierefreiheit</h3>
-                    <p>Audits, inklusive Gestaltung</p>
-                </div>
-            </div>
-
-            <!-- 04 Forschung -->
-            <div class="spot-card" style="--glow-color: rgba(0,220,168,0.2);">
-                <div class="spot-card-nr">04</div>
-                <h2>Forschung & Entwicklung</h2>
-                <div class="spot-item">
-                    <h3>Klimatechnik</h3>
-                    <p>VTC-System, Simulation</p>
-                </div>
-                <div class="spot-item">
-                    <h3>Materialforschung</h3>
-                    <p>Fassadenatlas, 3D-Druck</p>
-                </div>
-                <div class="spot-item">
-                    <h3>Computational Design</h3>
-                    <p>Grasshopper, AI-Analyse</p>
-                </div>
-                <div class="spot-item">
-                    <h3>Kreislaufwirtschaft</h3>
-                    <p>LCA, Urban Mining, CO₂</p>
-                </div>
-            </div>
-
+        <!-- ZT BAR -->
+        <div class="zt-bar">
+            <p>Befugnis als Ziviltechniker gemäß ZTG 2019 — Planung, Einreichung, ÖBA, Gutachten.<br>Mitglied der <a href="https://www.arching.at" target="_blank" rel="noopener">Kammer der ZT:innen für Wien, NÖ und Bgld</a>.</p>
         </div>
-
-        <!-- ZT NOTE -->
-        <section class="l-note">
-            <p>Befugnis als Ziviltechniker gemäß ZTG 2019 — Planung, Einreichung, ÖBA, Gutachten. Mitglied der <a href="https://www.arching.at" target="_blank" rel="noopener">Kammer der ZT:innen für Wien, NÖ und Bgld</a>.</p>
-        </section>
 
         <!-- CTA -->
         <section class="l-cta">
-            <a href="/kontakt.html">Projekt besprechen →</a>
+            <h2>Gute Dinge beginnen im Gespräch.</h2>
+            <a href="/kontakt.html" class="l-cta-btn">Projekt besprechen →</a>
         </section>
 
     </main>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col">
@@ -372,17 +334,15 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
     <script>
     (function(){
         var cards = document.querySelectorAll('.spot-card');
         cards.forEach(function(card){
             card.addEventListener('mousemove', function(e){
-                var rect = card.getBoundingClientRect();
-                var x = e.clientX - rect.left;
-                var y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', x + 'px');
-                card.style.setProperty('--mouse-y', y + 'px');
+                var r = card.getBoundingClientRect();
+                card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+                card.style.setProperty('--my', (e.clientY - r.top) + 'px');
             });
         });
     })();

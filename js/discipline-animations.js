@@ -511,12 +511,12 @@
   }
 
   /* ---------- INIT ---------- */
-  var map = {
+  v  var map = {
     architektur: animArchitektur,
-    museen: animMuseen,
+    ausstellung: animMuseen,
     produkt: animProdukt,
-    grafik: animGrafik,
-    motion: animMotion,
+    bauprojekt: animGrafik,
+    sanierung: animMotion,
     lab: animLab
   };
 

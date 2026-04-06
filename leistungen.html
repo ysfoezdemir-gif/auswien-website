@@ -4,167 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leistungen — İKİ Architektur Wien</title>
-    <meta name="description" content="Objektplanung, Baumanagement, Beratung und Forschung — İKİ Ziviltechnikerbüro für Architektur, Wien.">
+    <meta name="description" content="Leistungsübersicht İKİ Ziviltechnikerbüro — Objektplanung, Baumanagement, Beratung, Forschung.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .ls-hero {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 0 var(--space-lg);
-            padding-bottom: var(--space-xl);
-        }
-        .ls-hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 8vw, 7rem);
-            font-weight: 400;
-            line-height: 1.0;
-            margin-bottom: 2rem;
+        .l-page {
             max-width: 900px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
         }
-        .ls-hero h1 em {
-            font-style: italic;
-            color: #888;
+        .l-hero {
+            padding-top: 180px;
+            padding-bottom: var(--space-lg);
         }
-
-        .ls-statement {
-            padding: var(--space-xl) var(--space-lg);
-            max-width: 750px;
-        }
-        .ls-statement p {
+        .l-hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-            line-height: 1.7;
-            color: #aaa;
-            margin-bottom: 2rem;
-        }
-        .ls-statement p:last-child {
-            margin-bottom: 0;
-        }
-
-        .ls-columns {
-            padding: var(--space-xl) var(--space-lg);
-            border-top: 1px solid #1a1a1a;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-lg);
-        }
-        @media (max-width: 900px) {
-            .ls-columns { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 550px) {
-            .ls-columns { grid-template-columns: 1fr; }
-        }
-        .ls-col h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 400;
-            margin-bottom: 1.2rem;
-            color: var(--color-text);
-        }
-        .ls-col ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .ls-col ul li {
-            font-size: 0.85rem;
-            color: #666;
-            padding: 0.45rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-            line-height: 1.4;
-        }
-        .ls-col ul li:last-child {
-            border-bottom: none;
-        }
-
-        .ls-vtc {
-            margin: var(--space-xl) var(--space-lg);
-            padding: var(--space-xl) var(--space-lg);
-            border: 1px solid #1a1a1a;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-xl);
-            align-items: center;
-        }
-        @media (max-width: 768px) {
-            .ls-vtc { grid-template-columns: 1fr; }
-        }
-        .ls-vtc-text .ls-vtc-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: #00DCA8;
             margin-bottom: 1rem;
         }
-        .ls-vtc-text h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 400;
-            margin-bottom: 0.3rem;
-        }
-        .ls-vtc-text .ls-vtc-sub {
+        .l-hero p {
             font-size: 1rem;
-            color: #555;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-        .ls-vtc-text p {
-            font-size: 1rem;
-            line-height: 1.7;
             color: #888;
-        }
-        .ls-vtc-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-        .ls-vtc-feat h3 {
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-            color: #ccc;
-        }
-        .ls-vtc-feat p {
-            font-size: 0.8rem;
-            color: #666;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
-        .ls-cta {
-            padding: var(--space-xl) var(--space-lg);
+        .l-block {
+            padding: var(--space-lg) 0;
             border-top: 1px solid #1a1a1a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
         }
-        .ls-cta h2 {
+        .l-block h2 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-size: 1.4rem;
             font-weight: 400;
+            margin-bottom: 1.5rem;
         }
-        .ls-cta a {
+        .l-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .l-row {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 1rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            align-items: baseline;
+        }
+        @media (max-width: 600px) {
+            .l-row {
+                grid-template-columns: 1fr;
+                gap: 0.2rem;
+            }
+        }
+        .l-row h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #ddd;
+        }
+        .l-row p {
             font-size: 0.85rem;
-            color: var(--color-text);
+            color: #666;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .l-note {
+            padding: var(--space-lg) 0;
+            border-top: 1px solid #1a1a1a;
+        }
+        .l-note p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        .l-note a {
+            color: #aaa;
             text-decoration: none;
-            border: 1px solid #333;
-            padding: 0.8rem 2.5rem;
-            letter-spacing: 0.05em;
+            border-bottom: 1px solid #333;
             transition: border-color 0.3s;
         }
-        .ls-cta a:hover {
+        .l-note a:hover {
+            border-color: #fff;
+        }
+
+        .l-cta {
+            padding: var(--space-xl) 0;
+            border-top: 1px solid #1a1a1a;
+        }
+        .l-cta a {
+            font-size: 0.9rem;
+            color: var(--color-text);
+            text-decoration: none;
+            border-bottom: 1px solid #444;
+            padding-bottom: 0.2rem;
+            transition: border-color 0.3s;
+        }
+        .l-cta a:hover {
             border-color: #fff;
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER -->
     <header class="site-header">
         <div class="header-inner">
             <a href="/" class="logo">İKİ</a>
@@ -179,7 +124,7 @@
             <nav class="main-nav">
                 <a href="/projekte.html">Projekte</a>
                 <a href="/leistungen.html" class="active">Leistungen</a>
-                <a 	href="/studio.html">Studio</a>
+                <a href="/studio.html">Studio</a>
                 <a href="/kontakt.html">Kontakt</a>
             </nav>
             <button class="menu-toggle" aria-label="Menü">
@@ -188,99 +133,117 @@
         </div>
     </header>
 
-    <main>
+    <main class="l-page">
 
-        <!-- HERO -->
-        <section class="ls-hero">
-            <h1>Wir planen,<br>bauen und <em>forschen.</em></h1>
+        <section class="l-hero">
+            <h1>Leistungen</h1>
+            <p>İKİ ist ein Ziviltechnikerbüro für Architektur mit Sitz in Wien. Wir begleiten Projekte von der ersten Idee bis zur Fertigstellung.</p>
         </section>
 
-        <!-- STATEMENT -->
-        <section class="ls-statement">
-            <p>İKİ ist ein Ziviltechnikerbüro für Architektur mit Sitz in Wien. Wir begleiten Projekte von der ersten Idee bis zur Fertigstellung — als Objektplaner, als Generalplaner, als Bauaufsicht oder als Berater.</p>
-            <p>Unser Anspruch ist, dass jede Leistungsphase die gleiche Sorgfalt trägt wie der Entwurf. Ob Machbarkeitsstudie oder Baustellenkoordination — die Haltung bleibt dieselbe.</p>
-            <p>Was wir darüber hinaus tun, entsteht im Lab: Materialforschung, Klimatechnik, parametrisches Design. Dinge, die es so noch nicht gibt.</p>
-        </section>
-
-        <!-- VIER SÄULEN — KOMPAKT -->
-        <section class="ls-columns">
-            <div class="ls-col">
-                <h2>Objektplanung</h2>
-                <ul>
-                    <li>Machbarkeitsstudien</li>
-                    <li>Entwurfs- & Einreichplanung</li>
-                    <li>Ausführungsplanung</li>
-                    <li>Generalplanung</li>
-                    <li>Innenarchitektur</li>
-                    <li>Wettbewerbe</li>
-                </ul>
-            </div>
-            <div class="ls-col">
-                <h2>Baumanagement</h2>
-                <ul>
-                    <li>Örtliche Bauaufsicht (ÖBA)</li>
-                    <li>Begleitende Kontrolle (BK)</li>
-                    <li>BauKG-Koordination</li>
-                    <li>Kosten- & Terminmanagement</li>
-                </ul>
-            </div>
-            <div class="ls-col">
-                <h2>Beratung</h2>
-                <ul>
-                    <li>Baugenehmigungen</li>
-                    <li>Denkmalschutz</li>
-                    <li>Energieberatung</li>
-                    <li>Barrierefreiheit</li>
-                </ul>
-            </div>
-            <div class="ls-col">
-                <h2>Forschung</h2>
-                <ul>
-                    <li>Klimatechnik</li>
-                    <li>Materialforschung</li>
-                    <li>Computational Design</li>
-                    <li>Kreislaufwirtschaft</li>
-                </ul>
+        <!-- OBJEKTPLANUNG -->
+        <section class="l-block">
+            <h2>Objektplanung</h2>
+            <div class="l-list">
+                <div class="l-row">
+                    <h3>Vorentwurf & Entwurf</h3>
+                    <p>Konzeptentwicklung, Machbarkeitsstudien, Variantenuntersuchung</p>
+                </div>
+                <div class="l-row">
+                    <h3>Einreichplanung</h3>
+                    <p>Behördliche Einreichung, Baubewilligung, Flächenwidmung</p>
+                </div>
+                <div class="l-row">
+                    <h3>Ausführungsplanung</h3>
+                    <p>Werkpläne, Detailplanung, Ausschreibungsunterlagen</p>
+                </div>
+                <div class="l-row">
+                    <h3>Generalplanung</h3>
+                    <p>Koordination aller Fachplaner unter einem Dach</p>
+                </div>
+                <div class="l-row">
+                    <h3>Innenarchitektur</h3>
+                    <p>Raumkonzepte, Materialwahl, Möblierung</p>
+                </div>
             </div>
         </section>
 
-        <!-- VTC -->
-        <section class="ls-vtc">
-            <div class="ls-vtc-text">
-                <div class="ls-vtc-label">Eigenentwicklung — Patent angemeldet</div>
-                <h2>VTC System</h2>
-                <div class="ls-vtc-sub">Vertical Textile Climate</div>
-                <p>Ein nicht-invasiver Klimavorhang für denkmalgeschützte Museen und historische Gebäude. Reguliert Temperatur und Luftfeuchtigkeit ohne bauliche Eingriffe.</p>
-            </div>
-            <div class="ls-vtc-features">
-                <div class="ls-vtc-feat">
-                    <h3>Keine Bohrungen</h3>
-                    <p>Vollständig reversible Installation.</p>
+        <!-- BAUMANAGEMENT -->
+        <section class="l-block">
+            <h2>Baumanagement</h2>
+            <div class="l-list">
+                <div class="l-row">
+                    <h3>Örtliche Bauaufsicht</h3>
+                    <p>Qualitätssicherung und Koordination direkt auf der Baustelle</p>
                 </div>
-                <div class="ls-vtc-feat">
-                    <h3>Denkmalschutz-konform</h3>
-                    <p>Abgestimmt mit dem BDA.</p>
+                <div class="l-row">
+                    <h3>Begleitende Kontrolle</h3>
+                    <p>Unabhängige Prüfung im Vier-Augen-Prinzip</p>
                 </div>
-                <div class="ls-vtc-feat">
-                    <h3>Maximale Wirkung</h3>
-                    <p>Minimaler Energieeinsatz.</p>
+                <div class="l-row">
+                    <h3>BauKG-Koordination</h3>
+                    <p>Sicherheits- und Gesundheitsschutz auf der Baustelle</p>
                 </div>
-                <div class="ls-vtc-feat">
-                    <h3>Skalierbar</h3>
-                    <p>Anpassbar an jede Raumgeometrie.</p>
+                <div class="l-row">
+                    <h3>Kosten- & Terminsteuerung</h3>
+                    <p>Budgetkontrolle und vorausschauende Terminplanung</p>
                 </div>
             </div>
+        </section>
+
+        <!-- BERATUNG -->
+        <section class="l-block">
+            <h2>Beratung & Gutachten</h2>
+            <div class="l-list">
+                <div class="l-row">
+                    <h3>Baugenehmigungen</h3>
+                    <p>Begleitung behördlicher Verfahren</p>
+                </div>
+                <div class="l-row">
+                    <h3>Denkmalschutz</h3>
+                    <p>Abstimmung mit dem BDA, Restaurierungskonzepte</p>
+                </div>
+                <div class="l-row">
+                    <h3>Energieberatung</h3>
+                    <p>Energieausweis, Passivhaus-Beratung, thermische Sanierung</p>
+                </div>
+                <div class="l-row">
+                    <h3>Barrierefreiheit</h3>
+                    <p>Audits und inklusive Gestaltungskonzepte</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORSCHUNG -->
+        <section class="l-block">
+            <h2>Forschung & Entwicklung</h2>
+            <div class="l-list">
+                <div class="l-row">
+                    <h3>Klimatechnik</h3>
+                    <p>Mikroklima-Simulation, VTC-System, Passivhaus-Monitoring</p>
+                </div>
+                <div class="l-row">
+                    <h3>Materialforschung</h3>
+                    <p>Fassadenatlas, zirkuläre Materialien, 3D-Druck</p>
+                </div>
+                <div class="l-row">
+                    <h3>Computational Design</h3>
+                    <p>Grasshopper, parametrische Geometrien, AI-Analyse</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HINWEIS -->
+        <section class="l-note">
+            <p>Die Befugnis als Ziviltechniker umfasst die Berechtigung zur Planung, Einreichung, Örtlichen Bauaufsicht sowie zur Erstellung von Gutachten. İKİ ist Mitglied der <a href="https://www.arching.at" target="_blank" rel="noopener">Kammer der Ziviltechniker:innen für Wien, NÖ und Burgenland</a>.</p>
         </section>
 
         <!-- CTA -->
-        <section class="ls-cta">
-            <h2>Gute Dinge beginnen im Gespräch.</h2>
-            <a href="/kontakt.html">Kontakt aufnehmen →</a>
+        <section class="l-cta">
+            <a href="/kontakt.html">Projekt besprechen →</a>
         </section>
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col">
@@ -303,15 +266,14 @@
             </div>
             <div class="footer-col">
                 <h4>Rechtliches</h4>
-                <a 	href="/impressum.html">Impressum & Datenschutz</a>
+                <a href="/impressum.html">Impressum & Datenschutz</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 İKİ Architektur Wien</p>
+            <p>&copy; 2026 İKİ Architektur Wien</p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-
 </body>
 </html>

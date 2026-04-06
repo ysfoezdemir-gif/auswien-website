@@ -40,10 +40,10 @@
 
     var disciplines = [
       { name: 'Architektur', short: 'ARCH',   url: '/architektur/', color: '#C8BEA0', orbit: 0.7, speed: 0.0004, angle: 0 },
-      { name: 'Museen',      short: 'MUS',    url: '/museen/',      color: '#D4C48A', orbit: 0.85, speed: 0.0003, angle: Math.PI * 0.33 },
+      { name: 'Museen',      short: 'MUS',    url: '	/ausstellung/',      color: '#D4C48A', orbit: 0.85, speed: 0.0003, angle: Math.PI * 0.33 },
       { name: 'Produkt',     short: 'PROD',   url: '/produkt/',     color: '#B48C5A', orbit: 0.75, speed: 0.00035, angle: Math.PI * 0.66 },
-      { name: 'Grafik',      short: 'GRAF',   url: '/grafik/',      color: '#E0E0E0', orbit: 0.9, speed: 0.00025, angle: Math.PI },
-      { name: 'Motion',      short: 'MOT',    url: '/motion/',      color: '#8AB4DC', orbit: 0.8, speed: 0.00045, angle: Math.PI * 1.33 },
+      { name: 'Grafik',      short: 'GRAF',   url: '/bauprojekt/',      color: '#E0E0E0', orbit: 0.9, speed: 0.00025, angle: Math.PI },
+      { name: 'Motion',      short: 'MOT',    url: '/sanierung/',      color: '#8AB4DC', orbit: 0.8, speed: 0.00045, angle: Math.PI * 1.33 },
       { name: 'Lab',         short: 'LAB',    url: '/lab/',         color: '#00DCA8', orbit: 0.65, speed: 0.0005, angle: Math.PI * 1.66 }
     ];
 

@@ -42,7 +42,7 @@
 
 /* --- Architektur (default — no attribute needed) --- */
 
-/* --- Museen & Ausstellungen --- */
+/* --- 	Ausstellungsdesign --- */
 [data-discipline="museen"] {
   --accent: #1a1a2e;
   --accent-rgb: 26,26,46;
@@ -62,7 +62,7 @@
   --font-display: var(--font-serif);
 }
 
-/* --- Grafik & Branding --- */
+/* --- Bauprojektmanagement --- */
 [data-discipline="grafik"] {
   --accent: #e63946;
   --accent-rgb: 230,57,70;
@@ -72,7 +72,7 @@
   --font-display: 'Space Grotesk', var(--font-sans);
 }
 
-/* --- 3D / Motion / Werbung --- */
+/* --- Sanierung & Denkmalschutz --- */
 [data-discipline="motion"] {
   --accent: #7c4dff;
   --accent-rgb: 124,77,255;

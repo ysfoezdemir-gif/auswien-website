@@ -4,87 +4,383 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projekte — İKİ Architektur Wien</title>
-    <meta name="description" content="Portfolio von İKİ — Architektur, Denkmalpflege, Ausstellungsgestaltung und Forschung in Wien.">
+    <meta name="description" content="Ausgewählte Projekte von İKİ — gefiltert nach Disziplin, Typologie und Status.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Projekte Page Styles */
+        .projekte-hero {
+            min-height: 40vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 var(--space-lg);
+            padding-bottom: var(--space-lg);
+            background: var(--color-bg);
+        }
+        .projekte-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 400;
+        }
+
+        /* Snøhetta-style Filter Bar */
+        .filter-bar {
+            position: sticky;
+            top: 60px;
+            z-index: 90;
+            background: var(--color-bg);
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            padding: 1rem var(--space-lg);
+            display: flex;
+            gap: 2.5rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            min-width: max-content;
+        }
+        .filter-group-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #666;
+            cursor: pointer;
+            user-select: none;
+        }
+        .filter-options {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: none;
+            border: 1px solid #333;
+            color: #888;
+            padding: 0.35rem 0.8rem;
+            font-size: 0.75rem;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .filter-btn:hover {
+            border-color: var(--color-text);
+            color: var(--color-text);
+        }
+        .filter-btn.active {
+            background: var(--color-text);
+            color: var(--color-bg);
+            border-color: var(--color-text);
+        }
+
+        /* Project Grid */
+        .projekte-grid-section {
+            padding: var(--space-lg);
+        }
+        .projekte-count {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: var(--space-md);
+        }
+        .projekte-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2px;
+        }
+        @media (max-width: 768px) {
+            .projekte-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .projekt-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: #111;
+        }
+        .projekt-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+            opacity: 0.85;
+        }
+        .projekt-card:hover img {
+            transform: scale(1.03);
+            opacity: 1;
+        }
+        .projekt-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        }
+        .projekt-card-meta {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .projekt-card-meta span {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.6);
+        }
+        .projekt-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+        .projekt-card-location {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .projekt-card a {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: var(--space-xl) 0;
+            color: #666;
+            font-size: 1rem;
+        }
+    </style>
 </head>
 <body>
 
-    <header class="header" id="header">
+    <!-- HEADER -->
+    <header class="site-header">
         <div class="header-inner">
-            <a href="index.html" class="logo">İKİ</a>
-            <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
-                <span></span><span></span><span></span>
-            </button>
-            <nav class="nav" id="nav">
-                <a href="leistungen.html">Leistungen</a>
+            <a href="/" class="logo">İKİ</a>
+            <nav class="discipline-switcher">
+                <a href="/architektur/">Arch</a>
+                <a href="/ausstellung/">Ausstellung</a>
+                <a href="/produkt/">Produkt</a>
+                <a href="/bauprojekt/">BPM</a>
+                <a href="/sanierung/">Sanierung</a>
+                <a href="/lab/">Lab</a>
+            </nav>
+            <nav class="main-nav">
                 <a href="projekte.html" class="active">Projekte</a>
+                <a href="leistungen.html">Leistungen</a>
                 <a href="studio.html">Studio</a>
                 <a href="kontakt.html">Kontakt</a>
             </nav>
+            <button class="menu-toggle" aria-label="Menü">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
     <main>
-        <section class="page-hero">
-            <div class="container">
-                <span class="section-label-sm">Portfolio</span>
-                <h1>Projekte</h1>
-                <p class="page-hero-sub">Architektur, Forschung & Gestaltung</p>
-            </div>
+
+        <!-- HERO -->
+        <section class="projekte-hero">
+            <h1>Projekte</h1>
         </section>
 
-        <section class="projects-filter-section">
-            <div class="container">
-                <div class="discipline-pills" id="categoryPills"></div>
-            </div>
-        </section>
-
-        <section class="projects-grid-section">
-            <div class="container">
-                <div class="sno-projects-grid" id="projectsGrid"></div>
-                <div class="projects-empty" id="projectsEmpty" style="display:none;">
-                    <p>Keine Projekte in dieser Kategorie gefunden.</p>
+        <!-- FILTER BAR -->
+        <div class="filter-bar">
+            <div class="filter-group">
+                <span class="filter-group-label">Disziplin</span>
+                <div class="filter-options" id="filterDiscipline">
+                    <button class="filter-btn active" data-filter="all">Alle</button>
+                    <button class="filter-btn" data-filter="architektur">Architektur</button>
+                    <button class="filter-btn" data-filter="ausstellung">Ausstellung</button>
+                    <button class="filter-btn" data-filter="produkt">Produktdesign</button>
+                    <button class="filter-btn" data-filter="bauprojekt">BPM</button>
+                    <button class="filter-btn" data-filter="sanierung">Sanierung</button>
+                    <button class="filter-btn" data-filter="lab">Lab</button>
                 </div>
             </div>
+            <div class="filter-group">
+                <span class="filter-group-label">Typologie</span>
+                <div class="filter-options" id="filterTypology">
+                    <button class="filter-btn active" data-filter="all">Alle</button>
+                    <button class="filter-btn" data-filter="Wohnen">Wohnen</button>
+                    <button class="filter-btn" data-filter="Gewerbe">Gewerbe</button>
+                    <button class="filter-btn" data-filter="Öffentlich">Öffentlich</button>
+                    <button class="filter-btn" data-filter="Kultur">Kultur</button>
+                    <button class="filter-btn" data-filter="Freiraum">Freiraum</button>
+                    <button class="filter-btn" data-filter="Spezial">Spezial</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <span class="filter-group-label">Status</span>
+                <div class="filter-options" id="filterStatus">
+                    <button class="filter-btn active" data-filter="all">Alle</button>
+                    <button class="filter-btn" data-filter="Realisiert">Realisiert</button>
+                    <button class="filter-btn" data-filter="Planung">Planung</button>
+                    <button class="filter-btn" data-filter="In Entwicklung">In Entwicklung</button>
+                    <button class="filter-btn" data-filter="Wettbewerb">Wettbewerb</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <section class="projekte-grid-section">
+            <div class="projekte-count" id="projekteCount"></div>
+            <div class="projekte-grid" id="projekteGrid"></div>
         </section>
+
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>İKİ</h4>
-                    <p>Ziviltechnikerbüro<br>für Architektur</p>
-                    <p>Wien, Österreich</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Seiten</h4>
-                    <p><a href="leistungen.html">Leistungen</a></p>
-                    <p><a href="projekte.html">Projekte</a></p>
-                    <p><a href="studio.html">Studio</a></p>
-                </div>
-                <div class="footer-col">
-                    <h4>Kontakt</h4>
-                    <p><a href="mailto:info@auswien.at">info@auswien.at</a></p>
-                    <p><a href="kontakt.html">Kontaktformular</a></p>
-                </div>
-                <div class="footer-col">
-                    <h4>Rechtliches</h4>
-                    <p><a href="impressum.html">Impressum</a></p>
-                    <p><a href="impressum.html#datenschutz">Datenschutz</a></p>
-                </div>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>İKİ</h4>
+                <p>Interdisziplinäres Büro für Architektur, Gestaltung & Forschung.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 İKİ Architektur. Alle Rechte vorbehalten.</p>
+            <div class="footer-col">
+                <h4>Disziplinen</h4>
+                <a href="/architektur/">Architektur</a>
+                <a href="/ausstellung/">Ausstellungsdesign</a>
+                <a href="/produkt/">Produktdesign</a>
+                <a href="/bauprojekt/">Bauprojektmanagement</a>
+                <a href="/sanierung/">Sanierung & Denkmal</a>
+                <a href="/lab/">Lab</a>
             </div>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <a href="mailto:info@auswien.at">info@auswien.at</a>
+                <a href="kontakt.html">Kontaktseite</a>
+            </div>
+            <div class="footer-col">
+                <h4>Rechtliches</h4>
+                <a href="impressum.html">Impressum & Datenschutz</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 İKİ Architektur Wien</p>
         </div>
     </footer>
 
     <script src="js/projects-data.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/projects.js"></script>
+    <script>
+    (function(){
+        // Current filters
+        var filters = {
+            discipline: 'all',
+            typology: 'all',
+            status: 'all'
+        };
+
+        var grid = document.getElementById('projekteGrid');
+        var countEl = document.getElementById('projekteCount');
+
+        // Read URL params (e.g. ?discipline=architektur&typology=Wohnen)
+        var params = new URLSearchParams(window.location.search);
+        if(params.get('discipline')) filters.discipline = params.get('discipline');
+        if(params.get('typology')) filters.typology = params.get('typology');
+        if(params.get('status')) filters.status = params.get('status');
+        // Legacy support: ?filter=Wohnen
+        if(params.get('filter')) filters.typology = params.get('filter');
+
+        // Set active buttons from URL
+        function syncButtons(){
+            document.querySelectorAll('#filterDiscipline .filter-btn').forEach(function(b){
+                b.classList.toggle('active', b.dataset.filter === filters.discipline);
+            });
+            document.querySelectorAll('#filterTypology .filter-btn').forEach(function(b){
+                b.classList.toggle('active', b.dataset.filter === filters.typology);
+            });
+            document.querySelectorAll('#filterStatus .filter-btn').forEach(function(b){
+                b.classList.toggle('active', b.dataset.filter === filters.status);
+            });
+        }
+
+        function renderProjects(){
+            if(typeof projects === 'undefined' || !projects.length){
+                grid.innerHTML = '<div class="no-results">Projekte werden geladen…</div>';
+                countEl.textContent = '';
+                return;
+            }
+
+            var filtered = projects.filter(function(p){
+                var dMatch = filters.discipline === 'all' || p.discipline === filters.discipline;
+                var tMatch = filters.typology === 'all' || p.category === filters.typology || p.typology === filters.typology;
+                var sMatch = filters.status === 'all' || p.status === filters.status;
+                return dMatch && tMatch && sMatch;
+            });
+
+            countEl.textContent = filtered.length + ' Projekt' + (filtered.length !== 1 ? 'e' : '');
+
+            if(!filtered.length){
+                grid.innerHTML = '<div class="no-results">Keine Projekte für diese Filter gefunden.</div>';
+                return;
+            }
+
+            grid.innerHTML = filtered.map(function(p){
+                return '<div class="projekt-card">' +
+                    '<img src="' + (p.image || p.thumbnail || '') + '" alt="' + p.title + '" loading="lazy">' +
+                    '<div class="projekt-card-overlay">' +
+                        '<div class="projekt-card-meta">' +
+                            '<span>' + (p.category || p.typology || '') + '</span>' +
+                            '<span>' + (p.year || '') + '</span>' +
+                            '<span>' + (p.status || '') + '</span>' +
+                        '</div>' +
+                        '<h3>' + p.title + '</h3>' +
+                        '<div class="projekt-card-location">' + (p.location || '') + '</div>' +
+                    '</div>' +
+                    '<a href="projekt.html?id=' + p.id + '" aria-label="' + p.title + '"></a>' +
+                '</div>';
+            }).join('');
+        }
+
+        // Attach filter click handlers
+        function setupFilterGroup(containerId, filterKey){
+            document.getElementById(containerId).addEventListener('click', function(e){
+                var btn = e.target.closest('.filter-btn');
+                if(!btn) return;
+                filters[filterKey] = btn.dataset.filter;
+                syncButtons();
+                renderProjects();
+                // Update URL without reload
+                var u = new URL(window.location);
+                if(filters[filterKey] === 'all') u.searchParams.delete(filterKey);
+                else u.searchParams.set(filterKey, filters[filterKey]);
+                history.replaceState(null, '', u);
+            });
+        }
+
+        setupFilterGroup('filterDiscipline', 'discipline');
+        setupFilterGroup('filterTypology', 'typology');
+        setupFilterGroup('filterStatus', 'status');
+
+        syncButtons();
+        renderProjects();
+
+        // Retry if projects-data.js loads async
+        if(typeof projects === 'undefined'){
+            var retries = 0;
+            var iv = setInterval(function(){
+                retries++;
+                if(typeof projects !== 'undefined' && projects.length){
+                    clearInterval(iv);
+                    renderProjects();
+                } else if(retries > 30){
+                    clearInterval(iv);
+                    grid.innerHTML = '<div class="no-results">Projektdaten konnten nicht geladen werden.</div>';
+                }
+            }, 200);
+        }
+    })();
+    </script>
+
 </body>
 </html>

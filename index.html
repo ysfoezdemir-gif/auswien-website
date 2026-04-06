@@ -78,13 +78,13 @@
         <nav class="discipline-switcher" aria-label="Disziplinen">
           <a href="/architektur/">Arch</a>
           <span class="disc-sep">·</span>
-          <a href="/museen/">Museen</a>
+          <a href="/ausstellung/">Ausstellung</a>
           <span class="disc-sep">·</span>
           <a href="/produkt/">Produkt</a>
           <span class="disc-sep">·</span>
-          <a href="/grafik/">Grafik</a>
+          <a href="/bauprojekt/">BPM</a>
           <span class="disc-sep">·</span>
-          <a href="/motion/">Motion</a>
+          <a href="/sanierung/">Sanierung</a>
           <span class="disc-sep">·</span>
           <a href="/lab/">Lab</a>
         </nav>
@@ -161,10 +161,10 @@
       <p class="section-subtitle">Jede Disziplin denkt anders. Alle teilen denselben Anspruch: dass das, was wir schaffen, etwas im Menschen bewegt.</p>
       <div class="disciplines-list">
         <a href="/architektur/" class="discipline-list-item"><span class="discipline-list-name">Architektur & Planung</span><span class="disc-arrow">→</span></a>
-        <a href="/museen/" class="discipline-list-item"><span class="discipline-list-name">Museen & Ausstellungen</span><span class="disc-arrow">→</span></a>
+        <a href="/ausstellung/" class="discipline-list-item"><span class="discipline-list-name">Ausstellungsgestaltung</span><span class="disc-arrow">→</span></a>
         <a href="/produkt/" class="discipline-list-item"><span class="discipline-list-name">Produkt & Innenarchitektur</span><span class="disc-arrow">→</span></a>
-        <a href="/grafik/" class="discipline-list-item"><span class="discipline-list-name">Grafik & Branding</span><span class="disc-arrow">→</span></a>
-        <a href="/motion/" class="discipline-list-item"><span class="discipline-list-name">3D / Motion / Werbung</span><span class="disc-arrow">→</span></a>
+        <a href="/bauprojekt/" class="discipline-list-item"><span class="discipline-list-name">Bauprojektmanagement</span><span class="disc-arrow">→</span></a>
+        <a href="/sanierung/" class="discipline-list-item"><span class="discipline-list-name">Sanierung & Denkmalschutz</span><span class="disc-arrow">→</span></a>
         <a href="/lab/" class="discipline-list-item"><span class="discipline-list-name">İKİ LAB — Forschung & Material</span><span class="disc-arrow">→</span></a>
       </div>
     </div>
@@ -219,7 +219,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col"><h4>İKİ</h4><p>Interdisziplinäres Büro für<br>Architektur, Gestaltung & Forschung</p><p>Wien, Österreich</p></div>
-        <div class="footer-col"><h4>Disziplinen</h4><p><a href="/architektur/">Architektur</a></p><p><a href="/museen/">Museen</a></p><p><a href="/produkt/">Produkt</a></p><p><a href="/grafik/">Grafik</a></p><p><a href="/motion/">Motion</a></p><p><a href="/lab/">Lab</a></p></div>
+        <div class="footer-col"><h4>Disziplinen</h4><p><a href="/architektur/">Architektur</a></p><p><a href="/ausstellung/">Ausstellungsgestaltung</a></p><p><a href="/produkt/">Produkt</a></p><p><a href="/bauprojekt/">Bauprojektmanagement</a></p><p><a href="/sanierung/">Sanierung & Denkmalschutz</a></p><p><a href="/lab/">Lab</a></p></div>
         <div class="footer-col"><h4>Kontakt</h4><p><a href="mailto:info@auswien.at">info@auswien.at</a></p><p><a href="kontakt.html">Kontaktformular</a></p></div>
         <div class="footer-col"><h4>Rechtliches</h4><p><a href="impressum.html">Impressum</a></p><p><a href="impressum.html#datenschutz">Datenschutz</a></p></div>
       </div>
@@ -294,13 +294,13 @@
     var animRunning = false;
     var isVisible = false;
 
-    var disciplines = [
-      { name:'Architektur',  short:'ARCH',  url:'/architektur/', color:'#C8BEA0', orbit:0.70, speed:0.0006, angle:0 },
-      { name:'Museen',       short:'MUS',   url:'/museen/',      color:'#D4C48A', orbit:0.85, speed:0.0004, angle:Math.PI*0.33 },
-      { name:'Produkt',      short:'PROD',  url:'/produkt/',     color:'#B48C5A', orbit:0.78, speed:0.0005, angle:Math.PI*0.66 },
-      { name:'Grafik',       short:'GRAF',  url:'/grafik/',      color:'#E0E0E0', orbit:0.92, speed:0.00035,angle:Math.PI },
-      { name:'Motion',       short:'MOT',   url:'/motion/',      color:'#8AB4DC', orbit:0.82, speed:0.00055,angle:Math.PI*1.33 },
-      { name:'Lab',          short:'LAB',   url:'/lab/',         color:'#00DCA8', orbit:0.68, speed:0.0007, angle:Math.PI*1.66 }
+       var disciplines = [
+      { name:'Architektur',          short:'ARCH',  url:'/architektur/',  color:'#C8BEA0', orbit:0.70, speed:0.0006, angle:0 },
+      { name:'Ausstellungsdesign',   short:'AUSST', url:'/ausstellung/',  color:'#D4C48A', orbit:0.85, speed:0.0004, angle:Math.PI*0.33 },
+      { name:'Produktdesign',        short:'PROD',  url:'/produkt/',      color:'#B48C5A', orbit:0.78, speed:0.0005, angle:Math.PI*0.66 },
+      { name:'Bauprojektmanagement', short:'BPM',   url:'/bauprojekt/',   color:'#E0E0E0', orbit:0.92, speed:0.00035,angle:Math.PI },
+      { name:'Sanierung & Denkmal',  short:'SAN',   url:'/sanierung/',    color:'#D4A574', orbit:0.82, speed:0.00055,angle:Math.PI*1.33 },
+      { name:'Lab',                  short:'LAB',   url:'/lab/',          color:'#00DCA8', orbit:0.68, speed:0.0007, angle:Math.PI*1.66 }
     ];
 
     var nodePos = [];

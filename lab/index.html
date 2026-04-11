@@ -1,689 +1,137 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>İKİ LAB — Forschung & Material</title>
-  <meta name="description" content="Materialforschung, 3D-Druck, Fassadenatlas, parametrisches Design. İKİ LAB Wien.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
-
-  <style>
-    /* --- LAB SUB-NAVIGATION --- */
-    .lab-subnav {
-      position: sticky; top: 60px; z-index: 100;
-      background: rgba(10,10,10,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #1e1e1e;
-      padding: 0;
-      overflow-x: auto;
-    }
-    .lab-subnav-inner {
-      max-width: 1400px; margin: 0 auto;
-      padding: 0 2.5rem;
-      display: flex; gap: 0; align-items: stretch;
-    }
-    .lab-subnav a {
-      display: flex; align-items: center;
-      padding: 0.9rem 1.25rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.08em;
-      color: #666; white-space: nowrap;
-      border-bottom: 2px solid transparent;
-      transition: all 0.25s ease;
-    }
-    .lab-subnav a:hover { color: #00e676; }
-    .lab-subnav a.active {
-      color: #00e676;
-      border-bottom-color: #00e676;
-    }
-
-    /* --- LAB RESEARCH SECTION --- */
-    .lab-research-section {
-      padding: 5rem 0;
-      border-bottom: 1px solid #1e1e1e;
-    }
-    .lab-research-section:last-of-type { border-bottom: none; }
-
-    .lab-section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 2.5rem;
-      gap: 2rem;
-    }
-    .lab-section-id {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.15em;
-      color: #00e676; margin-bottom: 0.5rem;
-    }
-    .lab-section-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.4rem; font-weight: 600;
-      color: #e0e0e0; margin-bottom: 0.5rem;
-    }
-    .lab-section-desc {
-      font-size: 0.95rem; line-height: 1.75;
-      color: #888; max-width: 650px;
-    }
-
-    /* --- FASSADENATLAS GRID --- */
-    .atlas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.25rem;
-    }
-    .atlas-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid #1e1e1e;
-      border-radius: 8px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-    .atlas-card:hover {
-      border-color: #00e676;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0,230,118,0.08);
-    }
-    .atlas-card-img {
-      aspect-ratio: 16/10;
-      overflow: hidden;
-      background: #111;
-    }
-    .atlas-card-img img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-      filter: grayscale(30%);
-    }
-    .atlas-card:hover .atlas-card-img img {
-      transform: scale(1.05);
-      filter: grayscale(0%);
-    }
-    .atlas-card-body { padding: 1.25rem; }
-    .atlas-card-body h4 {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem; font-weight: 600;
-      color: #e0e0e0; margin-bottom: 0.5rem;
-    }
-    .atlas-card-body p {
-      font-size: 0.82rem; line-height: 1.6;
-      color: #888;
-    }
-    .atlas-tags {
-      display: flex; flex-wrap: wrap;
-      gap: 0.35rem; margin-top: 0.75rem;
-    }
-    .atlas-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.6rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.08em;
-      padding: 0.25rem 0.6rem; border-radius: 100px;
-      border: 1px solid #2a2a2a;
-      color: #666;
-    }
-
-    /* --- EXPERIMENT CARDS --- */
-    .experiment-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-    .experiment-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid #1e1e1e;
-      border-radius: 8px;
-      padding: 2rem;
-      transition: all 0.3s ease;
-    }
-    .experiment-card:hover {
-      border-color: #00e676;
-      background: rgba(0,230,118,0.03);
-    }
-    .experiment-card h4 {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.9rem; font-weight: 600;
-      color: #e0e0e0; margin-bottom: 0.75rem;
-    }
-    .experiment-card p {
-      font-size: 0.9rem; line-height: 1.7;
-      color: #888; margin-bottom: 1rem;
-    }
-    .experiment-meta {
-      display: flex; gap: 1rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .experiment-meta span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.08em;
-      color: #555;
-    }
-
-    @media (max-width: 768px) {
-      .lab-subnav-inner { padding: 0 1rem; }
-      .lab-subnav a { padding: 0.75rem 0.9rem; font-size: 0.65rem; }
-      .lab-section-header { flex-direction: column; }
-      .atlas-grid { grid-template-columns: 1fr; }
-      .experiment-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab — İKİ Architektur Wien</title>
+    <meta name="description" content="Forschung, Materialentwicklung, Computational Design und Klimatechnik — İKİ Lab in Wien.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<script src="../js/discipline-animations.js"></script>
-<body data-discipline="lab">
+<body>
 
-  <!-- HEADER -->
-<header class="site-header">
-    <div class="header-inner">
-        <a href="/" class="logo">İKİ</a>
-        <nav class="discipline-switcher">
-            <a href="/architektur/">Arch</a>
-            <a href="/ausstellung/">Ausstellung</a>
-            <a href="/produkt/">Produkt</a>
-            <a href="/bauprojekt/">BPM</a>
-            <a href="/sanierung/">Sanierung</a>
-            <a href="/lab/">Lab</a>
-        </nav>
-        <nav class="main-nav">
-            <a href="/projekte.html">Projekte</a>
-            <a href="/leistungen.html">Leistungen</a>
-            <a href="/studio.html">Studio</a>
-            <a href="/kontakt.html">Kontakt</a>
-        </nav>
-        <button class="menu-toggle" aria-label="Menü">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-</header>
-
-  <!-- LAB HERO -->
-  <section class="disc-hero lab-grid-bg" style="background:#0a0a0a; min-height:60vh;">
-    <div class="disc-hero-content" style="max-width:900px;">
-      <span class="disc-hero-label" style="background:rgba(0,230,118,0.15); color:#00e676;">İKİ LAB</span>
-      <h1 style="font-family:'JetBrains Mono',monospace; font-size:clamp(1.8rem,4vw,3.2rem);">Forschung.<br>Material.<br>Experiment.</h1>
-      <p class="disc-hero-desc" style="color:rgba(255,255,255,0.5);">
-        Das İKİ LAB ist unser Raum für Forschung und Entwicklung — inspiriert von DMAA Lab und Studio RAP. Hier experimentieren wir mit 3D-gedruckten Fassaden, parametrischen Strukturen, neuen Materialien und klimatechnischen Prototypen.
-      </p>
-    </div>
-  </section>
-
-  <!-- LAB SUB-NAVIGATION (sticky) -->
-  <nav class="lab-subnav">
-    <div class="lab-subnav-inner">
-      <a href="#lab-uebersicht" class="active">Übersicht</a>
-      <a href="#lab-fassadenatlas">Fassadenatlas</a>
-      <a href="#lab-struktur">Struktur</a>
-      <a href="#lab-klima">Klima & VTC</a>
-      <a href="#lab-digital">Digital</a>
-      <a href="#lab-prototyp">Prototyp</a>
-      <a href="#lab-viewer">3D Viewer</a>
-    </div>
-  </nav>
-
-  <!-- ========================================
-       SECTION: ÜBERSICHT
-       ======================================== -->
-  <section class="lab-research-section lab-grid-bg" id="lab-uebersicht" style="background:#0a0a0a;">
-    <div class="container">
-      <div class="lab-section-header">
-        <div>
-          <div class="lab-section-id">LAB — 00</div>
-          <h2 class="lab-section-title">Forschungsbereiche</h2>
-          <p class="lab-section-desc">8 Labs — ein System. Angelehnt an DMAA's Laborstruktur: organisiert, dokumentiert, weitergegeben.</p>
+    <header class="site-header" id="header">
+        <div class="header-inner">
+            <a href="/" class="logo">İKİ</a>
+            <nav class="discipline-switcher">
+                <a href="/architektur/">Architektur</a>
+                <a href="/bauprojekt/">BPM</a>
+                <a href="/interior/">Interior</a>
+                <a href="/produkt/">Produkt</a>
+                <a href="/lab/" class="disc-active">Lab</a>
+            </nav>
+            <nav class="main-nav" id="nav">
+                <a href="/studio.html">Studio</a>
+                <a href="/kontakt.html">Kontakt</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menü"><span></span><span></span><span></span></button>
         </div>
-      </div>
+    </header>
 
-      <div class="lab-category-grid">
-        <a href="#lab-fassadenatlas" class="lab-category-card" style="text-decoration:none;">
-          <h3>Material</h3>
-          <p>Fassadenatlas, Keramik, 3D-gedruckte Elemente, zirkuläre Materialien</p>
-          <span class="lab-status-tag lab-status-active" style="margin-top:1rem;">Aktiv</span>
-        </a>
-        <a href="#lab-struktur" class="lab-category-card" style="text-decoration:none;">
-          <h3>Struktur</h3>
-          <p>Tragwerksexperimente, parametrische Geometrien, Leichtbau</p>
-          <span class="lab-status-tag lab-status-active" style="margin-top:1rem;">Aktiv</span>
-        </a>
-        <a href="#lab-klima" class="lab-category-card" style="text-decoration:none;">
-          <h3>Klima</h3>
-          <p>VTC-System, Passivhaus-Forschung, Mikroklima-Simulation</p>
-          <span class="lab-status-tag lab-status-prototype" style="margin-top:1rem;">Prototyp</span>
-        </a>
-        <a href="#lab-digital" class="lab-category-card" style="text-decoration:none;">
-          <h3>Digital</h3>
-          <p>Algorithmic Design, Grasshopper, Computational Tools</p>
-          <span class="lab-status-tag lab-status-active" style="margin-top:1rem;">Aktiv</span>
-        </a>
-        <a href="#lab-prototyp" class="lab-category-card" style="text-decoration:none;">
-          <h3>Prototyp</h3>
-          <p>Physische Modelle, 1:1 Mock-ups, Materialtests</p>
-          <span class="lab-status-tag lab-status-prototype" style="margin-top:1rem;">Prototyp</span>
-        </a>
-        <a href="#lab-viewer" class="lab-category-card" style="text-decoration:none;">
-          <h3>Visualisierung</h3>
-          <p>3D-Viewer, interaktive Modelle, Konstruktionsanimationen</p>
-          <span class="lab-status-tag lab-status-active" style="margin-top:1rem;">Aktiv</span>
-        </a>
-        <div class="lab-category-card">
-          <h3>Technologie</h3>
-          <p>3D-Druck, CNC, robotische Fertigung</p>
-          <span class="lab-status-tag lab-status-prototype" style="margin-top:1rem;">In Vorbereitung</span>
-        </div>
-        <div class="lab-category-card">
-          <h3>Nachhaltigkeit</h3>
-          <p>LCA-Analyse, EPD-Datenbanken, CO₂-Bilanzierung</p>
-          <span class="lab-status-tag lab-status-active" style="margin-top:1rem;">Aktiv</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    <main class="disc-container">
 
-  <!-- ========================================
-       SECTION: FASSADENATLAS
-       ======================================== -->
-  <section class="lab-research-section lab-grid-bg" id="lab-fassadenatlas" style="background:#0d0d0d;">
-    <div class="container">
-      <div class="lab-section-header">
-        <div>
-          <div class="lab-section-id">LAB — 01 / Material</div>
-          <h2 class="lab-section-title">Fassadenatlas</h2>
-          <p class="lab-section-desc">
-            Unsere wachsende Sammlung von Fassadentypologien, Materialproben und Konstruktionsprinzipien. Inspiriert vom Birkhäuser Fassaden Atlas und Studio RAPs keramischer Forschung — aufgebaut als offene, lebendige Referenzdatenbank.
-          </p>
-        </div>
-        <div>
-          <span class="lab-status-tag lab-status-active">Laufend</span>
-        </div>
-      </div>
+        <!-- Hero -->
+        <section class="disc-hero">
+            <span class="disc-label">Lab</span>
+            <h1>Forschung ist kein Luxus — sie ist Voraussetzung.</h1>
+            <p class="disc-hero-sub">İKİ Lab ist unser Raum für Material, Struktur, Klima und digitale Werkzeuge. Hier testen wir, bevor wir bauen. Hier scheitern Ideen — oder sie werden zu Projekten. Kein Auftrag, nur Neugier.</p>
+        </section>
 
-      <div class="atlas-grid">
-        <div class="atlas-card">
-          <div class="atlas-card-img">
-            <img src="https://images.unsplash.com/photo-1590274853856-f22d5ee3d228?w=600&q=80" alt="Sichtbeton" loading="lazy">
-          </div>
-          <div class="atlas-card-body">
-            <h4>Sichtbeton — Strukturiert</h4>
-            <p>Brettschalung, Mattenschalung, gestockt. Einsatz im Wohn- und Gewerbebau. Wärmedämmung als Herausforderung.</p>
-            <div class="atlas-tags">
-              <span class="atlas-tag">Beton</span>
-              <span class="atlas-tag">Tragwerk</span>
-              <span class="atlas-tag">Neubau</span>
+        <!-- Forschungsbereiche -->
+        <section class="disc-section">
+            <h2 class="disc-section-title">Forschungsbereiche</h2>
+
+            <div class="disc-leistung-row">
+                <span class="disc-leistung-nr">01</span>
+                <div>
+                    <h3>Material</h3>
+                    <p>Fassadenatlas, Keramikexperimente, 3D-gedruckte Fassadenelemente, zirkuläre Baustoffe. Wir sammeln, katalogisieren und testen Materialien — nicht als Muster, sondern als Argumente.</p>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div class="atlas-card">
-          <div class="atlas-card-img">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt="Ziegel" loading="lazy">
-          </div>
-          <div class="atlas-card-body">
-            <h4>Ziegel — Verband & Muster</h4>
-            <p>Wiener Verbund, Kreuzverbund, parametrische Muster. Traditionell bis experimentell, Referenz: Eladio Dieste.</p>
-            <div class="atlas-tags">
-              <span class="atlas-tag">Ziegel</span>
-              <span class="atlas-tag">Handwerk</span>
-              <span class="atlas-tag">Parametrisch</span>
+            <div class="disc-leistung-row">
+                <span class="disc-leistung-nr">02</span>
+                <div>
+                    <h3>Struktur</h3>
+                    <p>Geodätische Kuppeln, parametrische Faltstrukturen, Holzgitterschalen. Wir untersuchen, wie Form und Kraft zusammenarbeiten — vom Papiermodell bis zur statischen Simulation.</p>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div class="atlas-card">
-          <div class="atlas-card-img">
-            <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80" alt="Holzfassade" loading="lazy">
-          </div>
-          <div class="atlas-card-body">
-            <h4>Holz — Lattung & Schindel</h4>
-            <p>Vertikale/horizontale Lattung, Lärche, Zeder, Douglasie. Vergrauung als Gestaltungselement. Brandschutzklassen.</p>
-            <div class="atlas-tags">
-              <span class="atlas-tag">Holz</span>
-              <span class="atlas-tag">Nachhaltig</span>
-              <span class="atlas-tag">Wohnbau</span>
+            <div class="disc-leistung-row">
+                <span class="disc-leistung-nr">03</span>
+                <div>
+                    <h3>Klima</h3>
+                    <p>VTC-Klimavorhang (Pilotprojekt 1. Bezirk), Passivhaus-Monitoring in der Seestadt Aspern, Mikroklimasimulationen mit ENVI-met und Ladybug. Wir messen, simulieren und verbessern.</p>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div class="atlas-card">
-          <div class="atlas-card-img">
-            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&q=80" alt="Metallfassade" loading="lazy">
-          </div>
-          <div class="atlas-card-body">
-            <h4>Metall — Lochblech & Streckmetall</h4>
-            <p>Aluminium, Cortenstahl, Kupfer. Perforierte Fassaden als Sonnenschutz und gestalterisches Element.</p>
-            <div class="atlas-tags">
-              <span class="atlas-tag">Metall</span>
-              <span class="atlas-tag">Sonnenschutz</span>
-              <span class="atlas-tag">Gewerbe</span>
+            <div class="disc-leistung-row">
+                <span class="disc-leistung-nr">04</span>
+                <div>
+                    <h3>Digital</h3>
+                    <p>Grasshopper-Bibliothek mit über 30 wiederverwendbaren Definitionen, KI-gestützte Entwurfsanalyse mit Python und Hops, algorithmisches Design. Wir programmieren Werkzeuge, nicht Formen.</p>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div class="atlas-card">
-          <div class="atlas-card-img">
-            <img src="https://images.unsplash.com/photo-1518005068251-37900150dfca?w=600&q=80" alt="Glasfassade" loading="lazy">
-          </div>
-          <div class="atlas-card-body">
-            <h4>Glas — Pfosten-Riegel & Structural</h4>
-            <p>Zweischalige Fassaden, Structural Glazing, Low-E-Beschichtung. Tageslichtoptimierung vs. sommerlicher Wärmeschutz.</p>
-            <div class="atlas-tags">
-              <span class="atlas-tag">Glas</span>
-              <span class="atlas-tag">Klimatechnik</span>
-              <span class="atlas-tag">Bürobau</span>
+            <div class="disc-leistung-row">
+                <span class="disc-leistung-nr">05</span>
+                <div>
+                    <h3>Prototyp</h3>
+                    <p>Physische Modelle, 1:1-Fassaden-Mockups, Materialtests. Was am Bildschirm funktioniert, muss in der Hand bestehen — deshalb bauen wir, bevor wir entscheiden.</p>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div class="atlas-card">
-          <div class="atlas-card-img">
-            <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&q=80" alt="3D-gedruckte Keramik" loading="lazy">
-          </div>
-          <div class="atlas-card-body">
-            <h4>3D-Print — Keramische Fassade</h4>
-            <p>Referenz: Studio RAP Ceramic House. Algorithmisch generierte Muster, glasierte Oberflächen. İKİ LAB erforscht Anwendungen im Wiener Kontext.</p>
-            <div class="atlas-tags">
-              <span class="atlas-tag">3D-Druck</span>
-              <span class="atlas-tag">Keramik</span>
-              <span class="atlas-tag">Forschung</span>
+            <div class="disc-leistung-row">
+                <span class="disc-leistung-nr">06</span>
+                <div>
+                    <h3>Nachhaltigkeit</h3>
+                    <p>Lebenszyklusanalysen (LCA), EPD-Datenbanken, CO₂-Bilanzierung, Urban Mining. Wir rechnen — damit nachhaltiges Bauen keine Behauptung bleibt, sondern Beweis wird.</p>
+                </div>
             </div>
-          </div>
-        </div>
+        </section>
 
-        <div class="atlas-card">
-          <div class="atlas-card-img">
-            <img src="https://images.unsplash.com/photo-1600573472556-e636c2acda9e?w=600&q=80" alt="Grüne Fassade" loading="lazy">
-          </div>
-          <div class="atlas-card-body">
-            <h4>Begrünung — Vertikale Gärten</h4>
-            <p>Fassadengebundene und bodengebundene Begrünung. Mikroklima, Biodiversität, Retention. Referenz: Bosco Verticale.</p>
-            <div class="atlas-tags">
-              <span class="atlas-tag">Grün</span>
-              <span class="atlas-tag">Klima</span>
-              <span class="atlas-tag">Biodiversität</span>
-            </div>
-          </div>
-        </div>
+        <!-- Laufende Projekte -->
+        <section class="disc-section">
+            <h2 class="disc-section-title">Laufende Forschung</h2>
+            <div class="disc-projekte-grid" id="labProjekte"></div>
+        </section>
 
-        <div class="atlas-card">
-          <div class="atlas-card-img">
-            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="Textil" loading="lazy">
-          </div>
-          <div class="atlas-card-body">
-            <h4>Textil — Membrane & Gewebe</h4>
-            <p>ETFE-Kissen, gewebte Sonnenschutzsysteme, textile Akustikfassaden. Verbindung zu VTC-Klimavorhang-Forschung.</p>
-            <div class="atlas-tags">
-              <span class="atlas-tag">Textil</span>
-              <span class="atlas-tag">VTC</span>
-              <span class="atlas-tag">Innovation</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- CTA -->
+        <section class="disc-cta">
+            <h2>Forschen Sie mit uns.</h2>
+            <p>Universitäten, Hersteller, Bauträger — wir suchen Partner:innen für gemeinsame Entwicklung.</p>
+            <a href="/kontakt.html" class="disc-cta-btn">Zusammenarbeit anfragen &rarr;</a>
+        </section>
 
-  <!-- ========================================
-       SECTION: STRUKTUR
-       ======================================== -->
-  <section class="lab-research-section lab-grid-bg" id="lab-struktur" style="background:#0a0a0a;">
-    <div class="container">
-      <div class="lab-section-header">
-        <div>
-          <div class="lab-section-id">LAB — 02 / Struktur</div>
-          <h2 class="lab-section-title">Tragwerk & Geometrie</h2>
-          <p class="lab-section-desc">Parametrische Tragstrukturen, Gitterschalen, Faltwerke und Leichtbau-Experimente. Von der Grasshopper-Definition bis zum physischen Modell.</p>
-        </div>
-        <div><span class="lab-status-tag lab-status-active">Aktiv</span></div>
-      </div>
+    </main>
 
-      <div class="experiment-grid">
-        <div class="experiment-card">
-          <h4>Geodätische Kuppeln</h4>
-          <p>Panelplanarität, Kräfteverlauf, Knotendesign. Untersuchung von Fuller-Geometrien für temporäre Bauten und Gewächshäuser.</p>
-          <div class="experiment-meta">
-            <span class="lab-status-tag lab-status-active">Laufend</span>
-            <span>Grasshopper + Karamba3D</span>
-          </div>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col"><h4>İKİ</h4><p>Interdisziplinäres Büro für<br>Architektur, Gestaltung &amp; Forschung.</p></div>
+            <div class="footer-col"><h4>Disziplinen</h4><a href="/architektur/">Architektur</a><a href="/bauprojekt/">BPM</a><a href="/interior/">Interior Design</a><a href="/produkt/">Produktdesign</a><a href="/lab/">Lab</a></div>
+            <div class="footer-col"><h4>Kontakt</h4><a href="mailto:info@auswien.at">info@auswien.at</a><a href="tel:+436801438091">+43 680 1438091</a><a href="/kontakt.html">Kontaktseite</a></div>
+            <div class="footer-col"><h4>Rechtliches</h4><a href="/impressum.html">Impressum &amp; Datenschutz</a></div>
         </div>
-        <div class="experiment-card">
-          <h4>Parametrische Faltwerke</h4>
-          <p>Origami-basierte Tragstrukturen aus Beton und Holz. Formfindung durch physische Modelle und digitale Simulation.</p>
-          <div class="experiment-meta">
-            <span class="lab-status-tag lab-status-prototype">Prototyp</span>
-            <span>Rhino + Kangaroo</span>
-          </div>
-        </div>
-        <div class="experiment-card">
-          <h4>Holz-Gitterschalen</h4>
-          <p>Elastische Biegeformung von Holzlamellen zu doppelt gekrümmten Schalen. Referenz: Mannheim Multihalle.</p>
-          <div class="experiment-meta">
-            <span class="lab-status-tag lab-status-prototype">In Planung</span>
-            <span>Materialtests 2026</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="footer-bottom"><p>&copy; 2026 İKİ Architektur Wien</p></div>
+    </footer>
 
-  <!-- ========================================
-       SECTION: KLIMA & VTC
-       ======================================== -->
-  <section class="lab-research-section lab-grid-bg" id="lab-klima" style="background:#0d0d0d;">
-    <div class="container">
-      <div class="lab-section-header">
-        <div>
-          <div class="lab-section-id">LAB — 03 / Klima</div>
-          <h2 class="lab-section-title">Klimatechnik & VTC-System</h2>
-          <p class="lab-section-desc">Nicht-invasive Klimaregulierung für denkmalgeschützte Räume. Das VTC-System (Vertical Textile Climate) ist unser Flaggschiff-Forschungsprojekt — Patent angemeldet.</p>
-        </div>
-        <div><span class="lab-status-tag lab-status-prototype">Prototyp</span></div>
-      </div>
-
-      <div class="experiment-grid">
-        <div class="experiment-card">
-          <h4>VTC Klimavorhang — Pilotprojekt</h4>
-          <p>Textiler Vorhang mit integrierter Klimaregulierung. Temperatur- und Feuchtigkeitssteuerung ohne bauliche Eingriffe im Denkmal. Erster Pilotversuch im 1. Bezirk.</p>
-          <div class="experiment-meta">
-            <span class="lab-status-tag lab-status-prototype">Pilot aktiv</span>
-            <span>Wien, 1. Bezirk</span>
-          </div>
-        </div>
-        <div class="experiment-card">
-          <h4>Passivhaus-Monitoring</h4>
-          <p>Langzeit-Datenerfassung in Passivhaus-Projekten: Energieverbrauch, Raumluftqualität, Nutzerzufriedenheit.</p>
-          <div class="experiment-meta">
-            <span class="lab-status-tag lab-status-active">Datensammlung</span>
-            <span>Aspern Seestadt</span>
-          </div>
-        </div>
-        <div class="experiment-card">
-          <h4>Mikroklima-Simulation</h4>
-          <p>CFD-Simulationen für Freiräume und Fassadenbegrünungen. Hitzeinseln, Windkomfort, Verschattung.</p>
-          <div class="experiment-meta">
-            <span class="lab-status-tag lab-status-active">Laufend</span>
-            <span>ENVI-met + Ladybug</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================
-       SECTION: DIGITAL
-       ======================================== -->
-  <section class="lab-research-section lab-grid-bg" id="lab-digital" style="background:#0a0a0a;">
-    <div class="container">
-      <div class="lab-section-header">
-        <div>
-          <div class="lab-section-id">LAB — 04 / Digital</div>
-          <h2 class="lab-section-title">Computational Design</h2>
-          <p class="lab-section-desc">Algorithmic Design, parametrische Workflows und digitale Werkzeuge. Von Grasshopper-Definitionen bis zu eigenen Scripts.</p>
-        </div>
-        <div><span class="lab-status-tag lab-status-active">Aktiv</span></div>
-      </div>
-
-      <div class="experiment-grid">
-        <div class="experiment-card">
-          <h4>Grasshopper-Bibliothek</h4>
-          <p>Wiederverwendbare Definitionen für Fassadenoptimierung, Tragwerksanalyse, Sonnenstudien und generative Grundrisse.</p>
-          <div class="experiment-meta">
-            <span class="lab-status-tag lab-status-active">Intern</span>
-            <span>30+ Definitionen</span>
-          </div>
-        </div>
-        <div class="experiment-card">
-          <h4>AI-gestützte Entwurfsanalyse</h4>
-          <p>Exploration von Machine-Learning-Tools für Grundrissoptimierung, Fassadengenerierung und Energiebedarfsprognosen.</p>
-          <div class="experiment-meta">
-            <span class="lab-status-tag lab-status-prototype">Forschung</span>
-            <span>Python + Hops</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================
-       SECTION: PROTOTYP
-       ======================================== -->
-  <section class="lab-research-section lab-grid-bg" id="lab-prototyp" style="background:#0d0d0d;">
-    <div class="container">
-      <div class="lab-section-header">
-        <div>
-          <div class="lab-section-id">LAB — 05 / Prototyp</div>
-          <h2 class="lab-section-title">Modellbau & Mock-ups</h2>
-          <p class="lab-section-desc">Vom digitalen Modell zum physischen Objekt. Wir bauen, testen und iterieren — mit CNC, Lasercutter und 3D-Drucker.</p>
-        </div>
-        <div><span class="lab-status-tag lab-status-prototype">In Aufbau</span></div>
-      </div>
-
-      <div class="experiment-grid">
-        <div class="experiment-card">
-          <h4>Fassaden-Mockups 1:1</h4>
-          <p>Physische Testaufbauten von Fassadensystemen in Originalgröße. Materialverhalten, Montage, Witterung.</p>
-          <div class="experiment-meta">
-            <span class="lab-status-tag lab-status-prototype">Geplant 2026</span>
-          </div>
-        </div>
-        <div class="experiment-card">
-          <h4>3D-gedruckte Bauteile</h4>
-          <p>FDM und SLA für architektonische Modelle, Verbindungselemente und Fassadenprototypen. Referenz: Studio RAP.</p>
-          <div class="experiment-meta">
-            <span class="lab-status-tag lab-status-prototype">In Vorbereitung</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================
-       SECTION: 3D VIEWER
-       ======================================== -->
-  <section class="lab-research-section lab-grid-bg" id="lab-viewer" style="background:#0a0a0a;">
-    <div class="container">
-      <div class="lab-section-header">
-        <div>
-          <div class="lab-section-id">LAB — 06 / Visualisierung</div>
-          <h2 class="lab-section-title">Interaktiver 3D-Viewer</h2>
-          <p class="lab-section-desc">Konstruktionen und Prototypen in 360° — drehen, zoomen, erkunden. Besucher können Modelle direkt im Browser untersuchen.</p>
-        </div>
-        <div><span class="lab-status-tag lab-status-active">Live</span></div>
-      </div>
-
-      <div class="viewer-container">
-        <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
-        <model-viewer
-          src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
-          alt="3D-Modell Beispiel — ersetzen Sie dies mit Ihrem eigenen .glb Modell"
-          camera-controls
-          touch-action="pan-y"
-          auto-rotate
-          shadow-intensity="1"
-          environment-image="neutral"
-          style="width:100%; height:550px; background:#111; border-radius:8px;">
-        </model-viewer>
-      </div>
-      <p style="color:#555; font-size:0.75rem; margin-top:1rem; font-family:'JetBrains Mono',monospace;">
-        ↑ Platzhalter-Modell (Google Astronaut). Ersetzen Sie <code style="color:#00e676;">src="..."</code> mit dem Pfad zu Ihrer .glb-Datei, z.B. <code style="color:#00e676;">src="models/fassade-modul.glb"</code>
-      </p>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section-cta-dark" style="background:#0a0a0a; border-top:1px solid #1e1e1e;">
-    <div class="container" style="text-align:center;">
-      <span class="section-label-sm" style="color:#00e676;">Zusammenarbeit</span>
-      <h2 class="cta-title" style="font-family:'JetBrains Mono',monospace; font-size:1.8rem;">Forschen Sie mit uns.</h2>
-      <p class="cta-sub">Materialforschung, Prototyping oder digitale Werkzeuge — das LAB ist offen für Kooperationen.</p>
-      <a href="/kontakt.html" class="btn-primary" style="background:#00e676; color:#0a0a0a;">Kontakt aufnehmen →</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-<footer class="site-footer">
-    <div class="footer-inner">
-        <div class="footer-col">
-            <h4>İKİ</h4>
-            <p>Interdisziplinäres Büro für Architektur, Gestaltung & Forschung.</p>
-        </div>
-        <div class="footer-col">
-            <h4>Disziplinen</h4>
-            <a href="/architektur/">Architektur</a>
-            <a href="/ausstellung/">Ausstellungsdesign</a>
-            <a href="/produkt/">Produktdesign</a>
-            <a href="/bauprojekt/">Bauprojektmanagement</a>
-            <a href="/sanierung/">Sanierung & Denkmal</a>
-            <a href="/lab/">Lab</a>
-        </div>
-        <div class="footer-col">
-            <h4>Kontakt</h4>
-            <a href="mailto:info@auswien.at">info@auswien.at</a>
-            <a href="/kontakt.html">Kontaktseite</a>
-        </div>
-        <div class="footer-col">
-            <h4>Rechtliches</h4>
-            <a href="/impressum.html">Impressum & Datenschutz</a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 İKİ Architektur Wien</p>
-    </div>
-</footer>
-
-  <script src="../js/main.js"></script>
-
-  <!-- Lab Sub-Nav: highlight active section on scroll -->
-  <script>
-    (function() {
-      var sections = document.querySelectorAll('.lab-research-section');
-      var navLinks = document.querySelectorAll('.lab-subnav a');
-      if (!sections.length || !navLinks.length) return;
-
-      function onScroll() {
-        var scrollPos = window.scrollY + 140;
-        var activeId = '';
-        for (var i = sections.length - 1; i >= 0; i--) {
-          if (sections[i].offsetTop <= scrollPos) {
-            activeId = sections[i].id;
-            break;
-          }
-        }
-        for (var j = 0; j < navLinks.length; j++) {
-          var href = navLinks[j].getAttribute('href');
-          if (href === '#' + activeId) {
-            navLinks[j].classList.add('active');
-          } else {
-            navLinks[j].classList.remove('active');
-          }
-        }
-      }
-
-      window.addEventListener('scroll', onScroll);
-      onScroll();
+    <script src="/js/projects-data.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+    (function(){
+        var grid = document.getElementById('labProjekte');
+        if(!grid || typeof projects==='undefined') return;
+        var items = projects.filter(function(p){ return p.discipline==='lab'; });
+        if(!items.length){ grid.innerHTML='<p class="disc-no-projects">Forschungsprojekte folgen in Kürze.</p>'; return; }
+        items.forEach(function(p){
+            grid.innerHTML+='<a class="disc-projekt-card" href="/projekt.html?id='+p.id+'">'
+                +'<img src="'+p.image+'" alt="'+p.title+'" loading="lazy">'
+                +'<div class="disc-projekt-overlay"><span class="disc-projekt-meta">'+p.typology+' · '+p.year+'</span>'
+                +'<h3>'+p.title+'</h3><span class="disc-projekt-ort">'+p.location+'</span></div></a>';
+        });
     })();
-  </script>
+    </script>
 </body>
 </html>

@@ -12,7 +12,7 @@
 
     <style>
     /* ══════════════════════════════════════
-       ORBITAL SECTION — Enhanced Canvas
+       ORBITAL SECTION
        ══════════════════════════════════════ */
     .orbital-section {
         position: relative;
@@ -70,13 +70,344 @@
         0%, 100% { opacity: 0.3; transform: scaleY(0.5); }
         50% { opacity: 0.8; transform: scaleY(1); }
     }
+
+    /* ══════════════════════════════════════
+       HERO + CAROUSEL — Overlap Fix
+       Alle Regeln mit section#hero für
+       höhere Spezifität als style.css
+       ══════════════════════════════════════ */
+    section#hero {
+        position: relative !important;
+        width: 100% !important;
+        height: 100vh !important;
+        min-height: 600px !important;
+        overflow: hidden !important;
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: #0a0a0a !important;
+    }
+
+    section#hero .hero-text {
+        position: relative !important;
+        z-index: 3 !important;
+        padding: clamp(140px, 18vh, 200px) clamp(2rem, 5vw, 5rem) 0 !important;
+        max-width: 800px !important;
+        pointer-events: none;
+    }
+
+    section#hero .hero-line {
+        display: block !important;
+        font-family: 'Playfair Display', serif !important;
+        font-size: clamp(2.5rem, 6vw, 5rem) !important;
+        font-weight: 400 !important;
+        line-height: 1.1 !important;
+        color: #fff !important;
+        margin: 0 0 0.15em 0 !important;
+    }
+
+    section#hero .hero-sub {
+        display: block !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: clamp(0.8rem, 1.2vw, 1rem) !important;
+        font-weight: 300 !important;
+        color: rgba(255,255,255,0.4) !important;
+        margin-top: 1.5rem !important;
+        max-width: 500px !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Carousel = Vollbild-Hintergrund */
+    section#hero .hero-carousel {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        z-index: 1 !important;
+        overflow: hidden !important;
+    }
+
+    section#hero .hero-slides {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+    }
+
+    section#hero .hero-slide {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        opacity: 0 !important;
+        transition: opacity 1.2s ease !important;
+    }
+
+    section#hero .hero-slide.active {
+        opacity: 1 !important;
+    }
+
+    section#hero .hero-slide img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        filter: brightness(0.35) !important;
+    }
+
+    /* Carousel Label verstecken */
+    section#hero .hero-carousel-label {
+        display: none !important;
+    }
+
+    /* Counter oben rechts */
+    section#hero .hero-carousel-counter {
+        position: absolute !important;
+        top: clamp(100px, 14vh, 160px) !important;
+        right: clamp(2rem, 5vw, 5rem) !important;
+        z-index: 4 !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 0.75rem !important;
+        font-weight: 400 !important;
+        letter-spacing: 0.1em !important;
+        color: rgba(255,255,255,0.3) !important;
+    }
+
+    /* Projekt-Info unten links */
+    section#hero .hero-project-info {
+        position: absolute !important;
+        bottom: clamp(2.5rem, 6vh, 5rem) !important;
+        left: clamp(2rem, 5vw, 5rem) !important;
+        z-index: 4 !important;
+        max-width: 500px !important;
+    }
+
+    section#hero .hero-project-tag {
+        display: inline-block !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 0.65rem !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.18em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.45) !important;
+        margin-bottom: 0.5rem !important;
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    section#hero .hero-project-title {
+        font-family: 'Playfair Display', serif !important;
+        font-size: clamp(1.3rem, 2.5vw, 1.8rem) !important;
+        font-weight: 400 !important;
+        color: #fff !important;
+        line-height: 1.2 !important;
+        margin: 0 0 0.4rem 0 !important;
+    }
+
+    section#hero .hero-project-desc {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 0.85rem !important;
+        font-weight: 300 !important;
+        color: rgba(255,255,255,0.45) !important;
+        line-height: 1.5 !important;
+        margin: 0 0 1rem 0 !important;
+    }
+
+    section#hero .hero-project-link {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 0.8rem !important;
+        font-weight: 500 !important;
+        color: rgba(255,255,255,0.65) !important;
+        text-decoration: none !important;
+        letter-spacing: 0.05em !important;
+        transition: color 0.3s !important;
+    }
+
+    section#hero .hero-project-link:hover {
+        color: #fff !important;
+    }
+
+    /* ══════════════════════════════════════
+       SEKTIONEN UNTERHALB
+       ══════════════════════════════════════ */
+    .home-section {
+        padding: clamp(4rem, 8vh, 7rem) clamp(2rem, 5vw, 5rem);
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .home-label {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #999;
+        margin-bottom: 1rem;
+    }
+
+    .home-section h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+        font-weight: 400;
+        line-height: 1.15;
+        margin-bottom: 1.25rem;
+        color: #0a0a0a;
+    }
+
+    .home-text {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+        font-weight: 300;
+        line-height: 1.85;
+        color: #555;
+        max-width: 680px;
+        margin-bottom: 1rem;
+    }
+
+    .home-tags {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        color: #aaa;
+        margin-bottom: 1.5rem;
+    }
+
+    .home-link {
+        display: inline-block;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #0a0a0a;
+        text-decoration: none;
+        border-bottom: 1px solid #0a0a0a;
+        padding-bottom: 2px;
+        transition: color 0.3s, border-color 0.3s;
+    }
+
+    .home-link:hover {
+        color: #777;
+        border-color: #777;
+    }
+
+    /* Disziplinen Grid */
+    .home-disciplines {
+        border-top: 1px solid #e8e8e8;
+    }
+
+    .home-disc-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1px;
+        margin-top: 2.5rem;
+        background: #e8e8e8;
+    }
+
+    .home-disc-card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        padding: clamp(1.5rem, 3vw, 2.5rem);
+        background: #fff;
+        transition: background 0.3s;
+    }
+
+    .home-disc-card:hover {
+        background: #f7f7f5;
+    }
+
+    .home-disc-nr {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: #bbb;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.75rem;
+    }
+
+    .home-disc-card h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+        color: #0a0a0a;
+    }
+
+    .home-disc-card p {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 300;
+        line-height: 1.6;
+        color: #777;
+    }
+
+    /* Über uns */
+    .home-about {
+        border-top: 1px solid #e8e8e8;
+    }
+
+    /* CTA */
+    .home-cta {
+        background: #0a0a0a !important;
+        color: #fff !important;
+        text-align: center;
+        padding: clamp(4rem, 8vh, 7rem) 2rem !important;
+        max-width: none !important;
+    }
+
+    .home-cta .home-label { color: rgba(255,255,255,0.35); }
+    .home-cta h2 { color: #fff !important; max-width: 600px; margin: 0 auto 1rem; }
+    .home-cta .home-text { color: rgba(255,255,255,0.5) !important; max-width: 500px; margin: 0 auto 2rem; }
+
+    .home-cta-btn {
+        display: inline-block;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #0a0a0a;
+        background: #fff;
+        padding: 0.9rem 2.5rem;
+        text-decoration: none;
+        border-radius: 3px;
+        transition: background 0.3s, transform 0.2s;
+    }
+
+    .home-cta-btn:hover {
+        background: #e8e8e8;
+        transform: translateY(-2px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        section#hero .hero-text {
+            padding: 100px 1.5rem 0 !important;
+        }
+        section#hero .hero-project-info {
+            left: 1.5rem !important;
+            right: 1.5rem !important;
+            bottom: 1.5rem !important;
+        }
+        section#hero .hero-carousel-counter {
+            top: 100px !important;
+            right: 1.5rem !important;
+        }
+        .home-disc-grid {
+            grid-template-columns: 1fr;
+        }
+    }
     </style>
 </head>
 <body>
 
-    <!-- ══════════════════════════════════════ -->
-    <!--  HEADER                                -->
-    <!-- ══════════════════════════════════════ -->
+    <!-- ── Header ── -->
     <header class="site-header" id="header">
         <div class="header-inner">
             <a href="/" class="logo">İKİ</a>
@@ -95,9 +426,7 @@
         </div>
     </header>
 
-    <!-- ══════════════════════════════════════ -->
-    <!--  ORBITAL NAVIGATION — Enhanced Canvas  -->
-    <!-- ══════════════════════════════════════ -->
+    <!-- ── Orbital Navigation ── -->
     <section class="orbital-section" id="orbitalSection">
         <canvas id="orbitalCanvas"></canvas>
         <div class="orbital-grain"></div>
@@ -107,35 +436,27 @@
         </div>
     </section>
 
-    <!-- ══════════════════════════════════════ -->
-    <!--  HERO CAROUSEL                         -->
-    <!-- ══════════════════════════════════════ -->
+    <!-- ── Hero Carousel ── -->
     <section class="hero" id="hero">
-        <div class="hero-text">
-            <h1 class="hero-line hero-line-1">Wir gestalten nicht nur.</h1>
-            <h1 class="hero-line hero-line-2">Wir <em>berühren.</em></h1>
-            <p class="hero-sub">Interdisziplinäres Büro für Architektur, Gestaltung &amp; Forschung — Wien</p>
-        </div>
-
         <div class="hero-carousel" id="heroCarousel">
-            <p class="hero-carousel-label">Wähle eine Disziplin</p>
             <span class="hero-carousel-counter" id="carouselCounter">01 / 05</span>
+            <p class="hero-carousel-label"></p>
 
             <div class="hero-slides" id="heroSlides">
-                <div class="hero-slide" data-discipline="architektur">
-                    <img src="https://sspark.genspark.ai/cfimages?u1=9tqM1qlhkZAF%2FMPyQmB8selSp3iuCaaTWs5ux%2FfRsPHf%2BqIcWRlcXyUUMXtCHjKUR1rRH1lxF4EoywrxLQ6ZUYc%2BQl1EDQTgxbvQnDub7ZX9U9Dom8mEfQ%3D%3D&u2=5yabxoIHK8Wj8oQS&width=1024" alt="Wohnhaus Margareten" loading="eager">
+                <div class="hero-slide active" data-discipline="architektur">
+                    <img src="https://sspark.genspark.ai/cfimages?u1=9tqM1qlhkZAF%2FMPyQmB8selSp3iuCaaTWs5ux%2FfRsPHf%2BqIcWRlcXyUUMXtCHjKUR1rRH1lxF4EoywrxLQ6ZUYc%2BQl1EDQTgxbvQnDub7ZX9U9Dom8mEfQ%3D%3D&u2=5yabxoIHK8Wj8oQS&width=1024" alt="Wohnhaus Margareten">
                 </div>
                 <div class="hero-slide" data-discipline="interior">
-                    <img src="https://sspark.genspark.ai/cfimages?u1=iZ%2Bj3VLyyoo62rgEO3LS%2F3KZUOnx3y4hn0VaBjEgLcMnlQ%2FQpktDKi%2FZp9TYurcSWBoR2IEVphGcJPHFv5E%2F2UxyEY8KTwpXRYU7ZnEqCHkzUMbPzCG11A%3D%3D&u2=z0elPmpqiOjAcmAQ&width=1024" alt="Office Tower Donaucity" loading="lazy">
+                    <img src="https://sspark.genspark.ai/cfimages?u1=iZ%2Bj3VLyyoo62rgEO3LS%2F3KZUOnx3y4hn0VaBjEgLcMnlQ%2FQpktDKi%2FZp9TYurcSWBoR2IEVphGcJPHFv5E%2F2UxyEY8KTwpXRYU7ZnEqCHkzUMbPzCG11A%3D%3D&u2=z0elPmpqiOjAcmAQ&width=1024" alt="Office Tower Donaucity">
                 </div>
                 <div class="hero-slide" data-discipline="lab">
-                    <img src="https://sspark.genspark.ai/cfimages?u1=gguRDJi2holO7BQV%2FrkbOHA%2F1Kr0OCscVmLNf%2Bt8MEM7mF1jnauEBfGkpznmbXYaSmiSavERi1iTU71maSMuEu481zTqT7XPVifx9lIaJJaojBWpCg%3D%3D&u2=q3oVl1XY9z9BO07y&width=1024" alt="VTC Klimavorhang" loading="lazy">
+                    <img src="https://sspark.genspark.ai/cfimages?u1=gguRDJi2holO7BQV%2FrkbOHA%2F1Kr0OCscVmLNf%2Bt8MEM7mF1jnauEBfGkpznmbXYaSmiSavERi1iTU71maSMuEu481zTqT7XPVifx9lIaJJaojBWpCg%3D%3D&u2=q3oVl1XY9z9BO07y&width=1024" alt="VTC Klimavorhang">
                 </div>
                 <div class="hero-slide" data-discipline="architektur">
-                    <img src="https://sspark.genspark.ai/cfimages?u1=oH3xNgdeDy7jYBWjoVeY6JlMy63HTB07tVV9bTnmqNeC5D%2BgNsnamxEppVhGq8B7%2BKSL9gLTX%2B8a6l3Cxj4Kh2tAVDQHfMP2yQCdbXo9uDvvyhIb5%2B%2B1nQ%3D%3D&u2=LeUR%2BTOE6hVhy02l&width=1024" alt="Stadtplatz Floridsdorf" loading="lazy">
+                    <img src="https://sspark.genspark.ai/cfimages?u1=oH3xNgdeDy7jYBWjoVeY6JlMy63HTB07tVV9bTnmqNeC5D%2BgNsnamxEppVhGq8B7%2BKSL9gLTX%2B8a6l3Cxj4Kh2tAVDQHfMP2yQCdbXo9uDvvyhIb5%2B%2B1nQ%3D%3D&u2=LeUR%2BTOE6hVhy02l&width=1024" alt="Stadtplatz Floridsdorf">
                 </div>
                 <div class="hero-slide" data-discipline="architektur">
-                    <img src="https://sspark.genspark.ai/cfimages?u1=E63rhqtjHvbe6Byequ3mqhtRhYw57QK7yRzoRA52e8FkPi2d89LtRatKLDpWrEFoUM%2FPYof3k3C3LSb3qKeDTF%2BnxN%2FZ%2F02KrSJgG9kaUst5CDPksD4Yeg%3D%3D&u2=V26KSAI98wsUPY2v&width=1024" alt="Schulerweiterung Favoriten" loading="lazy">
+                    <img src="https://sspark.genspark.ai/cfimages?u1=E63rhqtjHvbe6Byequ3mqhtRhYw57QK7yRzoRA52e8FkPi2d89LtRatKLDpWrEFoUM%2FPYof3k3C3LSb3qKeDTF%2BnxN%2FZ%2F02KrSJgG9kaUst5CDPksD4Yeg%3D%3D&u2=V26KSAI98wsUPY2v&width=1024" alt="Schulerweiterung Favoriten">
                 </div>
             </div>
 
@@ -143,14 +464,18 @@
                 <span class="hero-project-tag" id="heroProjectTag">Architektur</span>
                 <h2 class="hero-project-title" id="heroProjectTitle">Wohnhaus Margareten</h2>
                 <p class="hero-project-desc" id="heroProjectDesc">Sanierung und Aufstockung eines Gründerzeithauses — Wien, 5. Bezirk</p>
-                <a href="/projekt.html?id=wohnhaus-margareten" class="hero-project-link" id="heroProjectLink">Projekt ansehen &rarr;</a>
+                <a href="/projekt.html?id=wohnhaus-margareten" class="hero-project-link" id="heroProjectLink">Projekt ansehen →</a>
             </div>
+        </div>
+
+        <div class="hero-text">
+            <h1 class="hero-line hero-line-1">Wir gestalten nicht nur.</h1>
+            <h1 class="hero-line hero-line-2">Wir <em>berühren.</em></h1>
+            <p class="hero-sub">Interdisziplinäres Büro für Architektur, Gestaltung &amp; Forschung — Wien</p>
         </div>
     </section>
 
-    <!-- ══════════════════════════════════════ -->
-    <!--  DISZIPLINEN                           -->
-    <!-- ══════════════════════════════════════ -->
+    <!-- ── Disziplinen ── -->
     <section class="home-section home-disciplines" id="disciplines">
         <span class="home-label">Disziplinen</span>
         <h2>Fünf Wege, eine Haltung</h2>
@@ -186,30 +511,24 @@
         </div>
     </section>
 
-    <!-- ══════════════════════════════════════ -->
-    <!--  ÜBER UNS                              -->
-    <!-- ══════════════════════════════════════ -->
+    <!-- ── Über uns ── -->
     <section class="home-section home-about">
         <span class="home-label">Über uns</span>
         <h2>Zwei Welten, ein Blick</h2>
         <p class="home-tags">Wien · Istanbul · Bestand · Experiment</p>
         <p class="home-text">İKİ bedeutet „zwei" auf Türkisch — und das ist Programm. Wir arbeiten an der Nahtstelle zwischen dem, was bleibt, und dem, was erst entsteht. Zwischen anatolischer Weisheit und Wiener Präzision. Zwischen der Stille eines Raumes und dem Mut, ihn neu zu denken. Unser Büro ist kein Ort für Routine. Es ist ein Ort für Resonanz.</p>
-        <a href="/studio.html" class="home-link">Mehr über das Studio &rarr;</a>
+        <a href="/studio.html" class="home-link">Mehr über das Studio →</a>
     </section>
 
-    <!-- ══════════════════════════════════════ -->
-    <!--  CTA                                   -->
-    <!-- ══════════════════════════════════════ -->
+    <!-- ── CTA ── -->
     <section class="home-section home-cta">
         <span class="home-label">Zusammenarbeit</span>
         <h2>Gute Dinge beginnen im Gespräch.</h2>
         <p class="home-text">Ein Gebäude, eine Marke, ein Experiment — erzählen Sie uns, was Sie bewegt.</p>
-        <a href="/kontakt.html" class="home-cta-btn">Kontakt aufnehmen &rarr;</a>
+        <a href="/kontakt.html" class="home-cta-btn">Kontakt aufnehmen →</a>
     </section>
 
-    <!-- ══════════════════════════════════════ -->
-    <!--  FOOTER                                -->
-    <!-- ══════════════════════════════════════ -->
+    <!-- ── Footer ── -->
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col">
@@ -242,12 +561,10 @@
 
     <script src="/js/main.js"></script>
 
-    <!-- ══════════════════════════════════════ -->
-    <!--  HERO CAROUSEL SCRIPT                  -->
-    <!-- ══════════════════════════════════════ -->
+    <!-- Carousel -->
     <script>
     (function(){
-        var slides = document.querySelectorAll('.hero-slide');
+        var slides = document.querySelectorAll('#hero .hero-slide');
         var counter = document.getElementById('carouselCounter');
         var tag = document.getElementById('heroProjectTag');
         var title = document.getElementById('heroProjectTitle');
@@ -263,8 +580,7 @@
             { tag:'Architektur', title:'Schulerweiterung Favoriten', desc:'Erweiterungsbau einer Volksschule — Wien, Favoriten', href:'/projekt.html?id=schulerweiterung-favoriten' }
         ];
 
-        var current = 0;
-        var total = slides.length;
+        var current = 0, total = slides.length;
         function pad(n){ return n < 10 ? '0'+n : n; }
         function show(idx){
             slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
@@ -277,32 +593,23 @@
     })();
     </script>
 
-    <!-- ══════════════════════════════════════ -->
-    <!--  HERO TEXT ANIMATION                   -->
-    <!-- ══════════════════════════════════════ -->
+    <!-- Hero text animation -->
     <script>
     (function(){
-        var lines = document.querySelectorAll('.hero-line');
+        var lines = document.querySelectorAll('#hero .hero-line');
         lines.forEach(function(line, i){
             line.style.opacity='0'; line.style.transform='translateY(30px)';
             line.style.transition='opacity 0.8s ease, transform 0.8s ease';
             setTimeout(function(){ line.style.opacity='1'; line.style.transform='translateY(0)'; }, 300+i*400);
         });
-        var sub = document.querySelector('.hero-sub');
+        var sub = document.querySelector('#hero .hero-sub');
         if(sub){ sub.style.opacity='0'; sub.style.transition='opacity 1s ease';
             setTimeout(function(){ sub.style.opacity='1'; }, 1200);
         }
     })();
     </script>
 
-    <!-- ══════════════════════════════════════ -->
-    <!--  ORBITAL CANVAS — Enhanced             -->
-    <!--  Features:                             -->
-    <!--  • Hover = Glow + Verbindungslinie     -->
-    <!--  • Leuchtende Partikel auf der Linie   -->
-    <!--  • Orbit-Ring leuchtet bei Hover       -->
-    <!--  • Film-Grain Overlay                  -->
-    <!-- ══════════════════════════════════════ -->
+    <!-- Orbital Canvas -->
     <script>
     (function() {
         var section = document.getElementById('orbitalSection');
@@ -315,9 +622,8 @@
         var hovered = -1;
         var animRunning = false;
         var isVisible = false;
-
-        var hs = [0, 0, 0, 0, 0];
-        var ls = [0, 0, 0, 0, 0];
+        var hs = [0,0,0,0,0];
+        var ls = [0,0,0,0,0];
 
         var discs = [
             { name:'Architektur',          short:'ARCH',     url:'/architektur/', orbit:0.82, speed:0.00045, angle:-Math.PI/2,         color:[200,185,150] },
@@ -337,7 +643,7 @@
             ctx.setTransform(1,0,0,1,0,0); ctx.scale(dpr, dpr);
         }
 
-        function rgba(c, a) { return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')'; }
+        function rgba(c, a) { return 'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')'; }
 
         function draw() {
             if (!isVisible) { animRunning = false; return; }
@@ -345,198 +651,44 @@
             ctx.clearRect(0, 0, w, h);
             frame++;
 
-            var cx = w / 2, cy = h / 2, bR = Math.min(w, h) * 0.34;
-            var hasH = hovered >= 0;
+            var cx=w/2, cy=h/2, bR=Math.min(w,h)*0.34;
+            var hasH=hovered>=0;
 
-            /* Background spiral */
-            ctx.save(); ctx.globalAlpha = 0.018;
-            for (var s = 0; s < 4; s++) {
-                ctx.beginPath();
-                var sb = (s / 4) * Math.PI * 2 + frame * 0.0004;
-                for (var si = 0; si < 120; si++) {
-                    var f = si / 120, sa = sb + f * Math.PI * 4, sr = f * bR * 1.4;
-                    var sx = cx + Math.cos(sa) * sr, sy = cy + Math.sin(sa) * sr;
-                    si === 0 ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
-                }
-                ctx.strokeStyle = 'rgba(180,170,150,1)'; ctx.lineWidth = 0.5; ctx.stroke();
-            }
+            ctx.save(); ctx.globalAlpha=0.018;
+            for(var s=0;s<4;s++){ctx.beginPath();var sb=(s/4)*Math.PI*2+frame*0.0004;for(var si=0;si<120;si++){var f=si/120,sa=sb+f*Math.PI*4,sr=f*bR*1.4;var sx=cx+Math.cos(sa)*sr,sy=cy+Math.sin(sa)*sr;si===0?ctx.moveTo(sx,sy):ctx.lineTo(sx,sy)}ctx.strokeStyle='rgba(180,170,150,1)';ctx.lineWidth=0.5;ctx.stroke()}
             ctx.restore();
 
-            /* Orbit rings + hover glow */
-            for (var ri = 0; ri < discs.length; ri++) {
-                var ringR = bR * discs[ri].orbit;
-                var ringGlow = hs[ri];
+            for(var ri=0;ri<discs.length;ri++){var ringR=bR*discs[ri].orbit;var ringGlow=hs[ri];if(ringGlow>0.01){ctx.beginPath();ctx.arc(cx,cy,ringR,0,Math.PI*2);ctx.strokeStyle=rgba(discs[ri].color,0.08*ringGlow);ctx.lineWidth=1.5+ringGlow*2;ctx.stroke();ctx.beginPath();ctx.arc(cx,cy,ringR,0,Math.PI*2);ctx.strokeStyle=rgba(discs[ri].color,0.02*ringGlow);ctx.lineWidth=6+ringGlow*8;ctx.stroke()}ctx.beginPath();ctx.arc(cx,cy,ringR,0,Math.PI*2);ctx.strokeStyle='rgba(180,170,150,'+(0.035-ringGlow*0.02)+')';ctx.lineWidth=0.5;ctx.stroke()}
 
-                if (ringGlow > 0.01) {
-                    ctx.beginPath(); ctx.arc(cx, cy, ringR, 0, Math.PI * 2);
-                    ctx.strokeStyle = rgba(discs[ri].color, 0.08 * ringGlow);
-                    ctx.lineWidth = 1.5 + ringGlow * 2; ctx.stroke();
+            var pulse=0.5+0.5*Math.sin(frame*0.012);var cgA=hasH?0.04:(0.06+0.04*pulse);var cG=ctx.createRadialGradient(cx,cy,0,cx,cy,35);cG.addColorStop(0,'rgba(200,185,150,'+cgA+')');cG.addColorStop(1,'rgba(200,185,150,0)');ctx.fillStyle=cG;ctx.beginPath();ctx.arc(cx,cy,35,0,Math.PI*2);ctx.fill();
+            ctx.beginPath();ctx.arc(cx,cy,3.5,0,Math.PI*2);ctx.fillStyle='rgba(200,185,150,'+(hasH?0.3:0.5)+')';ctx.fill();
+            ctx.font='600 12px Inter,sans-serif';ctx.textAlign='center';ctx.fillStyle='rgba(200,185,150,'+(hasH?0.15:0.3)+')';ctx.fillText('İKİ',cx,cy+24);
 
-                    ctx.beginPath(); ctx.arc(cx, cy, ringR, 0, Math.PI * 2);
-                    ctx.strokeStyle = rgba(discs[ri].color, 0.02 * ringGlow);
-                    ctx.lineWidth = 6 + ringGlow * 8; ctx.stroke();
-                }
+            np=[];
+            for(var i=0;i<discs.length;i++){var d=discs[i];d.angle+=d.speed;var oR=bR*d.orbit;var nx=cx+Math.cos(d.angle)*oR;var ny=cy+Math.sin(d.angle)*oR;var tH=(hovered===i)?1:0;hs[i]+=(tH-hs[i])*0.08;ls[i]+=(tH-ls[i])*0.06;var hi=hs[i],li=ls[i],act=hi>0.01;var nR=20+hi*12;np.push({x:nx,y:ny,r:nR+16});
 
-                ctx.beginPath(); ctx.arc(cx, cy, ringR, 0, Math.PI * 2);
-                ctx.strokeStyle = 'rgba(180,170,150,' + (0.035 - ringGlow * 0.02) + ')';
-                ctx.lineWidth = 0.5; ctx.stroke();
-            }
+            if(li>0.01){var dO=frame*1.5;ctx.save();ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(nx,ny);ctx.strokeStyle=rgba(d.color,0.15*li);ctx.lineWidth=0.8+li*0.5;ctx.setLineDash([4,8]);ctx.lineDashOffset=-dO;ctx.stroke();ctx.setLineDash([]);ctx.restore();ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(nx,ny);ctx.strokeStyle=rgba(d.color,0.08*li);ctx.lineWidth=0.4;ctx.stroke();var ldx=nx-cx,ldy=ny-cy;for(var pi=0;pi<4;pi++){var pT=((frame*0.0008+pi/4)%1);var px=cx+ldx*pT,py=cy+ldy*pT;var sizeCurve=Math.sin(pT*Math.PI);var pSize=1+sizeCurve*2.5;var pAlpha=sizeCurve*0.6*li;var pGlow=ctx.createRadialGradient(px,py,0,px,py,pSize*4);pGlow.addColorStop(0,rgba(d.color,pAlpha*0.5));pGlow.addColorStop(1,rgba(d.color,0));ctx.fillStyle=pGlow;ctx.beginPath();ctx.arc(px,py,pSize*4,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(px,py,pSize,0,Math.PI*2);ctx.fillStyle=rgba(d.color,pAlpha);ctx.fill()}}
 
-            /* Center: İKİ */
-            var pulse = 0.5 + 0.5 * Math.sin(frame * 0.012);
-            var cgA = hasH ? 0.04 : (0.06 + 0.04 * pulse);
-            var cG = ctx.createRadialGradient(cx, cy, 0, cx, cy, 35);
-            cG.addColorStop(0, 'rgba(200,185,150,' + cgA + ')');
-            cG.addColorStop(1, 'rgba(200,185,150,0)');
-            ctx.fillStyle = cG; ctx.beginPath(); ctx.arc(cx, cy, 35, 0, Math.PI * 2); ctx.fill();
+            var glowR=nR*(2.5+hi*1.5),gA=0.02+hi*0.12;var glow=ctx.createRadialGradient(nx,ny,0,nx,ny,glowR);glow.addColorStop(0,rgba(d.color,gA));glow.addColorStop(0.5,rgba(d.color,gA*0.3));glow.addColorStop(1,rgba(d.color,0));ctx.fillStyle=glow;ctx.beginPath();ctx.arc(nx,ny,glowR,0,Math.PI*2);ctx.fill();
+            ctx.beginPath();ctx.arc(nx,ny,nR,0,Math.PI*2);ctx.strokeStyle=rgba(d.color,0.08+hi*0.45);ctx.lineWidth=0.6+hi*1.4;ctx.stroke();
+            if(hi>0.05){ctx.beginPath();ctx.arc(nx,ny,nR+6+hi*4,0,Math.PI*2);ctx.strokeStyle=rgba(d.color,0.03*hi);ctx.lineWidth=0.4;ctx.stroke()}
+            ctx.beginPath();ctx.arc(nx,ny,2.5+hi*1.5,0,Math.PI*2);ctx.fillStyle=rgba(d.color,0.15+hi*0.7);ctx.fill();
+            ctx.font=(act?'600':'400')+' '+(9+hi*2)+'px Inter,sans-serif';ctx.textAlign='center';ctx.fillStyle=rgba(d.color,0.2+hi*0.7);ctx.fillText(d.short,nx,ny+nR+18);
+            if(hi>0.05){ctx.font='300 13px Inter,sans-serif';ctx.fillStyle=rgba(d.color,0.7*hi);ctx.fillText(d.name,nx,ny-nR-12)}}
 
-            ctx.beginPath(); ctx.arc(cx, cy, 3.5, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(200,185,150,' + (hasH ? 0.3 : 0.5) + ')'; ctx.fill();
-
-            ctx.font = '600 12px Inter, sans-serif'; ctx.textAlign = 'center';
-            ctx.fillStyle = 'rgba(200,185,150,' + (hasH ? 0.15 : 0.3) + ')';
-            ctx.fillText('İKİ', cx, cy + 24);
-
-            /* Nodes */
-            np = [];
-            for (var i = 0; i < discs.length; i++) {
-                var d = discs[i];
-                d.angle += d.speed;
-
-                var oR = bR * d.orbit;
-                var nx = cx + Math.cos(d.angle) * oR;
-                var ny = cy + Math.sin(d.angle) * oR;
-
-                var tH = (hovered === i) ? 1 : 0;
-                hs[i] += (tH - hs[i]) * 0.08;
-                ls[i] += (tH - ls[i]) * 0.06;
-                var hi = hs[i], li = ls[i], act = hi > 0.01;
-                var nR = 20 + hi * 12;
-                np.push({ x: nx, y: ny, r: nR + 16 });
-
-                /* Connection line + traveling particles */
-                if (li > 0.01) {
-                    var dO = frame * 1.5;
-                    ctx.save(); ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(nx, ny);
-                    ctx.strokeStyle = rgba(d.color, 0.15 * li); ctx.lineWidth = 0.8 + li * 0.5;
-                    ctx.setLineDash([4, 8]); ctx.lineDashOffset = -dO; ctx.stroke();
-                    ctx.setLineDash([]); ctx.restore();
-
-                    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(nx, ny);
-                    ctx.strokeStyle = rgba(d.color, 0.08 * li); ctx.lineWidth = 0.4; ctx.stroke();
-
-                    var ldx = nx - cx, ldy = ny - cy;
-                    for (var pi = 0; pi < 4; pi++) {
-                        var pT = ((frame * 0.0008 + pi / 4) % 1);
-                        var px = cx + ldx * pT, py = cy + ldy * pT;
-                        var sizeCurve = Math.sin(pT * Math.PI);
-                        var pSize = 1 + sizeCurve * 2.5;
-                        var pAlpha = sizeCurve * 0.6 * li;
-
-                        var pGlow = ctx.createRadialGradient(px, py, 0, px, py, pSize * 4);
-                        pGlow.addColorStop(0, rgba(d.color, pAlpha * 0.5));
-                        pGlow.addColorStop(1, rgba(d.color, 0));
-                        ctx.fillStyle = pGlow;
-                        ctx.beginPath(); ctx.arc(px, py, pSize * 4, 0, Math.PI * 2); ctx.fill();
-
-                        ctx.beginPath(); ctx.arc(px, py, pSize, 0, Math.PI * 2);
-                        ctx.fillStyle = rgba(d.color, pAlpha); ctx.fill();
-                    }
-                }
-
-                /* Node glow */
-                var glowR = nR * (2.5 + hi * 1.5), gA = 0.02 + hi * 0.12;
-                var glow = ctx.createRadialGradient(nx, ny, 0, nx, ny, glowR);
-                glow.addColorStop(0, rgba(d.color, gA));
-                glow.addColorStop(0.5, rgba(d.color, gA * 0.3));
-                glow.addColorStop(1, rgba(d.color, 0));
-                ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(nx, ny, glowR, 0, Math.PI * 2); ctx.fill();
-
-                /* Circle outline */
-                ctx.beginPath(); ctx.arc(nx, ny, nR, 0, Math.PI * 2);
-                ctx.strokeStyle = rgba(d.color, 0.08 + hi * 0.45);
-                ctx.lineWidth = 0.6 + hi * 1.4; ctx.stroke();
-
-                if (hi > 0.05) {
-                    ctx.beginPath(); ctx.arc(nx, ny, nR + 6 + hi * 4, 0, Math.PI * 2);
-                    ctx.strokeStyle = rgba(d.color, 0.03 * hi); ctx.lineWidth = 0.4; ctx.stroke();
-                }
-
-                /* Inner dot */
-                ctx.beginPath(); ctx.arc(nx, ny, 2.5 + hi * 1.5, 0, Math.PI * 2);
-                ctx.fillStyle = rgba(d.color, 0.15 + hi * 0.7); ctx.fill();
-
-                /* Short label */
-                ctx.font = (act ? '600' : '400') + ' ' + (9 + hi * 2) + 'px Inter,sans-serif';
-                ctx.textAlign = 'center';
-                ctx.fillStyle = rgba(d.color, 0.2 + hi * 0.7);
-                ctx.fillText(d.short, nx, ny + nR + 18);
-
-                /* Full name on hover */
-                if (hi > 0.05) {
-                    ctx.font = '300 13px Inter,sans-serif';
-                    ctx.fillStyle = rgba(d.color, 0.7 * hi);
-                    ctx.fillText(d.name, nx, ny - nR - 12);
-                }
-            }
-
-            /* Ambient particles */
-            for (var p = 0; p < 8; p++) {
-                var pA = frame * 0.001 + p * Math.PI * 2 / 8;
-                var pD = bR * (0.2 + 0.15 * Math.sin(frame * 0.003 + p * 1.7));
-                var ppx = cx + Math.cos(pA) * pD, ppy = cy + Math.sin(pA) * pD;
-                ctx.beginPath(); ctx.arc(ppx, ppy, 1, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(180,170,150,' + (0.03 + 0.02 * Math.sin(frame * 0.01 + p)) + ')';
-                ctx.fill();
-            }
-
+            for(var p=0;p<8;p++){var pA=frame*0.001+p*Math.PI*2/8;var pD=bR*(0.2+0.15*Math.sin(frame*0.003+p*1.7));var ppx=cx+Math.cos(pA)*pD,ppy=cy+Math.sin(pA)*pD;ctx.beginPath();ctx.arc(ppx,ppy,1,0,Math.PI*2);ctx.fillStyle='rgba(180,170,150,'+(0.03+0.02*Math.sin(frame*0.01+p))+')';ctx.fill()}
             requestAnimationFrame(draw);
         }
 
-        /* Mouse */
-        canvas.addEventListener('mousemove', function(e) {
-            var rect = canvas.getBoundingClientRect();
-            var mx = e.clientX - rect.left, my = e.clientY - rect.top;
-            hovered = -1;
-            for (var i = 0; i < np.length; i++) {
-                var dx = mx - np[i].x, dy = my - np[i].y;
-                if (Math.sqrt(dx * dx + dy * dy) < np[i].r) {
-                    hovered = i; canvas.style.cursor = 'pointer'; break;
-                }
-            }
-            if (hovered === -1) canvas.style.cursor = 'default';
-        });
-        canvas.addEventListener('mouseleave', function() { hovered = -1; canvas.style.cursor = 'default'; });
-        canvas.addEventListener('click', function() {
-            if (hovered >= 0) window.location.href = discs[hovered].url;
-        });
+        canvas.addEventListener('mousemove',function(e){var rect=canvas.getBoundingClientRect();var mx=e.clientX-rect.left,my=e.clientY-rect.top;hovered=-1;for(var i=0;i<np.length;i++){var dx=mx-np[i].x,dy=my-np[i].y;if(Math.sqrt(dx*dx+dy*dy)<np[i].r){hovered=i;canvas.style.cursor='pointer';break}}if(hovered===-1)canvas.style.cursor='default'});
+        canvas.addEventListener('mouseleave',function(){hovered=-1;canvas.style.cursor='default'});
+        canvas.addEventListener('click',function(){if(hovered>=0)window.location.href=discs[hovered].url});
+        canvas.addEventListener('touchstart',function(e){var rect=canvas.getBoundingClientRect();var t=e.touches[0];var tx=t.clientX-rect.left,ty=t.clientY-rect.top;for(var i=0;i<np.length;i++){var dx=tx-np[i].x,dy=ty-np[i].y;if(Math.sqrt(dx*dx+dy*dy)<np[i].r*1.5){window.location.href=discs[i].url;e.preventDefault();break}}});
 
-        /* Touch */
-        canvas.addEventListener('touchstart', function(e) {
-            var rect = canvas.getBoundingClientRect();
-            var t = e.touches[0];
-            var tx = t.clientX - rect.left, ty = t.clientY - rect.top;
-            for (var i = 0; i < np.length; i++) {
-                var dx = tx - np[i].x, dy = ty - np[i].y;
-                if (Math.sqrt(dx * dx + dy * dy) < np[i].r * 1.5) {
-                    window.location.href = discs[i].url; e.preventDefault(); break;
-                }
-            }
-        });
-
-        /* Visibility */
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                isVisible = entry.isIntersecting;
-                if (isVisible && !animRunning) { resize(); draw(); }
-            });
-        }, { threshold: 0.15 });
-
+        var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){isVisible=entry.isIntersecting;if(isVisible&&!animRunning){resize();draw()}})},{threshold:0.15});
         observer.observe(section);
-        window.addEventListener('resize', resize);
-        resize();
-        isVisible = true;
-        draw();
+        window.addEventListener('resize',resize);
+        resize();isVisible=true;draw();
     })();
     </script>
 

@@ -9,10 +9,218 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+    /* ── ORBIT / SONNENSYSTEM LANDING ── */
+    .orbit-landing {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: #0a0a0a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    /* Zentrales Logo */
+    .orbit-center {
+        position: absolute;
+        z-index: 10;
+        text-align: center;
+        pointer-events: none;
+    }
+    .orbit-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 400;
+        color: #fff;
+        letter-spacing: 0.08em;
+        opacity: 0;
+        animation: orbitFadeIn 1.2s ease 0.3s forwards;
+    }
+    .orbit-tagline {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(0.7rem, 1vw, 0.85rem);
+        font-weight: 300;
+        color: rgba(255,255,255,0.35);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-top: 12px;
+        opacity: 0;
+        animation: orbitFadeIn 1s ease 1s forwards;
+    }
+
+    /* Orbit-Ring */
+    .orbit-ring {
+        position: absolute;
+        width: min(70vw, 70vh);
+        height: min(70vw, 70vh);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 50%;
+        animation: orbitSpin 60s linear infinite;
+    }
+    .orbit-ring-inner {
+        position: absolute;
+        width: min(45vw, 45vh);
+        height: min(45vw, 45vh);
+        border: 1px solid rgba(255,255,255,0.04);
+        border-radius: 50%;
+        animation: orbitSpin 90s linear infinite reverse;
+    }
+
+    @keyframes orbitSpin {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+    }
+
+    /* Planeten-Container dreht sich */
+    .orbit-planets {
+        position: absolute;
+        width: min(70vw, 70vh);
+        height: min(70vw, 70vh);
+        animation: orbitSpin 40s linear infinite;
+    }
+
+    /* Einzelne Planeten */
+    .orbit-planet {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        pointer-events: auto;
+        /* Gegen-Rotation damit Text aufrecht bleibt */
+        animation: orbitCounterSpin 40s linear infinite;
+    }
+    @keyframes orbitCounterSpin {
+        from { transform: translate(-50%, -50%) rotate(0deg); }
+        to   { transform: translate(-50%, -50%) rotate(-360deg); }
+    }
+
+    /* Position der 5 Planeten auf dem Kreis (72° Abstand) */
+    .orbit-planet:nth-child(1) { top: 0%;    left: 50%; }
+    .orbit-planet:nth-child(2) { top: 20.6%; left: 97.5%; }
+    .orbit-planet:nth-child(3) { top: 79.4%; left: 79.4%; }
+    .orbit-planet:nth-child(4) { top: 79.4%; left: 20.6%; }
+    .orbit-planet:nth-child(5) { top: 20.6%; left: 2.5%; }
+
+    .orbit-planet a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        gap: 8px;
+        padding: 16px;
+        transition: transform 0.3s;
+    }
+    .orbit-planet a:hover {
+        transform: scale(1.15);
+    }
+
+    .orbit-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.5);
+        transition: background 0.3s, box-shadow 0.3s;
+    }
+    .orbit-planet a:hover .orbit-dot {
+        background: #fff;
+        box-shadow: 0 0 20px rgba(255,255,255,0.4);
+    }
+    .orbit-planet-label {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: rgba(255,255,255,0.5);
+        white-space: nowrap;
+        transition: color 0.3s;
+    }
+    .orbit-planet a:hover .orbit-planet-label {
+        color: #fff;
+    }
+
+    /* Stagger fade-in */
+    .orbit-planet:nth-child(1) { opacity:0; animation: orbitCounterSpin 40s linear infinite, orbitPlanetIn 0.6s ease 0.5s forwards; }
+    .orbit-planet:nth-child(2) { opacity:0; animation: orbitCounterSpin 40s linear infinite, orbitPlanetIn 0.6s ease 0.7s forwards; }
+    .orbit-planet:nth-child(3) { opacity:0; animation: orbitCounterSpin 40s linear infinite, orbitPlanetIn 0.6s ease 0.9s forwards; }
+    .orbit-planet:nth-child(4) { opacity:0; animation: orbitCounterSpin 40s linear infinite, orbitPlanetIn 0.6s ease 1.1s forwards; }
+    .orbit-planet:nth-child(5) { opacity:0; animation: orbitCounterSpin 40s linear infinite, orbitPlanetIn 0.6s ease 1.3s forwards; }
+
+    @keyframes orbitPlanetIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    @keyframes orbitFadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll-Hinweis */
+    .orbit-scroll-hint {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        opacity: 0;
+        animation: orbitFadeIn 1s ease 2s forwards;
+    }
+    .orbit-scroll-hint span {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: rgba(255,255,255,0.3);
+    }
+    .orbit-scroll-line {
+        width: 1px;
+        height: 40px;
+        background: rgba(255,255,255,0.2);
+        animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+        0%, 100% { opacity: 0.3; transform: scaleY(0.5); }
+        50%      { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .orbit-ring, .orbit-planets {
+            width: 85vw;
+            height: 85vw;
+        }
+        .orbit-ring-inner {
+            width: 55vw;
+            height: 55vw;
+        }
+        .orbit-planet-label {
+            font-size: 0.6rem;
+        }
+        .orbit-dot {
+            width: 10px;
+            height: 10px;
+        }
+    }
+    @media (max-width: 480px) {
+        .orbit-ring, .orbit-planets {
+            width: 95vw;
+            height: 95vw;
+        }
+        .orbit-planet-label {
+            font-size: 0.55rem;
+            letter-spacing: 0.1em;
+        }
+    }
+    </style>
 </head>
 <body>
 
-    <!-- ── Header ── -->
+    <!-- ── Header (wird beim Scrollen sichtbar) ── -->
     <header class="site-header" id="header">
         <div class="header-inner">
             <a href="/" class="logo">İKİ</a>
@@ -31,7 +239,65 @@
         </div>
     </header>
 
-    <!-- ── Hero (animierter Text + Carousel) ── -->
+    <!-- ══════════════════════════════════════ -->
+    <!--  ORBIT LANDING — Sonnensystem          -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="orbit-landing" id="orbitLanding">
+
+        <!-- Ringe (dekorativ) -->
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring-inner"></div>
+
+        <!-- Zentrum: İKİ -->
+        <div class="orbit-center">
+            <div class="orbit-logo">İKİ</div>
+            <div class="orbit-tagline">Architektur · Gestaltung · Forschung</div>
+        </div>
+
+        <!-- Planeten = Disziplinen (drehen sich) -->
+        <div class="orbit-planets" id="orbitPlanets">
+            <div class="orbit-planet">
+                <a href="/architektur/">
+                    <span class="orbit-dot"></span>
+                    <span class="orbit-planet-label">Architektur</span>
+                </a>
+            </div>
+            <div class="orbit-planet">
+                <a href="/bauprojekt/">
+                    <span class="orbit-dot"></span>
+                    <span class="orbit-planet-label">BPM</span>
+                </a>
+            </div>
+            <div class="orbit-planet">
+                <a href="/interior/">
+                    <span class="orbit-dot"></span>
+                    <span class="orbit-planet-label">Interior</span>
+                </a>
+            </div>
+            <div class="orbit-planet">
+                <a href="/produkt/">
+                    <span class="orbit-dot"></span>
+                    <span class="orbit-planet-label">Produkt</span>
+                </a>
+            </div>
+            <div class="orbit-planet">
+                <a href="/lab/">
+                    <span class="orbit-dot"></span>
+                    <span class="orbit-planet-label">Lab</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll-Hinweis -->
+        <div class="orbit-scroll-hint">
+            <span>Scrollen</span>
+            <div class="orbit-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!--  HERO CAROUSEL (bestehendes Design)    -->
+    <!-- ══════════════════════════════════════ -->
     <section class="hero" id="hero">
         <div class="hero-text">
             <h1 class="hero-line hero-line-1">Wir gestalten nicht nur.</h1>
@@ -61,7 +327,6 @@
                 </div>
             </div>
 
-            <!-- Projekt-Info unter dem Carousel -->
             <div class="hero-project-info" id="heroProjectInfo">
                 <span class="hero-project-tag" id="heroProjectTag">Architektur</span>
                 <h2 class="hero-project-title" id="heroProjectTitle">Wohnhaus Margareten</h2>
@@ -157,7 +422,7 @@
 
     <script src="/js/main.js"></script>
     <script>
-    /* ── Hero Carousel ── */
+    /* ── Hero Carousel (unverändert) ── */
     (function(){
         var slides = document.querySelectorAll('.hero-slide');
         var counter = document.getElementById('carouselCounter');
@@ -177,45 +442,37 @@
 
         var current = 0;
         var total = slides.length;
-
         function pad(n){ return n < 10 ? '0'+n : n; }
-
         function show(idx){
-            slides.forEach(function(s,i){
-                s.classList.toggle('active', i===idx);
-            });
+            slides.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
             counter.textContent = pad(idx+1) + ' / ' + pad(total);
             var d = projectData[idx];
-            if(d){
-                tag.textContent = d.tag;
-                title.textContent = d.title;
-                desc.textContent = d.desc;
-                link.href = d.href;
-            }
+            if(d){ tag.textContent=d.tag; title.textContent=d.title; desc.textContent=d.desc; link.href=d.href; }
         }
-
         show(0);
-        setInterval(function(){ current = (current+1) % total; show(current); }, 5000);
+        setInterval(function(){ current=(current+1)%total; show(current); }, 5000);
     })();
 
-    /* ── Hero text animation (fade-in on load) ── */
+    /* ── Hero text fade-in (unverändert) ── */
     (function(){
         var lines = document.querySelectorAll('.hero-line');
         lines.forEach(function(line, i){
-            line.style.opacity = '0';
-            line.style.transform = 'translateY(30px)';
-            line.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            setTimeout(function(){
-                line.style.opacity = '1';
-                line.style.transform = 'translateY(0)';
-            }, 300 + i * 400);
+            line.style.opacity='0'; line.style.transform='translateY(30px)';
+            line.style.transition='opacity 0.8s ease, transform 0.8s ease';
+            setTimeout(function(){ line.style.opacity='1'; line.style.transform='translateY(0)'; }, 300+i*400);
         });
         var sub = document.querySelector('.hero-sub');
-        if(sub){
-            sub.style.opacity = '0';
-            sub.style.transition = 'opacity 1s ease';
-            setTimeout(function(){ sub.style.opacity = '1'; }, 1200);
+        if(sub){ sub.style.opacity='0'; sub.style.transition='opacity 1s ease';
+            setTimeout(function(){ sub.style.opacity='1'; }, 1200);
         }
+    })();
+
+    /* ── Orbit: Pause on hover ── */
+    (function(){
+        var planets = document.getElementById('orbitPlanets');
+        if(!planets) return;
+        planets.addEventListener('mouseenter', function(){ planets.style.animationPlayState='paused'; });
+        planets.addEventListener('mouseleave', function(){ planets.style.animationPlayState='running'; });
     })();
     </script>
 </body>

@@ -3643,3 +3643,592 @@ a.typo-link:hover {
     .home-disciplines { padding: 80px 24px; }
     .home-disc-grid { grid-template-columns: 1fr; }
 }
+/* ==============================================
+   MOBILE-FIX-PAKET — April 2026
+   ============================================== */
+
+/* --- GLOBAL TOUCH OPTIMIERUNG --- */
+a, button, .orbital-node, .home-disc-card, .discipline-pill,
+.leistung-toggle, .service-tag-link, .leistung-tag-link {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Mindest-Tap-Target 44px */
+@media (max-width: 768px) {
+    a, button {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+    /* Ausnahmen: Inline-Text-Links */
+    p a, .footer-col a, .kontakt-info a, blockquote a {
+        min-height: unset;
+        display: inline;
+    }
+}
+
+/* ==============================================
+   HAMBURGER-MENÜ: Disziplinen + Hauptnav
+   ============================================== */
+@media (max-width: 768px) {
+    .site-header .header-inner {
+        padding: 0.8rem 1.25rem;
+    }
+    .site-header .main-nav {
+        display: none;
+    }
+    .site-header .menu-toggle {
+        display: flex;
+    }
+
+    /* Fullscreen mobile menu */
+    .site-header .main-nav.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: var(--surface, #fff);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        padding: 2rem;
+        overflow-y: auto;
+    }
+
+    /* Disziplin-Links im Mobil-Menü einblenden */
+    .site-header .main-nav.open .mobile-disc-links {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border, #eee);
+        width: 100%;
+    }
+    .site-header .main-nav.open .mobile-disc-links a {
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text-muted, #777);
+        padding: 0.75rem 0;
+        transition: color 0.2s;
+    }
+    .site-header .main-nav.open .mobile-disc-links a:hover,
+    .site-header .main-nav.open .mobile-disc-links a.disc-active {
+        color: var(--text, #0a0a0a);
+    }
+
+    .site-header .main-nav.open > a {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: var(--text, #0a0a0a);
+        padding: 0.75rem 0;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    /* Close-Button (das X) über dem Menü */
+    .site-header .menu-toggle {
+        position: relative;
+        z-index: 10000;
+    }
+}
+
+/* Mobile-Disc-Links: auf Desktop verstecken */
+.mobile-disc-links {
+    display: none;
+}
+
+/* ==============================================
+   HOMEPAGE — ORBIT LANDING: Mobile Fallback
+   ============================================== */
+@media (max-width: 768px) {
+    .orbit-landing {
+        min-height: auto !important;
+        height: auto !important;
+        padding: 7rem 1.5rem 3rem !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    /* Ringe und SVG verstecken */
+    .orbit-landing svg,
+    .orbit-ring,
+    .orbit-ring-1,
+    .orbit-ring-2,
+    .orbit-center-dot,
+    .orbit-dust,
+    .orbit-dust-particle {
+        display: none !important;
+    }
+
+    /* Logo zentriert */
+    .orbit-center {
+        position: relative !important;
+        transform: none !important;
+        top: auto !important;
+        left: auto !important;
+        margin-bottom: 2.5rem;
+        text-align: center;
+    }
+    .orbit-center .logo-orbit {
+        font-size: 2.5rem;
+    }
+    .orbit-center .orbit-tagline {
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+    }
+
+    /* Planeten → vertikale Kachel-Liste */
+    .orbital-node {
+        position: relative !important;
+        transform: none !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        opacity: 1 !important;
+        animation: none !important;
+
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.25rem;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 8px;
+        margin-bottom: 0.75rem !important;
+        text-align: left;
+    }
+    .orbital-node .node-number {
+        font-size: 0.75rem;
+        opacity: 0.4;
+        flex-shrink: 0;
+        width: 1.5rem;
+    }
+    .orbital-node .node-label {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    /* Verbindungslinien verstecken */
+    .orbital-line,
+    .orbit-connection {
+        display: none !important;
+    }
+
+    /* Scroll-Hint verstecken */
+    .orbit-scroll-hint,
+    .scroll-hint {
+        display: none !important;
+    }
+}
+
+/* ==============================================
+   HOMEPAGE — HERO CAROUSEL
+   ============================================== */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 70vh;
+    }
+    .hero-carousel {
+        height: 70vh;
+    }
+    .hero-project-info {
+        padding: 1.25rem;
+        left: 1.25rem;
+        bottom: 1.25rem;
+    }
+    .hero-project-info h2 {
+        font-size: 1.4rem;
+    }
+    .hero-counter {
+        top: 1.25rem;
+        right: 1.25rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* ==============================================
+   HOMEPAGE — DISCIPLINE CARDS
+   ============================================== */
+@media (max-width: 1024px) {
+    .home-disc-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+@media (max-width: 600px) {
+    .home-disc-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    .home-disc-card {
+        padding: 1.25rem !important;
+    }
+    .home-disc-card h3 {
+        font-size: 1rem;
+    }
+}
+
+/* ==============================================
+   HOMEPAGE — STATEMENT / ÜBER UNS / CTA
+   ============================================== */
+@media (max-width: 768px) {
+    .hero-statement {
+        min-height: 80vh;
+        padding: 2rem 1.25rem;
+    }
+    .hero-line {
+        font-size: clamp(1.6rem, 7vw, 2.5rem);
+    }
+    .section-beliefs {
+        padding: 4rem 1.25rem;
+    }
+    .belief-text {
+        font-size: clamp(1.3rem, 5vw, 2rem);
+    }
+    .section-cta-dark {
+        padding: 3.5rem 1.25rem;
+        text-align: center;
+    }
+    .cta-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* ==============================================
+   STUDIO-SEITE
+   ============================================== */
+@media (max-width: 768px) {
+    /* Hero */
+    .studio-hero {
+        padding: 7rem 1.25rem 3rem;
+        text-align: center;
+    }
+    .studio-hero h1 {
+        font-size: clamp(1.6rem, 6vw, 2.5rem);
+    }
+    .studio-hero-overtitle {
+        font-size: 0.75rem;
+    }
+
+    /* Philosophie-Abschnitt */
+    .studio-philosophy,
+    .studio-section {
+        padding: 3rem 1.25rem;
+    }
+
+    /* Drei Kräfte — von 3-spaltig auf 1-spaltig */
+    .studio-forces-grid,
+    .studio-three-grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+    .studio-force-card {
+        padding: 1.5rem;
+    }
+    .studio-force-card h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Wien / Istanbul — stacked */
+    .studio-cities-grid,
+    .studio-bridge-grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+    .studio-city-card {
+        padding: 1.5rem;
+    }
+
+    /* Team-Karte */
+    .studio-team-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .studio-team-avatar {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1rem;
+    }
+
+    /* Blockquotes */
+    .studio-section blockquote,
+    .studio-philosophy blockquote {
+        font-size: 1rem;
+        padding-left: 1rem;
+    }
+
+    /* Vision */
+    .studio-vision {
+        padding: 3rem 1.25rem;
+    }
+    .studio-vision h2 {
+        font-size: 1.4rem;
+    }
+}
+
+/* ==============================================
+   KONTAKT-SEITE
+   ============================================== */
+@media (max-width: 768px) {
+    .kontakt-hero {
+        padding: 7rem 1.25rem 2rem;
+    }
+    .kontakt-hero h1 {
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
+    }
+
+    /* Grid: Info + Formular stacked */
+    .kontakt-grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem;
+    }
+
+    .kontakt-section {
+        padding: 2rem 1.25rem 4rem;
+    }
+    .kontakt-container {
+        padding: 0;
+    }
+
+    /* Map: volle Breite, fixe Höhe */
+    .kontakt-map {
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+    .kontakt-map iframe {
+        width: 100%;
+        height: 250px;
+        border-radius: 4px;
+    }
+
+    /* Formular-Felder */
+    .kontakt-form input,
+    .kontakt-form textarea {
+        width: 100%;
+        font-size: 16px; /* verhindert iOS-Zoom */
+    }
+    .kontakt-form textarea {
+        min-height: 150px;
+    }
+    .kontakt-form button {
+        width: 100%;
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ==============================================
+   DISZIPLIN-SEITEN (Architektur, BPM, Interior, Produkt)
+   ============================================== */
+@media (max-width: 768px) {
+    /* Hero */
+    .disc-hero,
+    .page-hero {
+        padding: 7rem 1.25rem 2.5rem;
+    }
+    .disc-hero h1,
+    .page-hero h1 {
+        font-size: clamp(1.6rem, 6vw, 2.5rem);
+    }
+
+    /* Leistungen */
+    .leistungen-section {
+        padding: 2rem 1.25rem 3rem;
+    }
+    .leistung-card {
+        padding: 1.5rem;
+    }
+    .leistung-card h2 {
+        font-size: 1.2rem;
+    }
+    .leistung-tags {
+        gap: 0.4rem;
+    }
+    .leistung-tag-link {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.7rem;
+    }
+
+    /* Projekt-Grid: 1 Spalte */
+    .sno-projects-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .sno-card-large {
+        grid-column: 1 !important;
+    }
+    .sno-card-large .sno-card-img {
+        aspect-ratio: 16/10;
+    }
+    .sno-card-info h3 {
+        font-size: 1.1rem;
+    }
+    .sno-card-large .sno-card-info h3 {
+        font-size: 1.3rem;
+    }
+
+    /* Featured Projects */
+    .featured-projects {
+        grid-template-columns: 1fr !important;
+        padding: 0 1.25rem;
+    }
+    .featured-card-large {
+        grid-column: 1 !important;
+    }
+    .featured-card-large .featured-card-img {
+        aspect-ratio: 16/10;
+    }
+    .featured-header {
+        padding: 0 1.25rem 2rem;
+    }
+}
+
+/* ==============================================
+   LAB-SEITE — 3D-Viewer
+   ============================================== */
+@media (max-width: 768px) {
+    .lab-viewer-section {
+        padding: 2rem 1.25rem;
+    }
+    .lab-viewer-wrapper {
+        height: 300px;
+    }
+    .lab-viewer {
+        height: 300px;
+    }
+    .lab-model-select {
+        width: 100%;
+        font-size: 16px; /* kein iOS-Zoom */
+    }
+    .lab-admin-controls {
+        flex-direction: column;
+    }
+    .lab-upload-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ==============================================
+   VTC SECTION (Split-View)
+   ============================================== */
+@media (max-width: 768px) {
+    .vtc-grid {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+    .vtc-image {
+        height: 50vw;
+        min-height: 200px;
+    }
+    .vtc-text {
+        padding: 2rem 1.25rem;
+    }
+    .vtc-text h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* ==============================================
+   SERVICES GRID (Homepage)
+   ============================================== */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    .service-card {
+        padding: 1.5rem;
+    }
+}
+
+/* ==============================================
+   DISCIPLINES GRID (3-Spalten → 2 → 1)
+   ============================================== */
+@media (max-width: 1024px) {
+    .disciplines-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 600px) {
+    .disciplines-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==============================================
+   CONTAINER & SECTION PADDING — global mobile
+   ============================================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+    .section {
+        padding: 3rem 0;
+    }
+    .section-featured {
+        padding: 3rem 0 2rem;
+    }
+    .section-disciplines {
+        padding: 3rem 0;
+    }
+    .section-studio-preview {
+        padding: 3.5rem 1.25rem;
+    }
+    .page-intro {
+        padding: 7rem 0 2rem;
+    }
+
+    /* Footer */
+    .site-footer .footer-inner,
+    .footer-grid {
+        padding: 0 1.25rem;
+    }
+    .site-footer .footer-bottom {
+        padding: 1rem 1.25rem 0;
+    }
+}
+
+/* ==============================================
+   iOS INPUT ZOOM FIX — Global
+   ============================================== */
+@media (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* ==============================================
+   SAFE-AREA (Notch / Dynamic Island)
+   ============================================== */
+@supports (padding: env(safe-area-inset-top)) {
+    .site-header .header-inner,
+    .header-inner {
+        padding-left: max(1.25rem, env(safe-area-inset-left));
+        padding-right: max(1.25rem, env(safe-area-inset-right));
+    }
+    .site-footer .footer-bottom {
+        padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+}

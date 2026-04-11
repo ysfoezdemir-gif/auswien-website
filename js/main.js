@@ -1,7 +1,9 @@
 (function() {
   "use strict";
 
-  // ---- Header scroll effect (supports both old .header and new .site-header) ----
+  // ============================================
+  // Header scroll effect
+  // ============================================
   var header = document.getElementById("header") || document.querySelector(".site-header");
   if (header) {
     window.addEventListener("scroll", function() {
@@ -13,7 +15,9 @@
     });
   }
 
-  // ---- Mobile menu toggle (supports both old #nav and new .main-nav) ----
+  // ============================================
+  // Mobile menu toggle — Hamburger
+  // ============================================
   var menuToggle = document.getElementById("menuToggle") || document.querySelector(".site-header .menu-toggle");
   var nav = document.getElementById("nav") || document.querySelector(".site-header .main-nav");
 
@@ -21,20 +25,48 @@
     menuToggle.addEventListener("click", function() {
       menuToggle.classList.toggle("active");
       nav.classList.toggle("open");
-      document.body.style.overflow = nav.classList.contains("open") ? "hidden" : "";
+      document.body.classList.toggle("menu-open");
     });
 
+    // Menü schließen bei Link-Klick
     var navLinks = nav.querySelectorAll("a");
     for (var i = 0; i < navLinks.length; i++) {
       navLinks[i].addEventListener("click", function() {
         menuToggle.classList.remove("active");
         nav.classList.remove("open");
-        document.body.style.overflow = "";
+        document.body.classList.remove("menu-open");
       });
     }
   }
 
-  // ---- Homepage featured projects ----
+  // ============================================
+  // Aktive Disziplin automatisch markieren
+  // (Desktop-Switcher + Mobile-Disc-Links)
+  // ============================================
+  var currentPath = window.location.pathname;
+  var allDiscLinks = document.querySelectorAll(".discipline-switcher a, .mobile-disc-links a");
+  for (var d = 0; d < allDiscLinks.length; d++) {
+    var link = allDiscLinks[d];
+    var linkPath = link.getAttribute("href");
+    // Exakter Match oder startsWith für Unterseiten
+    if (linkPath && linkPath !== "/" && currentPath.indexOf(linkPath) === 0) {
+      link.classList.add("disc-active");
+    }
+  }
+
+  // Aktive Hauptnav markieren (Studio / Kontakt)
+  var mainNavLinks = document.querySelectorAll(".main-nav > a");
+  for (var m = 0; m < mainNavLinks.length; m++) {
+    var ml = mainNavLinks[m];
+    var mlPath = ml.getAttribute("href");
+    if (mlPath && currentPath === mlPath) {
+      ml.classList.add("active");
+    }
+  }
+
+  // ============================================
+  // Homepage featured projects
+  // ============================================
   var homeGrid = document.getElementById("homeProjectsGrid");
   if (homeGrid && typeof projects !== "undefined" && typeof createProjectCard === "function") {
     var previewProjects = projects.slice(0, 3);
@@ -45,7 +77,9 @@
     }
   }
 
-  // ---- Contact form ----
+  // ============================================
+  // Contact form (mailto)
+  // ============================================
   var contactForm = document.getElementById("contactForm");
   if (contactForm) {
     contactForm.addEventListener("submit", function(e) {
@@ -66,7 +100,9 @@
     });
   }
 
-  // ---- Leistungen toggle buttons (old system) ----
+  // ============================================
+  // Leistungen toggle buttons
+  // ============================================
   var toggleButtons = document.querySelectorAll(".leistung-toggle");
   for (var t = 0; t < toggleButtons.length; t++) {
     toggleButtons[t].addEventListener("click", function() {
@@ -78,7 +114,9 @@
     });
   }
 
-  // ---- Leistungen spotlight cards (mouse glow) ----
+  // ============================================
+  // Spotlight cards (mouse glow effect)
+  // ============================================
   var spotCards = document.querySelectorAll(".spot-card");
   for (var s = 0; s < spotCards.length; s++) {
     (function(card) {
@@ -90,10 +128,21 @@
     })(spotCards[s]);
   }
 
+  // ============================================
+  // Escape-Taste schließt Mobile-Menü
+  // ============================================
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape" && nav && nav.classList.contains("open")) {
+      nav.classList.remove("open");
+      if (menuToggle) menuToggle.classList.remove("active");
+      document.body.classList.remove("menu-open");
+    }
+  });
+
 })();
 
 // =============================================
-// GLOBAL: createProjectCard  (Snøhetta-Style)
+// GLOBAL: createProjectCard (Snøhetta-Style)
 // =============================================
 function createProjectCard(project, index) {
   var delay = (index || 0) * 0.08;

@@ -7,210 +7,12 @@
     <meta name="description" content="Objektplanung, Baumanagement, Beratung, Forschung — İKİ Ziviltechnikerbüro Wien.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        *,*::before,*::after{box-sizing:border-box;}
-
-        .l-wrap {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* ===== HERO ===== */
-        .l-hero {
-            padding: 200px var(--space-lg) 80px;
-            max-width: 700px;
-        }
-        .l-hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.8rem, 6vw, 4.5rem);
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 1.2rem;
-        }
-        .l-hero p {
-            font-size: 1.05rem;
-            color: #777;
-            line-height: 1.65;
-        }
-
-        /* ===== SPOTLIGHT GRID ===== */
-        .spot-section {
-            padding: 0 var(--space-lg) 100px;
-        }
-        .spot-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        @media (max-width: 750px) {
-            .spot-grid { grid-template-columns: 1fr; }
-        }
-
-        /* Card */
-        .spot-card {
-            position: relative;
-            background: #080808;
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 20px;
-            padding: 40px 36px;
-            overflow: hidden;
-            transition: border-color 0.5s ease;
-        }
-        .spot-card:hover {
-            border-color: rgba(255,255,255,0.12);
-        }
-
-        /* Spotlight glow (background) */
-        .spot-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 20px;
-            background: radial-gradient(
-                650px circle at var(--mx, 50%) var(--my, 50%),
-                var(--glow, rgba(255,255,255,0.03)),
-                transparent 40%
-            );
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .spot-card:hover::before {
-            opacity: 1;
-        }
-
-        /* Border glow */
-        .spot-card::after {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: 20px;
-            background: radial-gradient(
-                400px circle at var(--mx, 50%) var(--my, 50%),
-                var(--glow-border, rgba(200,190,160,0.15)),
-                transparent 40%
-            );
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            pointer-events: none;
-            z-index: -1;
-        }
-        .spot-card:hover::after {
-            opacity: 1;
-        }
-
-        .spot-card > * { position: relative; z-index: 1; }
-
-        .spot-nr {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.15em;
-            color: #333;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-        .spot-card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: #eee;
-            margin-bottom: 28px;
-        }
-
-        .spot-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-            gap: 16px;
-        }
-        .spot-row:last-child { border-bottom: none; }
-        .spot-row h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.88rem;
-            font-weight: 400;
-            color: #bbb;
-            flex-shrink: 0;
-        }
-        .spot-row span {
-            font-size: 0.78rem;
-            color: #555;
-            text-align: right;
-        }
-
-        @media (max-width: 500px) {
-            .spot-card { padding: 28px 24px; }
-            .spot-row { flex-direction: column; gap: 2px; }
-            .spot-row span { text-align: left; }
-        }
-
-        /* ===== ZT BAR ===== */
-        .zt-bar {
-            max-width: 1100px;
-            margin: 0 auto 60px;
-            padding: 0 var(--space-lg);
-            text-align: center;
-        }
-        .zt-bar p {
-            font-size: 0.8rem;
-            color: #444;
-            line-height: 1.6;
-        }
-        .zt-bar a {
-            color: #666;
-            text-decoration: none;
-            border-bottom: 1px solid #333;
-            transition: color 0.3s;
-        }
-        .zt-bar a:hover { color: #aaa; }
-
-        /* ===== CTA ===== */
-        .l-cta {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 60px var(--space-lg) 120px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-        .l-cta h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-            font-weight: 400;
-            color: #aaa;
-        }
-        .l-cta-btn {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            color: #fff;
-            text-decoration: none;
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.15);
-            padding: 14px 36px;
-            border-radius: 60px;
-            letter-spacing: 0.03em;
-            transition: all 0.4s ease;
-        }
-        .l-cta-btn:hover {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
     <!-- HEADER -->
-    <header class="site-header">
+    <header class="site-header" id="header">
         <div class="header-inner">
             <a href="/" class="logo">İKİ</a>
             <nav class="discipline-switcher">
@@ -221,13 +23,13 @@
                 <a href="/sanierung/">Sanierung</a>
                 <a href="/lab/">Lab</a>
             </nav>
-            <nav class="main-nav">
+            <nav class="main-nav" id="nav">
                 <a href="/projekte.html">Projekte</a>
                 <a href="/leistungen.html" class="active">Leistungen</a>
                 <a href="/studio.html">Studio</a>
                 <a href="/kontakt.html">Kontakt</a>
             </nav>
-            <button class="menu-toggle" aria-label="Menü">
+            <button class="menu-toggle" id="menuToggle" aria-label="Menü">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -308,7 +110,7 @@
         <div class="footer-inner">
             <div class="footer-col">
                 <h4>İKİ</h4>
-                <p>Interdisziplinäres Büro für Architektur, Gestaltung & Forschung.</p>
+                <p>Interdisziplinäres Büro für<br>Architektur, Gestaltung & Forschung.</p>
             </div>
             <div class="footer-col">
                 <h4>Disziplinen</h4>
@@ -322,6 +124,7 @@
             <div class="footer-col">
                 <h4>Kontakt</h4>
                 <a href="mailto:info@auswien.at">info@auswien.at</a>
+                <a href="tel:+436801438091">+43 680 1438091</a>
                 <a href="/kontakt.html">Kontaktseite</a>
             </div>
             <div class="footer-col">
@@ -335,18 +138,6 @@
     </footer>
 
     <script src="/js/main.js"></script>
-    <script>
-    (function(){
-        var cards = document.querySelectorAll('.spot-card');
-        cards.forEach(function(card){
-            card.addEventListener('mousemove', function(e){
-                var r = card.getBoundingClientRect();
-                card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-                card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-            });
-        });
-    })();
-    </script>
 
 </body>
 </html>

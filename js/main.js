@@ -1,8 +1,8 @@
 (function() {
   "use strict";
 
-  // ---- Header scroll effect ----
-  var header = document.getElementById("header");
+  // ---- Header scroll effect (supports both old .header and new .site-header) ----
+  var header = document.getElementById("header") || document.querySelector(".site-header");
   if (header) {
     window.addEventListener("scroll", function() {
       if (window.scrollY > 50) {
@@ -13,9 +13,9 @@
     });
   }
 
-  // ---- Mobile menu toggle ----
-  var menuToggle = document.getElementById("menuToggle");
-  var nav = document.getElementById("nav");
+  // ---- Mobile menu toggle (supports both old #nav and new .main-nav) ----
+  var menuToggle = document.getElementById("menuToggle") || document.querySelector(".site-header .menu-toggle");
+  var nav = document.getElementById("nav") || document.querySelector(".site-header .main-nav");
 
   if (menuToggle && nav) {
     menuToggle.addEventListener("click", function() {
@@ -66,7 +66,7 @@
     });
   }
 
-  // ---- Leistungen toggle buttons ----
+  // ---- Leistungen toggle buttons (old system) ----
   var toggleButtons = document.querySelectorAll(".leistung-toggle");
   for (var t = 0; t < toggleButtons.length; t++) {
     toggleButtons[t].addEventListener("click", function() {
@@ -78,6 +78,18 @@
     });
   }
 
+  // ---- Leistungen spotlight cards (mouse glow) ----
+  var spotCards = document.querySelectorAll(".spot-card");
+  for (var s = 0; s < spotCards.length; s++) {
+    (function(card) {
+      card.addEventListener("mousemove", function(e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        card.style.setProperty("--my", (e.clientY - r.top) + "px");
+      });
+    })(spotCards[s]);
+  }
+
 })();
 
 // =============================================
@@ -86,7 +98,7 @@
 function createProjectCard(project, index) {
   var delay = (index || 0) * 0.08;
   var card = document.createElement("a");
-  card.href = "projekt.html?id=" + project.id;
+  card.href = "/projekt.html?id=" + project.id;
   card.className = "sno-project-card";
   card.style.animationDelay = delay + "s";
 

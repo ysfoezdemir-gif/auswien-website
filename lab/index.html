@@ -39,39 +39,44 @@
             <p class="disc-hero-sub">İKİ Lab ist unser Raum für Material, Struktur, Klima und digitale Werkzeuge. Hier testen wir, bevor wir bauen. Hier scheitern Ideen — oder sie werden zu Projekten. Kein Auftrag, nur Neugier.</p>
         </section>
 
-        <!-- ===================== -->
-        <!-- 3D VIEWER SECTION     -->
-        <!-- ===================== -->
+        <!-- ======================== -->
+        <!-- 3D VIEWER SECTION        -->
+        <!-- ======================== -->
         <section class="disc-section lab-viewer-section">
             <h2 class="disc-section-title">3D-Modell</h2>
             <p class="lab-viewer-hint">Drehen, zoomen und schwenken Sie das Modell frei im Browser.</p>
 
-            <!-- OPTION A: Wenn du .glb exportierst (einfachste Lösung) -->
-            <!--
-            <model-viewer
-                src="/lab/models/dein-modell.glb"
-                alt="3D-Modell İKİ Lab"
-                auto-rotate
-                camera-controls
-                shadow-intensity="1"
-                style="width:100%; height:500px; background:#f5f5f5; border-radius:4px;">
-            </model-viewer>
-            -->
-
-            <!-- OPTION B: Three.js Viewer für .obj / .3dm / .glb -->
             <div class="lab-viewer-wrapper">
                 <div class="lab-viewer" id="labViewer"></div>
+
+                <!-- Modell-Auswahl (für alle Besucher sichtbar) -->
                 <div class="lab-viewer-controls">
+                    <div class="lab-model-select-wrap">
+                        <label class="lab-select-label" for="labModelSelect">Modell wählen</label>
+                        <select id="labModelSelect" class="lab-model-select">
+                            <option value="" disabled selected>— Modell wählen —</option>
+                            <!-- Hier deine vordefinierten Modelle eintragen: -->
+                            <option value="/lab/models/geodaetische-kuppel.glb">Geodätische Kuppel</option>
+                            <option value="/lab/models/faltstruktur.glb">Parametrische Faltstruktur</option>
+                            <option value="/lab/models/fassadenelement.obj">Fassadenelement 3D-Druck</option>
+                            <option value="/lab/models/holzgitterschale.3dm">Holzgitterschale</option>
+                        </select>
+                    </div>
+                    <span class="lab-viewer-info" id="labViewerInfo">Kein Modell geladen</span>
+                </div>
+
+                <!-- Admin-Only: Upload (nur sichtbar mit ?admin=iki2026) -->
+                <div class="lab-admin-controls" id="labAdminControls" style="display:none;">
                     <label class="lab-upload-btn">
-                        Modell laden (.obj / .3dm / .glb)
+                        Datei hochladen (.obj / .3dm / .glb)
                         <input type="file" id="labFileInput" accept=".obj,.3dm,.glb,.gltf" hidden>
                     </label>
-                    <span class="lab-viewer-info" id="labViewerInfo">Kein Modell geladen</span>
+                    <span class="lab-admin-badge">Admin</span>
                 </div>
             </div>
 
-            <!-- Standard-Modell (optional): entkommentiere und passe den Pfad an -->
-            <!-- <script>window.__labDefaultModel = '/lab/models/geodaetische-kuppel.obj';</script> -->
+            <!-- Standard-Modell: wird beim Laden automatisch angezeigt -->
+            <script>window.__labDefaultModel = '/lab/models/geodaetische-kuppel.glb';</script>
         </section>
 
         <!-- Forschungsbereiche -->
@@ -152,7 +157,7 @@
         <div class="footer-bottom"><p>&copy; 2026 İKİ Architektur Wien</p></div>
     </footer>
 
-    <!-- Three.js + Loader -->
+    <!-- Three.js + alle Loader -->
     <script type="importmap">
     {
         "imports": {
@@ -169,123 +174,126 @@
     import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
     import { Rhino3dmLoader } from 'three/addons/loaders/3DMLoader.js';
 
+    /* ── Admin-Modus ── */
+    const params = new URLSearchParams(window.location.search);
+    const isAdmin = params.get('admin') === 'iki2026';
+    if (isAdmin) {
+        const adminPanel = document.getElementById('labAdminControls');
+        if (adminPanel) adminPanel.style.display = 'flex';
+    }
+
+    /* ── Scene Setup ── */
     const container = document.getElementById('labViewer');
     const info = document.getElementById('labViewerInfo');
     const fileInput = document.getElementById('labFileInput');
-    if (!container) throw new Error('labViewer not found');
+    const modelSelect = document.getElementById('labModelSelect');
 
-    // Scene
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf5f5f5);
 
-    // Camera
-    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 2000);
     camera.position.set(5, 5, 5);
 
-    // Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
     container.appendChild(renderer.domElement);
 
-    // Controls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
 
-    // Lights
-    const ambient = new THREE.AmbientLight(0xffffff, 0.6);
-    scene.add(ambient);
-    const dir = new THREE.DirectionalLight(0xffffff, 1.0);
-    dir.position.set(5, 10, 7);
-    dir.castShadow = true;
-    scene.add(dir);
+    /* ── Lighting ── */
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    dirLight.position.set(8, 12, 10);
+    dirLight.castShadow = true;
+    scene.add(dirLight);
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+    fillLight.position.set(-5, 3, -5);
+    scene.add(fillLight);
 
-    // Grid
-    const grid = new THREE.GridHelper(20, 20, 0xcccccc, 0xe0e0e0);
-    scene.add(grid);
+    /* ── Grid ── */
+    scene.add(new THREE.GridHelper(20, 20, 0xcccccc, 0xe8e8e8));
 
-    // Placeholder text
+    /* ── Placeholder ── */
     let currentModel = null;
-    const placeholder = createPlaceholder();
+    const placeholder = new THREE.Mesh(
+        new THREE.BoxGeometry(2, 2, 2),
+        new THREE.MeshStandardMaterial({ color: 0xdddddd, wireframe: true })
+    );
+    placeholder.position.y = 1;
     scene.add(placeholder);
 
-    function createPlaceholder() {
-        const geo = new THREE.BoxGeometry(2, 2, 2);
-        const mat = new THREE.MeshStandardMaterial({ color: 0xdddddd, wireframe: true });
-        const mesh = new THREE.Mesh(geo, mat);
-        mesh.position.y = 1;
-        return mesh;
-    }
-
-    // Fit camera to model
-    function fitCamera(object) {
-        const box = new THREE.Box3().setFromObject(object);
+    /* ── Fit Camera ── */
+    function fitCamera(obj) {
+        const box = new THREE.Box3().setFromObject(obj);
         const center = box.getCenter(new THREE.Vector3());
         const size = box.getSize(new THREE.Vector3());
         const maxDim = Math.max(size.x, size.y, size.z);
-        const fov = camera.fov * (Math.PI / 180);
-        let dist = maxDim / (2 * Math.tan(fov / 2));
-        dist *= 1.5;
-        camera.position.set(center.x + dist * 0.5, center.y + dist * 0.5, center.z + dist);
+        const dist = maxDim / (2 * Math.tan((camera.fov * Math.PI / 180) / 2)) * 1.6;
+        camera.position.set(center.x + dist * 0.4, center.y + dist * 0.5, center.z + dist);
         controls.target.copy(center);
         controls.update();
     }
 
-    // Clear old model
+    /* ── Clear ── */
     function clearModel() {
         if (currentModel) { scene.remove(currentModel); currentModel = null; }
         if (placeholder.parent) scene.remove(placeholder);
     }
 
-    // Load model from URL or File
+    /* ── Load Model ── */
     function loadModel(source, filename) {
         clearModel();
         const ext = filename.split('.').pop().toLowerCase();
         info.textContent = 'Lädt: ' + filename + '…';
 
+        const defaultMat = new THREE.MeshStandardMaterial({ color: 0x888888, metalness: 0.1, roughness: 0.6 });
+
         if (ext === 'obj') {
             const loader = new OBJLoader();
-            const done = (obj) => {
-                obj.traverse(c => { if (c.isMesh) { c.material = new THREE.MeshStandardMaterial({ color: 0x999999 }); } });
+            const finish = (obj) => {
+                obj.traverse(c => { if (c.isMesh) c.material = defaultMat; });
                 scene.add(obj); currentModel = obj; fitCamera(obj);
                 info.textContent = filename;
             };
             if (source instanceof File) {
-                source.text().then(text => done(loader.parse(text)));
+                source.text().then(text => finish(loader.parse(text)));
             } else {
-                loader.load(source, done);
+                loader.load(source, finish, undefined, () => { info.textContent = 'Fehler beim Laden von ' + filename; });
             }
         }
         else if (ext === '3dm') {
             const loader = new Rhino3dmLoader();
             loader.setLibraryPath('https://cdn.jsdelivr.net/npm/rhino3dm@8.4.0/');
-            if (source instanceof File) {
-                source.arrayBuffer().then(buf => {
-                    const obj = loader.parse(buf);
-                    scene.add(obj); currentModel = obj; fitCamera(obj);
-                    info.textContent = filename;
-                });
-            } else {
-                loader.load(source, (obj) => {
-                    scene.add(obj); currentModel = obj; fitCamera(obj);
-                    info.textContent = filename;
-                });
-            }
-        }
-        else if (ext === 'glb' || ext === 'gltf') {
-            const loader = new GLTFLoader();
-            const done = (gltf) => {
-                scene.add(gltf.scene); currentModel = gltf.scene; fitCamera(gltf.scene);
+            const finish = (obj) => {
+                obj.traverse(c => { if (c.isMesh && !c.material) c.material = defaultMat; });
+                scene.add(obj); currentModel = obj; fitCamera(obj);
                 info.textContent = filename;
             };
             if (source instanceof File) {
                 source.arrayBuffer().then(buf => {
-                    loader.parse(buf, '', done);
+                    try { finish(loader.parse(buf)); }
+                    catch(e) { info.textContent = 'Fehler: ' + e.message; }
                 });
             } else {
-                loader.load(source, done);
+                loader.load(source, finish, undefined, () => { info.textContent = 'Fehler beim Laden von ' + filename; });
+            }
+        }
+        else if (ext === 'glb' || ext === 'gltf') {
+            const loader = new GLTFLoader();
+            const finish = (gltf) => {
+                scene.add(gltf.scene); currentModel = gltf.scene; fitCamera(gltf.scene);
+                info.textContent = filename;
+            };
+            if (source instanceof File) {
+                source.arrayBuffer().then(buf => loader.parse(buf, '', finish));
+            } else {
+                loader.load(source, finish, undefined, () => { info.textContent = 'Fehler beim Laden von ' + filename; });
             }
         }
         else {
@@ -293,29 +301,39 @@
         }
     }
 
-    // File upload
-    fileInput.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file) loadModel(file, file.name);
+    /* ── Dropdown: Modell wählen ── */
+    modelSelect.addEventListener('change', () => {
+        const url = modelSelect.value;
+        if (url) loadModel(url, url.split('/').pop());
     });
 
-    // Default model (optional)
-    if (window.__labDefaultModel) {
-        const url = window.__labDefaultModel;
-        const name = url.split('/').pop();
-        loadModel(url, name);
+    /* ── Admin: File Upload ── */
+    if (fileInput) {
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) loadModel(file, file.name);
+        });
     }
 
-    // Resize
+    /* ── Default Model ── */
+    if (window.__labDefaultModel) {
+        const url = window.__labDefaultModel;
+        loadModel(url, url.split('/').pop());
+        // Sync dropdown
+        for (let i = 0; i < modelSelect.options.length; i++) {
+            if (modelSelect.options[i].value === url) { modelSelect.selectedIndex = i; break; }
+        }
+    }
+
+    /* ── Resize ── */
     window.addEventListener('resize', () => {
         camera.aspect = container.clientWidth / container.clientHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(container.clientWidth, container.clientHeight);
     });
 
-    // Animate
-    function animate() { requestAnimationFrame(animate); controls.update(); renderer.render(scene, camera); }
-    animate();
+    /* ── Animate ── */
+    (function animate() { requestAnimationFrame(animate); controls.update(); renderer.render(scene, camera); })();
     </script>
 
     <script src="/js/projects-data.js"></script>

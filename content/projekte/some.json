@@ -1,0 +1,29 @@
+{
+  "id": "001",
+  "title": "SOME",
+  "discipline": "architektur",
+  "category": "Forschung",
+  "year": 2023,
+  "status": "Konzept",
+  "location": "world",
+  "image": "/images/mid8491_sublime_and_ethereal_monolithic_architecture_intricate__87ce84eb-96b7-4eb1-a7df-9de188b11431.png",
+  "description": "skulpturaler Baukörper",
+  "leistungen": [
+    "Konzept"
+  ],
+  "details": {
+    "ort": "",
+    "groesse": "",
+    "auftraggeber": "",
+    "projektleitung": "",
+    "team": "",
+    "material": ""
+  },
+  "images": [
+    {
+      "url": "/images/0_3 (1).png",
+      "caption": "as",
+      "size": "full"
+    }
+  ]
+}

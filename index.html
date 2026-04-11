@@ -11,216 +11,72 @@
     <link rel="stylesheet" href="/css/style.css">
 
     <style>
-    /* ── ORBIT / SONNENSYSTEM LANDING ── */
-    .orbit-landing {
+    /* ══════════════════════════════════════
+       ORBITAL SECTION — Enhanced Canvas
+       ══════════════════════════════════════ */
+    .orbital-section {
         position: relative;
         width: 100%;
         height: 100vh;
-        background: #0a0a0a;
+        min-height: 600px;
+        background: #060608;
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
-        overflow: hidden;
     }
-
-    /* Zentrales Logo */
-    .orbit-center {
+    .orbital-section canvas {
         position: absolute;
-        z-index: 10;
-        text-align: center;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+    }
+    .orbital-grain {
+        position: absolute;
+        inset: 0;
         pointer-events: none;
+        opacity: 0.03;
+        mix-blend-mode: screen;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-size: 200px;
     }
-    .orbit-logo {
-        font-family: 'Playfair Display', serif;
-        font-size: clamp(3rem, 8vw, 6rem);
-        font-weight: 400;
-        color: #fff;
-        letter-spacing: 0.08em;
-        opacity: 0;
-        animation: orbitFadeIn 1.2s ease 0.3s forwards;
-    }
-    .orbit-tagline {
-        font-family: 'Inter', sans-serif;
-        font-size: clamp(0.7rem, 1vw, 0.85rem);
-        font-weight: 300;
-        color: rgba(255,255,255,0.35);
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        margin-top: 12px;
-        opacity: 0;
-        animation: orbitFadeIn 1s ease 1s forwards;
-    }
-
-    /* Orbit-Ring */
-    .orbit-ring {
+    .orbital-hint {
         position: absolute;
-        width: min(70vw, 70vh);
-        height: min(70vw, 70vh);
-        border: 1px solid rgba(255,255,255,0.06);
-        border-radius: 50%;
-        animation: orbitSpin 60s linear infinite;
-    }
-    .orbit-ring-inner {
-        position: absolute;
-        width: min(45vw, 45vh);
-        height: min(45vw, 45vh);
-        border: 1px solid rgba(255,255,255,0.04);
-        border-radius: 50%;
-        animation: orbitSpin 90s linear infinite reverse;
-    }
-
-    @keyframes orbitSpin {
-        from { transform: rotate(0deg); }
-        to   { transform: rotate(360deg); }
-    }
-
-    /* Planeten-Container dreht sich */
-    .orbit-planets {
-        position: absolute;
-        width: min(70vw, 70vh);
-        height: min(70vw, 70vh);
-        animation: orbitSpin 40s linear infinite;
-    }
-
-    /* Einzelne Planeten */
-    .orbit-planet {
-        position: absolute;
-        transform: translate(-50%, -50%);
-        pointer-events: auto;
-        /* Gegen-Rotation damit Text aufrecht bleibt */
-        animation: orbitCounterSpin 40s linear infinite;
-    }
-    @keyframes orbitCounterSpin {
-        from { transform: translate(-50%, -50%) rotate(0deg); }
-        to   { transform: translate(-50%, -50%) rotate(-360deg); }
-    }
-
-    /* Position der 5 Planeten auf dem Kreis (72° Abstand) */
-    .orbit-planet:nth-child(1) { top: 0%;    left: 50%; }
-    .orbit-planet:nth-child(2) { top: 20.6%; left: 97.5%; }
-    .orbit-planet:nth-child(3) { top: 79.4%; left: 79.4%; }
-    .orbit-planet:nth-child(4) { top: 79.4%; left: 20.6%; }
-    .orbit-planet:nth-child(5) { top: 20.6%; left: 2.5%; }
-
-    .orbit-planet a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        gap: 8px;
-        padding: 16px;
-        transition: transform 0.3s;
-    }
-    .orbit-planet a:hover {
-        transform: scale(1.15);
-    }
-
-    .orbit-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.5);
-        transition: background 0.3s, box-shadow 0.3s;
-    }
-    .orbit-planet a:hover .orbit-dot {
-        background: #fff;
-        box-shadow: 0 0 20px rgba(255,255,255,0.4);
-    }
-    .orbit-planet-label {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.7rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: rgba(255,255,255,0.5);
-        white-space: nowrap;
-        transition: color 0.3s;
-    }
-    .orbit-planet a:hover .orbit-planet-label {
-        color: #fff;
-    }
-
-    /* Stagger fade-in */
-    .orbit-planet:nth-child(1) { opacity:0; animation: orbitCounterSpin 40s linear infinite, orbitPlanetIn 0.6s ease 0.5s forwards; }
-    .orbit-planet:nth-child(2) { opacity:0; animation: orbitCounterSpin 40s linear infinite, orbitPlanetIn 0.6s ease 0.7s forwards; }
-    .orbit-planet:nth-child(3) { opacity:0; animation: orbitCounterSpin 40s linear infinite, orbitPlanetIn 0.6s ease 0.9s forwards; }
-    .orbit-planet:nth-child(4) { opacity:0; animation: orbitCounterSpin 40s linear infinite, orbitPlanetIn 0.6s ease 1.1s forwards; }
-    .orbit-planet:nth-child(5) { opacity:0; animation: orbitCounterSpin 40s linear infinite, orbitPlanetIn 0.6s ease 1.3s forwards; }
-
-    @keyframes orbitPlanetIn {
-        from { opacity: 0; }
-        to   { opacity: 1; }
-    }
-    @keyframes orbitFadeIn {
-        from { opacity: 0; transform: translateY(15px); }
-        to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Scroll-Hinweis */
-    .orbit-scroll-hint {
-        position: absolute;
-        bottom: 32px;
+        bottom: 48px;
         left: 50%;
         transform: translateX(-50%);
-        z-index: 10;
+        text-align: center;
+        z-index: 2;
+        pointer-events: none;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 8px;
-        opacity: 0;
-        animation: orbitFadeIn 1s ease 2s forwards;
+        gap: 12px;
     }
-    .orbit-scroll-hint span {
+    .orbital-hint span {
         font-family: 'Inter', sans-serif;
-        font-size: 0.65rem;
+        font-weight: 300;
+        font-size: 11px;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
-        letter-spacing: 0.2em;
-        color: rgba(255,255,255,0.3);
+        color: rgba(180,170,150,0.25);
     }
-    .orbit-scroll-line {
+    .orbital-scroll-line {
         width: 1px;
         height: 40px;
-        background: rgba(255,255,255,0.2);
-        animation: scrollPulse 2s ease-in-out infinite;
+        background: rgba(180,170,150,0.15);
+        animation: orbScrollPulse 2s ease-in-out infinite;
     }
-    @keyframes scrollPulse {
+    @keyframes orbScrollPulse {
         0%, 100% { opacity: 0.3; transform: scaleY(0.5); }
-        50%      { opacity: 1; transform: scaleY(1); }
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .orbit-ring, .orbit-planets {
-            width: 85vw;
-            height: 85vw;
-        }
-        .orbit-ring-inner {
-            width: 55vw;
-            height: 55vw;
-        }
-        .orbit-planet-label {
-            font-size: 0.6rem;
-        }
-        .orbit-dot {
-            width: 10px;
-            height: 10px;
-        }
-    }
-    @media (max-width: 480px) {
-        .orbit-ring, .orbit-planets {
-            width: 95vw;
-            height: 95vw;
-        }
-        .orbit-planet-label {
-            font-size: 0.55rem;
-            letter-spacing: 0.1em;
-        }
+        50% { opacity: 0.8; transform: scaleY(1); }
     }
     </style>
 </head>
 <body>
 
-    <!-- ── Header (wird beim Scrollen sichtbar) ── -->
+    <!-- ══════════════════════════════════════ -->
+    <!--  HEADER                                -->
+    <!-- ══════════════════════════════════════ -->
     <header class="site-header" id="header">
         <div class="header-inner">
             <a href="/" class="logo">İKİ</a>
@@ -240,63 +96,19 @@
     </header>
 
     <!-- ══════════════════════════════════════ -->
-    <!--  ORBIT LANDING — Sonnensystem          -->
+    <!--  ORBITAL NAVIGATION — Enhanced Canvas  -->
     <!-- ══════════════════════════════════════ -->
-    <section class="orbit-landing" id="orbitLanding">
-
-        <!-- Ringe (dekorativ) -->
-        <div class="orbit-ring"></div>
-        <div class="orbit-ring-inner"></div>
-
-        <!-- Zentrum: İKİ -->
-        <div class="orbit-center">
-            <div class="orbit-logo">İKİ</div>
-            <div class="orbit-tagline">Architektur · Gestaltung · Forschung</div>
-        </div>
-
-        <!-- Planeten = Disziplinen (drehen sich) -->
-        <div class="orbit-planets" id="orbitPlanets">
-            <div class="orbit-planet">
-                <a href="/architektur/">
-                    <span class="orbit-dot"></span>
-                    <span class="orbit-planet-label">Architektur</span>
-                </a>
-            </div>
-            <div class="orbit-planet">
-                <a href="/bauprojekt/">
-                    <span class="orbit-dot"></span>
-                    <span class="orbit-planet-label">BPM</span>
-                </a>
-            </div>
-            <div class="orbit-planet">
-                <a href="/interior/">
-                    <span class="orbit-dot"></span>
-                    <span class="orbit-planet-label">Interior</span>
-                </a>
-            </div>
-            <div class="orbit-planet">
-                <a href="/produkt/">
-                    <span class="orbit-dot"></span>
-                    <span class="orbit-planet-label">Produkt</span>
-                </a>
-            </div>
-            <div class="orbit-planet">
-                <a href="/lab/">
-                    <span class="orbit-dot"></span>
-                    <span class="orbit-planet-label">Lab</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Scroll-Hinweis -->
-        <div class="orbit-scroll-hint">
-            <span>Scrollen</span>
-            <div class="orbit-scroll-line"></div>
+    <section class="orbital-section" id="orbitalSection">
+        <canvas id="orbitalCanvas"></canvas>
+        <div class="orbital-grain"></div>
+        <div class="orbital-hint">
+            <span>Wähle eine Disziplin</span>
+            <div class="orbital-scroll-line"></div>
         </div>
     </section>
 
     <!-- ══════════════════════════════════════ -->
-    <!--  HERO CAROUSEL (bestehendes Design)    -->
+    <!--  HERO CAROUSEL                         -->
     <!-- ══════════════════════════════════════ -->
     <section class="hero" id="hero">
         <div class="hero-text">
@@ -336,7 +148,9 @@
         </div>
     </section>
 
-    <!-- ── Disziplinen ── -->
+    <!-- ══════════════════════════════════════ -->
+    <!--  DISZIPLINEN                           -->
+    <!-- ══════════════════════════════════════ -->
     <section class="home-section home-disciplines" id="disciplines">
         <span class="home-label">Disziplinen</span>
         <h2>Fünf Wege, eine Haltung</h2>
@@ -372,7 +186,9 @@
         </div>
     </section>
 
-    <!-- ── Über uns ── -->
+    <!-- ══════════════════════════════════════ -->
+    <!--  ÜBER UNS                              -->
+    <!-- ══════════════════════════════════════ -->
     <section class="home-section home-about">
         <span class="home-label">Über uns</span>
         <h2>Zwei Welten, ein Blick</h2>
@@ -381,7 +197,9 @@
         <a href="/studio.html" class="home-link">Mehr über das Studio &rarr;</a>
     </section>
 
-    <!-- ── CTA ── -->
+    <!-- ══════════════════════════════════════ -->
+    <!--  CTA                                   -->
+    <!-- ══════════════════════════════════════ -->
     <section class="home-section home-cta">
         <span class="home-label">Zusammenarbeit</span>
         <h2>Gute Dinge beginnen im Gespräch.</h2>
@@ -389,7 +207,9 @@
         <a href="/kontakt.html" class="home-cta-btn">Kontakt aufnehmen &rarr;</a>
     </section>
 
-    <!-- ── Footer ── -->
+    <!-- ══════════════════════════════════════ -->
+    <!--  FOOTER                                -->
+    <!-- ══════════════════════════════════════ -->
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col">
@@ -421,8 +241,11 @@
     </footer>
 
     <script src="/js/main.js"></script>
+
+    <!-- ══════════════════════════════════════ -->
+    <!--  HERO CAROUSEL SCRIPT                  -->
+    <!-- ══════════════════════════════════════ -->
     <script>
-    /* ── Hero Carousel (unverändert) ── */
     (function(){
         var slides = document.querySelectorAll('.hero-slide');
         var counter = document.getElementById('carouselCounter');
@@ -452,8 +275,12 @@
         show(0);
         setInterval(function(){ current=(current+1)%total; show(current); }, 5000);
     })();
+    </script>
 
-    /* ── Hero text fade-in (unverändert) ── */
+    <!-- ══════════════════════════════════════ -->
+    <!--  HERO TEXT ANIMATION                   -->
+    <!-- ══════════════════════════════════════ -->
+    <script>
     (function(){
         var lines = document.querySelectorAll('.hero-line');
         lines.forEach(function(line, i){
@@ -466,14 +293,252 @@
             setTimeout(function(){ sub.style.opacity='1'; }, 1200);
         }
     })();
+    </script>
 
-    /* ── Orbit: Pause on hover ── */
-    (function(){
-        var planets = document.getElementById('orbitPlanets');
-        if(!planets) return;
-        planets.addEventListener('mouseenter', function(){ planets.style.animationPlayState='paused'; });
-        planets.addEventListener('mouseleave', function(){ planets.style.animationPlayState='running'; });
+    <!-- ══════════════════════════════════════ -->
+    <!--  ORBITAL CANVAS — Enhanced             -->
+    <!--  Features:                             -->
+    <!--  • Hover = Glow + Verbindungslinie     -->
+    <!--  • Leuchtende Partikel auf der Linie   -->
+    <!--  • Orbit-Ring leuchtet bei Hover       -->
+    <!--  • Film-Grain Overlay                  -->
+    <!-- ══════════════════════════════════════ -->
+    <script>
+    (function() {
+        var section = document.getElementById('orbitalSection');
+        var canvas = document.getElementById('orbitalCanvas');
+        if (!section || !canvas) return;
+
+        var ctx = canvas.getContext('2d');
+        var w, h, dpr;
+        var frame = 0;
+        var hovered = -1;
+        var animRunning = false;
+        var isVisible = false;
+
+        var hs = [0, 0, 0, 0, 0];
+        var ls = [0, 0, 0, 0, 0];
+
+        var discs = [
+            { name:'Architektur',          short:'ARCH',     url:'/architektur/', orbit:0.82, speed:0.00045, angle:-Math.PI/2,         color:[200,185,150] },
+            { name:'Bauprojektmanagement', short:'BPM',      url:'/bauprojekt/',  orbit:0.68, speed:0.00060, angle:-Math.PI/2 + 1.257, color:[180,180,190] },
+            { name:'Interior Design',      short:'INTERIOR', url:'/interior/',    orbit:0.90, speed:0.00035, angle:-Math.PI/2 + 2.513, color:[190,165,130] },
+            { name:'Produktdesign',        short:'PROD',     url:'/produkt/',     orbit:0.75, speed:0.00050, angle:-Math.PI/2 + 3.770, color:[170,155,140] },
+            { name:'Lab',                  short:'LAB',      url:'/lab/',         orbit:0.60, speed:0.00070, angle:-Math.PI/2 + 5.027, color:[0,200,155] }
+        ];
+
+        var np = [];
+
+        function resize() {
+            dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var rect = section.getBoundingClientRect();
+            w = rect.width; h = rect.height;
+            canvas.width = w * dpr; canvas.height = h * dpr;
+            ctx.setTransform(1,0,0,1,0,0); ctx.scale(dpr, dpr);
+        }
+
+        function rgba(c, a) { return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')'; }
+
+        function draw() {
+            if (!isVisible) { animRunning = false; return; }
+            animRunning = true;
+            ctx.clearRect(0, 0, w, h);
+            frame++;
+
+            var cx = w / 2, cy = h / 2, bR = Math.min(w, h) * 0.34;
+            var hasH = hovered >= 0;
+
+            /* Background spiral */
+            ctx.save(); ctx.globalAlpha = 0.018;
+            for (var s = 0; s < 4; s++) {
+                ctx.beginPath();
+                var sb = (s / 4) * Math.PI * 2 + frame * 0.0004;
+                for (var si = 0; si < 120; si++) {
+                    var f = si / 120, sa = sb + f * Math.PI * 4, sr = f * bR * 1.4;
+                    var sx = cx + Math.cos(sa) * sr, sy = cy + Math.sin(sa) * sr;
+                    si === 0 ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
+                }
+                ctx.strokeStyle = 'rgba(180,170,150,1)'; ctx.lineWidth = 0.5; ctx.stroke();
+            }
+            ctx.restore();
+
+            /* Orbit rings + hover glow */
+            for (var ri = 0; ri < discs.length; ri++) {
+                var ringR = bR * discs[ri].orbit;
+                var ringGlow = hs[ri];
+
+                if (ringGlow > 0.01) {
+                    ctx.beginPath(); ctx.arc(cx, cy, ringR, 0, Math.PI * 2);
+                    ctx.strokeStyle = rgba(discs[ri].color, 0.08 * ringGlow);
+                    ctx.lineWidth = 1.5 + ringGlow * 2; ctx.stroke();
+
+                    ctx.beginPath(); ctx.arc(cx, cy, ringR, 0, Math.PI * 2);
+                    ctx.strokeStyle = rgba(discs[ri].color, 0.02 * ringGlow);
+                    ctx.lineWidth = 6 + ringGlow * 8; ctx.stroke();
+                }
+
+                ctx.beginPath(); ctx.arc(cx, cy, ringR, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(180,170,150,' + (0.035 - ringGlow * 0.02) + ')';
+                ctx.lineWidth = 0.5; ctx.stroke();
+            }
+
+            /* Center: İKİ */
+            var pulse = 0.5 + 0.5 * Math.sin(frame * 0.012);
+            var cgA = hasH ? 0.04 : (0.06 + 0.04 * pulse);
+            var cG = ctx.createRadialGradient(cx, cy, 0, cx, cy, 35);
+            cG.addColorStop(0, 'rgba(200,185,150,' + cgA + ')');
+            cG.addColorStop(1, 'rgba(200,185,150,0)');
+            ctx.fillStyle = cG; ctx.beginPath(); ctx.arc(cx, cy, 35, 0, Math.PI * 2); ctx.fill();
+
+            ctx.beginPath(); ctx.arc(cx, cy, 3.5, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(200,185,150,' + (hasH ? 0.3 : 0.5) + ')'; ctx.fill();
+
+            ctx.font = '600 12px Inter, sans-serif'; ctx.textAlign = 'center';
+            ctx.fillStyle = 'rgba(200,185,150,' + (hasH ? 0.15 : 0.3) + ')';
+            ctx.fillText('İKİ', cx, cy + 24);
+
+            /* Nodes */
+            np = [];
+            for (var i = 0; i < discs.length; i++) {
+                var d = discs[i];
+                d.angle += d.speed;
+
+                var oR = bR * d.orbit;
+                var nx = cx + Math.cos(d.angle) * oR;
+                var ny = cy + Math.sin(d.angle) * oR;
+
+                var tH = (hovered === i) ? 1 : 0;
+                hs[i] += (tH - hs[i]) * 0.08;
+                ls[i] += (tH - ls[i]) * 0.06;
+                var hi = hs[i], li = ls[i], act = hi > 0.01;
+                var nR = 20 + hi * 12;
+                np.push({ x: nx, y: ny, r: nR + 16 });
+
+                /* Connection line + traveling particles */
+                if (li > 0.01) {
+                    var dO = frame * 1.5;
+                    ctx.save(); ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(nx, ny);
+                    ctx.strokeStyle = rgba(d.color, 0.15 * li); ctx.lineWidth = 0.8 + li * 0.5;
+                    ctx.setLineDash([4, 8]); ctx.lineDashOffset = -dO; ctx.stroke();
+                    ctx.setLineDash([]); ctx.restore();
+
+                    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(nx, ny);
+                    ctx.strokeStyle = rgba(d.color, 0.08 * li); ctx.lineWidth = 0.4; ctx.stroke();
+
+                    var ldx = nx - cx, ldy = ny - cy;
+                    for (var pi = 0; pi < 4; pi++) {
+                        var pT = ((frame * 0.0008 + pi / 4) % 1);
+                        var px = cx + ldx * pT, py = cy + ldy * pT;
+                        var sizeCurve = Math.sin(pT * Math.PI);
+                        var pSize = 1 + sizeCurve * 2.5;
+                        var pAlpha = sizeCurve * 0.6 * li;
+
+                        var pGlow = ctx.createRadialGradient(px, py, 0, px, py, pSize * 4);
+                        pGlow.addColorStop(0, rgba(d.color, pAlpha * 0.5));
+                        pGlow.addColorStop(1, rgba(d.color, 0));
+                        ctx.fillStyle = pGlow;
+                        ctx.beginPath(); ctx.arc(px, py, pSize * 4, 0, Math.PI * 2); ctx.fill();
+
+                        ctx.beginPath(); ctx.arc(px, py, pSize, 0, Math.PI * 2);
+                        ctx.fillStyle = rgba(d.color, pAlpha); ctx.fill();
+                    }
+                }
+
+                /* Node glow */
+                var glowR = nR * (2.5 + hi * 1.5), gA = 0.02 + hi * 0.12;
+                var glow = ctx.createRadialGradient(nx, ny, 0, nx, ny, glowR);
+                glow.addColorStop(0, rgba(d.color, gA));
+                glow.addColorStop(0.5, rgba(d.color, gA * 0.3));
+                glow.addColorStop(1, rgba(d.color, 0));
+                ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(nx, ny, glowR, 0, Math.PI * 2); ctx.fill();
+
+                /* Circle outline */
+                ctx.beginPath(); ctx.arc(nx, ny, nR, 0, Math.PI * 2);
+                ctx.strokeStyle = rgba(d.color, 0.08 + hi * 0.45);
+                ctx.lineWidth = 0.6 + hi * 1.4; ctx.stroke();
+
+                if (hi > 0.05) {
+                    ctx.beginPath(); ctx.arc(nx, ny, nR + 6 + hi * 4, 0, Math.PI * 2);
+                    ctx.strokeStyle = rgba(d.color, 0.03 * hi); ctx.lineWidth = 0.4; ctx.stroke();
+                }
+
+                /* Inner dot */
+                ctx.beginPath(); ctx.arc(nx, ny, 2.5 + hi * 1.5, 0, Math.PI * 2);
+                ctx.fillStyle = rgba(d.color, 0.15 + hi * 0.7); ctx.fill();
+
+                /* Short label */
+                ctx.font = (act ? '600' : '400') + ' ' + (9 + hi * 2) + 'px Inter,sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = rgba(d.color, 0.2 + hi * 0.7);
+                ctx.fillText(d.short, nx, ny + nR + 18);
+
+                /* Full name on hover */
+                if (hi > 0.05) {
+                    ctx.font = '300 13px Inter,sans-serif';
+                    ctx.fillStyle = rgba(d.color, 0.7 * hi);
+                    ctx.fillText(d.name, nx, ny - nR - 12);
+                }
+            }
+
+            /* Ambient particles */
+            for (var p = 0; p < 8; p++) {
+                var pA = frame * 0.001 + p * Math.PI * 2 / 8;
+                var pD = bR * (0.2 + 0.15 * Math.sin(frame * 0.003 + p * 1.7));
+                var ppx = cx + Math.cos(pA) * pD, ppy = cy + Math.sin(pA) * pD;
+                ctx.beginPath(); ctx.arc(ppx, ppy, 1, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(180,170,150,' + (0.03 + 0.02 * Math.sin(frame * 0.01 + p)) + ')';
+                ctx.fill();
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        /* Mouse */
+        canvas.addEventListener('mousemove', function(e) {
+            var rect = canvas.getBoundingClientRect();
+            var mx = e.clientX - rect.left, my = e.clientY - rect.top;
+            hovered = -1;
+            for (var i = 0; i < np.length; i++) {
+                var dx = mx - np[i].x, dy = my - np[i].y;
+                if (Math.sqrt(dx * dx + dy * dy) < np[i].r) {
+                    hovered = i; canvas.style.cursor = 'pointer'; break;
+                }
+            }
+            if (hovered === -1) canvas.style.cursor = 'default';
+        });
+        canvas.addEventListener('mouseleave', function() { hovered = -1; canvas.style.cursor = 'default'; });
+        canvas.addEventListener('click', function() {
+            if (hovered >= 0) window.location.href = discs[hovered].url;
+        });
+
+        /* Touch */
+        canvas.addEventListener('touchstart', function(e) {
+            var rect = canvas.getBoundingClientRect();
+            var t = e.touches[0];
+            var tx = t.clientX - rect.left, ty = t.clientY - rect.top;
+            for (var i = 0; i < np.length; i++) {
+                var dx = tx - np[i].x, dy = ty - np[i].y;
+                if (Math.sqrt(dx * dx + dy * dy) < np[i].r * 1.5) {
+                    window.location.href = discs[i].url; e.preventDefault(); break;
+                }
+            }
+        });
+
+        /* Visibility */
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                isVisible = entry.isIntersecting;
+                if (isVisible && !animRunning) { resize(); draw(); }
+            });
+        }, { threshold: 0.15 });
+
+        observer.observe(section);
+        window.addEventListener('resize', resize);
+        resize();
+        isVisible = true;
+        draw();
     })();
     </script>
+
 </body>
 </html>

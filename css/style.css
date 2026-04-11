@@ -3307,3 +3307,58 @@ a.typo-link:hover {
     .lab-viewer-info { margin-left: 0; }
     .lab-admin-controls { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
+/* HOME DISCIPLINE GRID */
+.home-disc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    margin-top: 48px;
+}
+.home-disc-card {
+    display: block;
+    padding: 40px 32px;
+    background: #fafafa;
+    text-decoration: none;
+    color: #1a1a1a;
+    transition: background 0.3s, transform 0.3s;
+    border: 1px solid #f0f0f0;
+}
+.home-disc-card:hover {
+    background: #1a1a1a;
+    color: #fff;
+    transform: translateY(-2px);
+}
+.home-disc-card:hover .home-disc-nr {
+    color: rgba(255,255,255,0.4);
+}
+.home-disc-card:hover p {
+    color: rgba(255,255,255,0.7);
+}
+.home-disc-nr {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: #ccc;
+    display: block;
+    margin-bottom: 16px;
+    transition: color 0.3s;
+}
+.home-disc-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+.home-disc-card p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #777;
+    transition: color 0.3s;
+}
+
+@media (max-width: 768px) {
+    .home-disc-grid { grid-template-columns: 1fr; }
+    .home-disc-card { padding: 28px 24px; }
+}

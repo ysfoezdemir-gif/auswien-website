@@ -1,490 +1,222 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>İKİ — Architektur, Gestaltung & Forschung</title>
-  <meta name="description" content="İKİ ist ein interdisziplinäres Büro für Architektur, Ausstellungsdesign, Produktdesign, Bauprojektmanagement, Sanierung und Materialforschung. Wien.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
-  <style>
-    /* ===== ORBITAL SECTION ===== */
-    .orbital-section {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      min-height: 600px;
-      background: #0a0a0a;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .orbital-section canvas {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-    }
-    .orbital-section .orbital-label {
-      position: absolute;
-      bottom: 60px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .orbital-section .orbital-label span {
-      display: block;
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      font-size: 12px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(200,190,170,0.35);
-      margin-bottom: 12px;
-    }
-    .orbital-section .orbital-label .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, rgba(200,190,170,0.3), transparent);
-      margin: 0 auto;
-      animation: orbitalPulse 2s ease-in-out infinite;
-    }
-    @keyframes orbitalPulse {
-      0%, 100% { opacity: 0.3; transform: scaleY(1); }
-      50% { opacity: 0.8; transform: scaleY(1.2); }
-    }
-    .orbital-section {
-      opacity: 0;
-      transition: opacity 0.8s ease;
-    }
-    .orbital-section.visible {
-      opacity: 1;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İKİ — Interdisziplinäres Büro für Architektur, Gestaltung & Forschung · Wien</title>
+    <meta name="description" content="İKİ verbindet Architektur, Interior Design, Produktdesign, Bauprojektmanagement und Forschung — Ziviltechnikerbüro in Wien.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header" id="header">
-    <div class="header-inner">
-      <a href="/" class="logo">İKİ</a>
-      <nav class="discipline-switcher">
-        <a href="/architektur/">Arch</a>
-        <a href="/ausstellung/">Ausstellung</a>
-        <a href="/produkt/">Produkt</a>
-        <a href="/bauprojekt/">BPM</a>
-        <a href="/sanierung/">Sanierung</a>
-        <a href="/lab/">Lab</a>
-      </nav>
-      <nav class="main-nav" id="nav">
-        <a href="/projekte.html">Projekte</a>
-        <a href="/leistungen.html">Leistungen</a>
-        <a href="/studio.html">Studio</a>
-        <a href="/kontakt.html">Kontakt</a>
-      </nav>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menü">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+    <!-- ── Header ── -->
+    <header class="site-header" id="header">
+        <div class="header-inner">
+            <a href="/" class="logo">İKİ</a>
+            <nav class="discipline-switcher">
+                <a href="/architektur/">Architektur</a>
+                <a href="/bauprojekt/">BPM</a>
+                <a href="/interior/">Interior</a>
+                <a href="/produkt/">Produkt</a>
+                <a href="/lab/">Lab</a>
+            </nav>
+            <nav class="main-nav" id="nav">
+                <a href="/studio.html">Studio</a>
+                <a href="/kontakt.html">Kontakt</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menü"><span></span><span></span><span></span></button>
+        </div>
+    </header>
 
-  <!-- 1. HERO — Statement -->
-  <section class="hero-statement">
-    <div class="hero-statement-inner">
-      <div class="hero-line">Wir gestalten nicht nur.</div>
-      <div class="hero-line">Wir <em>berühren.</em></div>
-      <div class="hero-sub-line">Interdisziplinäres Büro für Architektur, Gestaltung & Forschung — Wien</div>
-    </div>
-    <div class="hero-scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+    <!-- ── Hero (animierter Text + Carousel) ── -->
+    <section class="hero" id="hero">
+        <div class="hero-text">
+            <h1 class="hero-line hero-line-1">Wir gestalten nicht nur.</h1>
+            <h1 class="hero-line hero-line-2">Wir <em>berühren.</em></h1>
+            <p class="hero-sub">Interdisziplinäres Büro für Architektur, Gestaltung &amp; Forschung — Wien</p>
+        </div>
 
-  <!-- 2. ORBITAL NAVIGATOR -->
-  <section class="orbital-section" id="orbitalSection">
-    <canvas id="orbitalCanvas"></canvas>
-    <div class="orbital-label">
-      <span>Wähle eine Disziplin</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+        <div class="hero-carousel" id="heroCarousel">
+            <p class="hero-carousel-label">Wähle eine Disziplin</p>
+            <span class="hero-carousel-counter" id="carouselCounter">01 / 05</span>
 
-  <!-- 3. CAROUSEL — Featured Projects -->
-  <section class="hero-carousel" id="heroCarousel">
-    <div class="carousel-counter"><span id="carouselCurrent">01</span> / <span id="carouselTotal">05</span></div>
-    <div class="carousel-slide active" data-discipline="Wohnen" data-title="Wohnhaus Margareten" data-desc="Sanierung und Aufstockung eines Gründerzeithauses — Wien, 5. Bezirk" data-link="/projekt.html?id=wohnhaus-margareten">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=85" alt="Wohnhaus Margareten" loading="eager">
-      <div class="carousel-overlay"></div>
-    </div>
-    <div class="carousel-slide" data-discipline="Gewerbe" data-title="Office Tower Donaucity" data-desc="Innenarchitektur und Leitsystem — Wien, Donaustadt" data-link="/projekt.html?id=office-tower-donaucity">
-      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=85" alt="Office Tower Donaucity" loading="lazy">
-      <div class="carousel-overlay"></div>
-    </div>
-    <div class="carousel-slide" data-discipline="Forschung" data-title="VTC Klimavorhang" data-desc="Nicht-invasive Klimaregulierung für denkmalgeschützte Räume" data-link="/projekt.html?id=vtc-klimavorhang-pilot">
-      <img src="https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=1920&q=85" alt="VTC Klimavorhang" loading="lazy">
-      <div class="carousel-overlay"></div>
-    </div>
-    <div class="carousel-slide" data-discipline="Freiraum" data-title="Stadtplatz Floridsdorf" data-desc="Klimaresilientes Platzkonzept — Wien, 21. Bezirk" data-link="/projekt.html?id=stadtplatz-floridsdorf">
-      <img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=1920&q=85" alt="Stadtplatz Floridsdorf" loading="lazy">
-      <div class="carousel-overlay"></div>
-    </div>
-    <div class="carousel-slide" data-discipline="Öffentlich" data-title="Schulerweiterung Favoriten" data-desc="Erweiterung einer Volksschule — Wien, 10. Bezirk" data-link="/projekt.html?id=schulerweiterung-favoriten">
-      <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1920&q=85" alt="Schulerweiterung Favoriten" loading="lazy">
-      <div class="carousel-overlay"></div>
-    </div>
-    <div class="carousel-caption">
-      <div class="carousel-discipline" id="carouselDisc">Wohnen</div>
-      <h2 class="carousel-title" id="carouselTitle">Wohnhaus Margareten</h2>
-      <p class="carousel-desc" id="carouselDesc">Sanierung und Aufstockung eines Gründerzeithauses — Wien, 5. Bezirk</p>
-      <a class="carousel-link" id="carouselLink" href="/projekt.html?id=wohnhaus-margareten">Projekt ansehen →</a>
-    </div>
-    <div class="carousel-dots" id="carouselDots"></div>
-  </section>
+            <div class="hero-slides" id="heroSlides">
+                <div class="hero-slide" data-discipline="architektur">
+                    <img src="https://sspark.genspark.ai/cfimages?u1=9tqM1qlhkZAF%2FMPyQmB8selSp3iuCaaTWs5ux%2FfRsPHf%2BqIcWRlcXyUUMXtCHjKUR1rRH1lxF4EoywrxLQ6ZUYc%2BQl1EDQTgxbvQnDub7ZX9U9Dom8mEfQ%3D%3D&u2=5yabxoIHK8Wj8oQS&width=1024" alt="Wohnhaus Margareten" loading="eager">
+                </div>
+                <div class="hero-slide" data-discipline="interior">
+                    <img src="https://sspark.genspark.ai/cfimages?u1=iZ%2Bj3VLyyoo62rgEO3LS%2F3KZUOnx3y4hn0VaBjEgLcMnlQ%2FQpktDKi%2FZp9TYurcSWBoR2IEVphGcJPHFv5E%2F2UxyEY8KTwpXRYU7ZnEqCHkzUMbPzCG11A%3D%3D&u2=z0elPmpqiOjAcmAQ&width=1024" alt="Office Tower Donaucity" loading="lazy">
+                </div>
+                <div class="hero-slide" data-discipline="lab">
+                    <img src="https://sspark.genspark.ai/cfimages?u1=gguRDJi2holO7BQV%2FrkbOHA%2F1Kr0OCscVmLNf%2Bt8MEM7mF1jnauEBfGkpznmbXYaSmiSavERi1iTU71maSMuEu481zTqT7XPVifx9lIaJJaojBWpCg%3D%3D&u2=q3oVl1XY9z9BO07y&width=1024" alt="VTC Klimavorhang" loading="lazy">
+                </div>
+                <div class="hero-slide" data-discipline="architektur">
+                    <img src="https://sspark.genspark.ai/cfimages?u1=oH3xNgdeDy7jYBWjoVeY6JlMy63HTB07tVV9bTnmqNeC5D%2BgNsnamxEppVhGq8B7%2BKSL9gLTX%2B8a6l3Cxj4Kh2tAVDQHfMP2yQCdbXo9uDvvyhIb5%2B%2B1nQ%3D%3D&u2=LeUR%2BTOE6hVhy02l&width=1024" alt="Stadtplatz Floridsdorf" loading="lazy">
+                </div>
+                <div class="hero-slide" data-discipline="architektur">
+                    <img src="https://sspark.genspark.ai/cfimages?u1=E63rhqtjHvbe6Byequ3mqhtRhYw57QK7yRzoRA52e8FkPi2d89LtRatKLDpWrEFoUM%2FPYof3k3C3LSb3qKeDTF%2BnxN%2FZ%2F02KrSJgG9kaUst5CDPksD4Yeg%3D%3D&u2=V26KSAI98wsUPY2v&width=1024" alt="Schulerweiterung Favoriten" loading="lazy">
+                </div>
+            </div>
 
-  <!-- 4. DISCIPLINES LIST -->
-  <section class="section-disciplines-home">
-    <div class="container">
-      <span class="section-label-sm">Disziplinen</span>
-      <h2 class="section-title-lg">Sechs Wege, eine Haltung</h2>
-      <p class="section-subtitle">Jede Disziplin denkt anders. Alle teilen denselben Anspruch: dass das, was wir schaffen, etwas im Menschen bewegt.</p>
-      <div class="disciplines-list">
-        <a href="/architektur/" class="discipline-list-item"><span class="discipline-list-name">Architektur & Planung</span><span class="disc-arrow">→</span></a>
-        <a href="/ausstellung/" class="discipline-list-item"><span class="discipline-list-name">Ausstellungsdesign</span><span class="disc-arrow">→</span></a>
-        <a href="/produkt/" class="discipline-list-item"><span class="discipline-list-name">Produkt & Innenarchitektur</span><span class="disc-arrow">→</span></a>
-        <a href="/bauprojekt/" class="discipline-list-item"><span class="discipline-list-name">Bauprojektmanagement</span><span class="disc-arrow">→</span></a>
-        <a href="/sanierung/" class="discipline-list-item"><span class="discipline-list-name">Sanierung & Denkmalschutz</span><span class="disc-arrow">→</span></a>
-        <a href="/lab/" class="discipline-list-item"><span class="discipline-list-name">İKİ LAB — Forschung & Material</span><span class="disc-arrow">→</span></a>
-      </div>
-    </div>
-  </section>
+            <!-- Projekt-Info unter dem Carousel -->
+            <div class="hero-project-info" id="heroProjectInfo">
+                <span class="hero-project-tag" id="heroProjectTag">Architektur</span>
+                <h2 class="hero-project-title" id="heroProjectTitle">Wohnhaus Margareten</h2>
+                <p class="hero-project-desc" id="heroProjectDesc">Sanierung und Aufstockung eines Gründerzeithauses — Wien, 5. Bezirk</p>
+                <a href="/projekt.html?id=wohnhaus-margareten" class="hero-project-link" id="heroProjectLink">Projekt ansehen &rarr;</a>
+            </div>
+        </div>
+    </section>
 
-  <!-- 5. BELIEF STATEMENT -->
-  <section class="section-beliefs">
-    <div class="beliefs-inner">
-      <p class="belief-text">
-        Wir glauben an die Stille eines Raumes, der nichts beweisen muss. An den Mut, Dinge zu bauen, die es so noch nicht gab. An das Bewahren dessen, was schon da ist — und an die Freude, es neu zu sehen. <em>Jeder Ort verdient es, dass man hinspürt.</em>
-      </p>
-    </div>
-  </section>
+    <!-- ── Disziplinen ── -->
+    <section class="home-section home-disciplines" id="disciplines">
+        <span class="home-label">Disziplinen</span>
+        <h2>Fünf Wege, eine Haltung</h2>
+        <p class="home-text">Jede Disziplin denkt anders. Alle teilen denselben Anspruch: dass das, was wir schaffen, etwas im Menschen bewegt.</p>
+        <p class="home-text">Wir glauben an die Stille eines Raumes, der nichts beweisen muss. An den Mut, Dinge zu bauen, die es so noch nicht gab. An das Bewahren dessen, was schon da ist — und an die Freude, es neu zu sehen. <em>Jeder Ort verdient es, dass man hinspürt.</em></p>
 
-  <!-- 6. FEATURED PROJECTS -->
-  <section class="section-featured">
-    <div class="featured-header">
-      <span class="section-label-sm">Ausgewählte Projekte</span>
-      <h2 class="section-title-lg">Projekte</h2>
-    </div>
-    <div class="featured-projects" id="homeProjectsGrid"></div>
-    <div class="featured-more">
-      <a href="/projekte.html" class="btn-text-arrow">Alle Projekte ansehen →</a>
-    </div>
-  </section>
+        <div class="home-disc-grid">
+            <a href="/architektur/" class="home-disc-card">
+                <span class="home-disc-nr">01</span>
+                <h3>Architektur</h3>
+                <p>Neubau, Sanierung, Denkmal, Passivhaus — vom ersten Entwurf bis zur Schlüsselübergabe.</p>
+            </a>
+            <a href="/bauprojekt/" class="home-disc-card">
+                <span class="home-disc-nr">02</span>
+                <h3>Bauprojektmanagement</h3>
+                <p>ÖBA, Begleitende Kontrolle, BauKG-Koordination, Kosten- und Terminsteuerung.</p>
+            </a>
+            <a href="/interior/" class="home-disc-card">
+                <span class="home-disc-nr">03</span>
+                <h3>Interior Design</h3>
+                <p>Innenarchitektur, Ausstellungsdesign, Szenografie, Licht- und Materialkonzept.</p>
+            </a>
+            <a href="/produkt/" class="home-disc-card">
+                <span class="home-disc-nr">04</span>
+                <h3>Produktdesign</h3>
+                <p>Möbel, Leuchten, Gebrauchsobjekte — vom Entwurf bis zum Prototyp.</p>
+            </a>
+            <a href="/lab/" class="home-disc-card">
+                <span class="home-disc-nr">05</span>
+                <h3>Lab</h3>
+                <p>Material, Struktur, Klima, Computational Design — Forschung vor dem Bauen.</p>
+            </a>
+        </div>
+    </section>
 
-  <!-- 7. STUDIO PREVIEW -->
-  <section class="section-studio-preview">
-    <div class="container">
-      <span class="section-label-sm">Über uns</span>
-      <h2 class="section-title-lg">Zwei Welten, ein Blick</h2>
-      <p class="studio-preview-sub">Wien · Istanbul · Bestand · Experiment</p>
-      <p class="studio-preview-text">
-        İKİ bedeutet „zwei" auf Türkisch — und das ist Programm. Wir arbeiten an der Nahtstelle zwischen dem, was bleibt, und dem, was erst entsteht. Zwischen anatolischer Weisheit und Wiener Präzision. Zwischen der Stille eines Raumes und dem Mut, ihn neu zu denken. Unser Büro ist kein Ort für Routine. Es ist ein Ort für Resonanz.
-      </p>
-      <a href="/studio.html" class="btn-text-arrow">Mehr über das Studio →</a>
-    </div>
-  </section>
+    <!-- ── Über uns ── -->
+    <section class="home-section home-about">
+        <span class="home-label">Über uns</span>
+        <h2>Zwei Welten, ein Blick</h2>
+        <p class="home-tags">Wien · Istanbul · Bestand · Experiment</p>
+        <p class="home-text">İKİ bedeutet „zwei" auf Türkisch — und das ist Programm. Wir arbeiten an der Nahtstelle zwischen dem, was bleibt, und dem, was erst entsteht. Zwischen anatolischer Weisheit und Wiener Präzision. Zwischen der Stille eines Raumes und dem Mut, ihn neu zu denken. Unser Büro ist kein Ort für Routine. Es ist ein Ort für Resonanz.</p>
+        <a href="/studio.html" class="home-link">Mehr über das Studio &rarr;</a>
+    </section>
 
-  <!-- 8. CTA -->
-  <section class="section-cta-dark">
-    <div class="container">
-      <span class="section-label-sm" style="color:rgba(255,255,255,0.4)">Zusammenarbeit</span>
-      <h2 class="cta-title">Gute Dinge beginnen im Gespräch.</h2>
-      <p class="cta-sub">Ein Gebäude, eine Marke, ein Experiment — erzählen Sie uns, was Sie bewegt.</p>
-      <a href="/kontakt.html" class="btn-white">Kontakt aufnehmen →</a>
-    </div>
-  </section>
+    <!-- ── CTA ── -->
+    <section class="home-section home-cta">
+        <span class="home-label">Zusammenarbeit</span>
+        <h2>Gute Dinge beginnen im Gespräch.</h2>
+        <p class="home-text">Ein Gebäude, eine Marke, ein Experiment — erzählen Sie uns, was Sie bewegt.</p>
+        <a href="/kontakt.html" class="home-cta-btn">Kontakt aufnehmen &rarr;</a>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-col">
-        <h4>İKİ</h4>
-        <p>Interdisziplinäres Büro für<br>Architektur, Gestaltung & Forschung.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Disziplinen</h4>
-        <a href="/architektur/">Architektur</a>
-        <a href="/ausstellung/">Ausstellungsdesign</a>
-        <a href="/produkt/">Produktdesign</a>
-        <a href="/bauprojekt/">Bauprojektmanagement</a>
-        <a href="/sanierung/">Sanierung & Denkmal</a>
-        <a href="/lab/">Lab</a>
-      </div>
-      <div class="footer-col">
-        <h4>Kontakt</h4>
-        <a href="mailto:info@auswien.at">info@auswien.at</a>
-        <a href="tel:+436801438091">+43 680 1438091</a>
-        <a href="/kontakt.html">Kontaktseite</a>
-      </div>
-      <div class="footer-col">
-        <h4>Rechtliches</h4>
-        <a href="/impressum.html">Impressum & Datenschutz</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 İKİ Architektur Wien</p>
-    </div>
-  </footer>
+    <!-- ── Footer ── -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>İKİ</h4>
+                <p>Interdisziplinäres Büro für<br>Architektur, Gestaltung &amp; Forschung.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Disziplinen</h4>
+                <a href="/architektur/">Architektur</a>
+                <a href="/bauprojekt/">BPM</a>
+                <a href="/interior/">Interior Design</a>
+                <a href="/produkt/">Produktdesign</a>
+                <a href="/lab/">Lab</a>
+            </div>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <a href="mailto:info@auswien.at">info@auswien.at</a>
+                <a href="tel:+436801438091">+43 680 1438091</a>
+                <a href="/kontakt.html">Kontaktseite</a>
+            </div>
+            <div class="footer-col">
+                <h4>Rechtliches</h4>
+                <a href="/impressum.html">Impressum &amp; Datenschutz</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 İKİ Architektur Wien</p>
+        </div>
+    </footer>
 
-  <script src="/js/projects-data.js"></script>
-  <script src="/js/main.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+    /* ── Hero Carousel ── */
+    (function(){
+        var slides = document.querySelectorAll('.hero-slide');
+        var counter = document.getElementById('carouselCounter');
+        var tag = document.getElementById('heroProjectTag');
+        var title = document.getElementById('heroProjectTitle');
+        var desc = document.getElementById('heroProjectDesc');
+        var link = document.getElementById('heroProjectLink');
+        if(!slides.length) return;
 
-  <!-- CAROUSEL SCRIPT -->
-  <script>
-    (function() {
-      var slides = document.querySelectorAll('.carousel-slide');
-      var dotsContainer = document.getElementById('carouselDots');
-      var discEl = document.getElementById('carouselDisc');
-      var titleEl = document.getElementById('carouselTitle');
-      var descEl = document.getElementById('carouselDesc');
-      var linkEl = document.getElementById('carouselLink');
-      var currentEl = document.getElementById('carouselCurrent');
-      if (!slides.length || !dotsContainer) return;
-      var current = 0, total = slides.length;
-      document.getElementById('carouselTotal').textContent = ('0'+total).slice(-2);
-      for (var i = 0; i < total; i++) {
-        var dot = document.createElement('button');
-        dot.className = 'carousel-dot' + (i===0?' active':'');
-        dot.setAttribute('aria-label','Slide '+(i+1));
-        dot.dataset.index = i;
-        dotsContainer.appendChild(dot);
-      }
-      var dots = dotsContainer.querySelectorAll('.carousel-dot');
-      function goTo(idx) {
-        slides[current].classList.remove('active');
-        dots[current].classList.remove('active');
-        current = idx;
-        slides[current].classList.add('active');
-        dots[current].classList.add('active');
-        var s = slides[current];
-        currentEl.textContent = ('0'+(current+1)).slice(-2);
-        discEl.textContent = s.dataset.discipline||'';
-        titleEl.textContent = s.dataset.title||'';
-        descEl.textContent = s.dataset.desc||'';
-        linkEl.href = s.dataset.link||'#';
-      }
-      dotsContainer.addEventListener('click', function(e) {
-        var dot = e.target.closest('.carousel-dot');
-        if (dot) goTo(parseInt(dot.dataset.index));
-      });
-      var autoTimer = setInterval(function(){ goTo((current+1)%total); }, 5000);
-      var carousel = document.getElementById('heroCarousel');
-      if (carousel) {
-        carousel.addEventListener('mouseenter', function(){ clearInterval(autoTimer); });
-        carousel.addEventListener('mouseleave', function(){
-          autoTimer = setInterval(function(){ goTo((current+1)%total); }, 5000);
-        });
-      }
+        var projectData = [
+            { tag:'Architektur', title:'Wohnhaus Margareten', desc:'Sanierung und Aufstockung eines Gründerzeithauses — Wien, 5. Bezirk', href:'/projekt.html?id=wohnhaus-margareten' },
+            { tag:'Interior', title:'Office Tower Donaucity', desc:'Innenarchitektur und Leitsystem — Wien, Donaustadt', href:'/projekt.html?id=office-tower-donaucity' },
+            { tag:'Lab', title:'VTC Klimavorhang', desc:'Nicht-invasiver Klimavorhang für denkmalgeschützte Museen', href:'/projekt.html?id=vtc-klimavorhang' },
+            { tag:'Architektur', title:'Stadtplatz Floridsdorf', desc:'Neugestaltung des öffentlichen Platzes — Wien, Floridsdorf', href:'/projekt.html?id=stadtplatz-floridsdorf' },
+            { tag:'Architektur', title:'Schulerweiterung Favoriten', desc:'Erweiterungsbau einer Volksschule — Wien, Favoriten', href:'/projekt.html?id=schulerweiterung-favoriten' }
+        ];
+
+        var current = 0;
+        var total = slides.length;
+
+        function pad(n){ return n < 10 ? '0'+n : n; }
+
+        function show(idx){
+            slides.forEach(function(s,i){
+                s.classList.toggle('active', i===idx);
+            });
+            counter.textContent = pad(idx+1) + ' / ' + pad(total);
+            var d = projectData[idx];
+            if(d){
+                tag.textContent = d.tag;
+                title.textContent = d.title;
+                desc.textContent = d.desc;
+                link.href = d.href;
+            }
+        }
+
+        show(0);
+        setInterval(function(){ current = (current+1) % total; show(current); }, 5000);
     })();
-  </script>
 
-  <!-- ORBITAL NAVIGATOR SCRIPT -->
-  <script>
-  (function() {
-    var section = document.getElementById('orbitalSection');
-    var canvas = document.getElementById('orbitalCanvas');
-    if (!section || !canvas) return;
-
-    var ctx = canvas.getContext('2d');
-    var w, h, dpr;
-    var t = 0;
-    var hovered = -1;
-    var mouseX = -999, mouseY = -999;
-    var animRunning = false;
-    var isVisible = false;
-
-    var disciplines = [
-      { name:'Architektur',          short:'ARCH',  url:'/architektur/',  color:'#C8BEA0', orbit:0.70, speed:0.0006, angle:0 },
-      { name:'Ausstellungsdesign',   short:'AUSST', url:'/ausstellung/',  color:'#D4C48A', orbit:0.85, speed:0.0004, angle:Math.PI*0.33 },
-      { name:'Produktdesign',        short:'PROD',  url:'/produkt/',      color:'#B48C5A', orbit:0.78, speed:0.0005, angle:Math.PI*0.66 },
-      { name:'Bauprojektmanagement', short:'BPM',   url:'/bauprojekt/',   color:'#E0E0E0', orbit:0.92, speed:0.00035,angle:Math.PI },
-      { name:'Sanierung & Denkmal',  short:'SAN',   url:'/sanierung/',    color:'#D4A574', orbit:0.82, speed:0.00055,angle:Math.PI*1.33 },
-      { name:'Lab',                  short:'LAB',   url:'/lab/',          color:'#00DCA8', orbit:0.68, speed:0.0007, angle:Math.PI*1.66 }
-    ];
-
-    var nodePos = [];
-
-    function resizeCanvas() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      var rect = section.getBoundingClientRect();
-      w = rect.width; h = rect.height;
-      canvas.width = w * dpr; canvas.height = h * dpr;
-      ctx.setTransform(1,0,0,1,0,0);
-      ctx.scale(dpr, dpr);
-    }
-
-    function hexRgba(hex, a) {
-      var r = parseInt(hex.substring(1,3),16);
-      var g = parseInt(hex.substring(3,5),16);
-      var b = parseInt(hex.substring(5,7),16);
-      return 'rgba('+r+','+g+','+b+','+a+')';
-    }
-
-    function draw() {
-      if (!isVisible) { animRunning = false; return; }
-      animRunning = true;
-      ctx.clearRect(0, 0, w, h);
-      t++;
-
-      var cx = w/2, cy = h/2;
-      var baseR = Math.min(w, h) * 0.33;
-
-      ctx.save();
-      ctx.globalAlpha = 0.03;
-      for (var s = 0; s < 3; s++) {
-        ctx.beginPath();
-        var sBase = (s/3)*Math.PI*2 + t*0.001;
-        for (var si = 0; si < 80; si++) {
-          var sr = si/80;
-          var sa = sBase + sr * Math.PI * 3;
-          var srad = sr * baseR * 1.3;
-          var sx = cx + Math.cos(sa) * srad;
-          var sy = cy + Math.sin(sa) * srad;
-          if (si===0) ctx.moveTo(sx,sy); else ctx.lineTo(sx,sy);
+    /* ── Hero text animation (fade-in on load) ── */
+    (function(){
+        var lines = document.querySelectorAll('.hero-line');
+        lines.forEach(function(line, i){
+            line.style.opacity = '0';
+            line.style.transform = 'translateY(30px)';
+            line.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            setTimeout(function(){
+                line.style.opacity = '1';
+                line.style.transform = 'translateY(0)';
+            }, 300 + i * 400);
+        });
+        var sub = document.querySelector('.hero-sub');
+        if(sub){
+            sub.style.opacity = '0';
+            sub.style.transition = 'opacity 1s ease';
+            setTimeout(function(){ sub.style.opacity = '1'; }, 1200);
         }
-        ctx.strokeStyle = 'rgba(200,190,170,1)';
-        ctx.lineWidth = 0.8;
-        ctx.stroke();
-      }
-      ctx.restore();
-
-      for (var i = 0; i < disciplines.length; i++) {
-        var orR = baseR * disciplines[i].orbit;
-        ctx.beginPath();
-        ctx.arc(cx, cy, orR, 0, Math.PI*2);
-        ctx.strokeStyle = 'rgba(200,190,170,0.04)';
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
-
-      var pulse = 0.6 + 0.4*Math.sin(t*0.015);
-      var cGlow = ctx.createRadialGradient(cx,cy,0,cx,cy,30*pulse);
-      cGlow.addColorStop(0,'rgba(200,190,170,0.12)');
-      cGlow.addColorStop(1,'rgba(200,190,170,0)');
-      ctx.fillStyle = cGlow;
-      ctx.fillRect(cx-35,cy-35,70,70);
-      ctx.beginPath(); ctx.arc(cx,cy,4,0,Math.PI*2);
-      ctx.fillStyle = 'rgba(200,190,170,0.5)'; ctx.fill();
-      ctx.font = '600 11px Inter, sans-serif';
-      ctx.fillStyle = 'rgba(200,190,170,0.3)';
-      ctx.textAlign = 'center';
-      ctx.fillText('İKİ', cx, cy+22);
-
-      nodePos = [];
-      for (var j = 0; j < disciplines.length; j++) {
-        var d = disciplines[j];
-        d.angle += d.speed;
-        var oR = baseR * d.orbit;
-        var nx = cx + Math.cos(d.angle)*oR;
-        var ny = cy + Math.sin(d.angle)*oR;
-        var nR = (hovered===j) ? 30 : 22;
-        nodePos.push({ x:nx, y:ny, r:nR+12 });
-
-        var cA = (hovered===j) ? 0.12 : 0.025;
-        ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(nx,ny);
-        ctx.strokeStyle = 'rgba(200,190,170,'+cA+')';
-        ctx.lineWidth = (hovered===j) ? 0.8 : 0.4;
-        ctx.stroke();
-
-        var gR = nR*3;
-        var glow = ctx.createRadialGradient(nx,ny,0,nx,ny,gR);
-        glow.addColorStop(0, hexRgba(d.color, (hovered===j)?0.15:0.04));
-        glow.addColorStop(1, hexRgba(d.color, 0));
-        ctx.fillStyle = glow;
-        ctx.fillRect(nx-gR,ny-gR,gR*2,gR*2);
-
-        ctx.beginPath(); ctx.arc(nx,ny,nR,0,Math.PI*2);
-        ctx.strokeStyle = hexRgba(d.color, (hovered===j)?0.5:0.15);
-        ctx.lineWidth = (hovered===j)?2:0.8;
-        ctx.stroke();
-
-        ctx.beginPath(); ctx.arc(nx,ny,3,0,Math.PI*2);
-        ctx.fillStyle = hexRgba(d.color, (hovered===j)?0.8:0.3);
-        ctx.fill();
-
-        ctx.font = (hovered===j)?'600 10px Inter,sans-serif':'400 9px Inter,sans-serif';
-        ctx.fillStyle = hexRgba(d.color, (hovered===j)?0.9:0.4);
-        ctx.textAlign = 'center';
-        ctx.fillText(d.short, nx, ny+nR+16);
-
-        if (hovered===j) {
-          ctx.font = '300 12px Inter,sans-serif';
-          ctx.fillStyle = hexRgba(d.color, 0.7);
-          ctx.fillText(d.name, nx, ny-nR-10);
-        }
-      }
-
-      for (var k=0; k<5; k++) {
-        var pA = t*0.002 + k*Math.PI*2/5;
-        var pR = baseR*(0.3+0.2*Math.sin(t*0.005+k));
-        var px = cx+Math.cos(pA)*pR, py = cy+Math.sin(pA)*pR;
-        ctx.beginPath(); ctx.arc(px,py,1.2,0,Math.PI*2);
-        ctx.fillStyle = 'rgba(200,190,170,0.06)'; ctx.fill();
-      }
-
-      requestAnimationFrame(draw);
-    }
-
-    canvas.addEventListener('mousemove', function(e) {
-      var rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
-      hovered = -1;
-      for (var i=0; i<nodePos.length; i++) {
-        var dx = mouseX-nodePos[i].x, dy = mouseY-nodePos[i].y;
-        if (Math.sqrt(dx*dx+dy*dy) < nodePos[i].r) {
-          hovered = i; canvas.style.cursor = 'pointer'; break;
-        }
-      }
-      if (hovered===-1) canvas.style.cursor = 'default';
-    });
-    canvas.addEventListener('mouseleave', function(){ hovered=-1; canvas.style.cursor='default'; });
-    canvas.addEventListener('click', function(){
-      if (hovered>=0) window.location.href = disciplines[hovered].url;
-    });
-    canvas.addEventListener('touchstart', function(e){
-      var rect = canvas.getBoundingClientRect();
-      var touch = e.touches[0];
-      var tx = touch.clientX-rect.left, ty = touch.clientY-rect.top;
-      for (var i=0; i<nodePos.length; i++) {
-        var dx=tx-nodePos[i].x, dy=ty-nodePos[i].y;
-        if (Math.sqrt(dx*dx+dy*dy)<nodePos[i].r*1.5) {
-          window.location.href = disciplines[i].url;
-          e.preventDefault(); break;
-        }
-      }
-    });
-
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        isVisible = entry.isIntersecting;
-        if (isVisible) {
-          section.classList.add('visible');
-          if (!animRunning) { resizeCanvas(); draw(); }
-        } else {
-          section.classList.remove('visible');
-        }
-      });
-    }, { threshold: 0.15 });
-
-    observer.observe(section);
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-  })();
-  </script>
-
+    })();
+    </script>
 </body>
 </html>

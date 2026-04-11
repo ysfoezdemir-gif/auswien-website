@@ -3143,3 +3143,57 @@ a.typo-link:hover {
     .disc-projects-grid { grid-template-columns: 1fr; }
     .disc-cta { padding: 56px 24px; }
 }
+/* LAB 3D VIEWER */
+.lab-viewer-section { margin-bottom: 60px; }
+.lab-viewer-hint {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #999;
+    margin-bottom: 20px;
+}
+.lab-viewer-wrapper {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+.lab-viewer {
+    width: 100%;
+    height: 500px;
+    cursor: grab;
+}
+.lab-viewer:active { cursor: grabbing; }
+.lab-viewer canvas { display: block; }
+.lab-viewer-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 20px;
+    border-top: 1px solid #e0e0e0;
+    background: #fff;
+}
+.lab-upload-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: 1px solid #1a1a1a;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #1a1a1a;
+    background: #fff;
+}
+.lab-upload-btn:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+.lab-viewer-info {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: #999;
+}
+@media (max-width: 768px) {
+    .lab-viewer { height: 350px; }
+    .lab-viewer-controls { flex-direction: column; align-items: flex-start; gap: 8px; }
+}

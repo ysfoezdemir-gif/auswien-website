@@ -2301,3 +2301,193 @@ a.typo-link:hover {
         gap: 16px;
     }
 }
+/* ═══════════════════════════════════════════════
+   KONTAKT PAGE
+   ═══════════════════════════════════════════════ */
+
+.kontakt-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* ── Hero ── */
+.kontakt-hero {
+    padding: 160px 0 48px;
+    background: #fff;
+}
+
+.kontakt-hero .kontakt-label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.kontakt-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    font-weight: 400;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.kontakt-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #888;
+    max-width: 520px;
+}
+
+/* ── Content section ── */
+.kontakt-section {
+    padding: 32px 0 96px;
+}
+
+.kontakt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+}
+
+/* ── Info column ── */
+.kontakt-info h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #999;
+    margin-bottom: 8px;
+    margin-top: 28px;
+}
+
+.kontakt-info h3:first-child {
+    margin-top: 0;
+}
+
+.kontakt-info p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+.kontakt-info a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.kontakt-info a:hover {
+    color: #1a1a1a;
+}
+
+/* ── Map ── */
+.kontakt-map {
+    margin-top: 28px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.kontakt-map iframe {
+    width: 100%;
+    height: 250px;
+    border: none;
+    display: block;
+}
+
+/* ── Form column ── */
+.kontakt-form label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #999;
+    margin-bottom: 6px;
+    margin-top: 24px;
+}
+
+.kontakt-form label:first-child {
+    margin-top: 0;
+}
+
+.kontakt-required {
+    color: #c0392b;
+}
+
+.kontakt-form input,
+.kontakt-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.92rem;
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.kontakt-form input:focus,
+.kontakt-form textarea:focus {
+    outline: none;
+    border-color: #1a1a1a;
+}
+
+.kontakt-form textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.kontakt-form button {
+    margin-top: 28px;
+    padding: 13px 36px;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.kontakt-form button:hover {
+    opacity: 0.82;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .kontakt-container {
+        padding: 0 24px;
+    }
+
+    .kontakt-hero {
+        padding: 140px 0 36px;
+    }
+
+    .kontakt-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .kontakt-section {
+        padding: 24px 0 64px;
+    }
+}

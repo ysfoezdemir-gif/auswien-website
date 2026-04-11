@@ -7,209 +7,202 @@
     <meta name="description" content="Über İKİ — Philosophie, Team und Vision. Ziviltechnikerbüro für Architektur zwischen Wien und Istanbul.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-    <header class="site-header">
-    <div class="header-inner">
-        <a href="/" class="logo">İKİ</a>
-        <nav class="discipline-switcher">
-            <a href="/architektur/">Arch</a>
-            <a href="/ausstellung/">Ausstellung</a>
-            <a href="/produkt/">Produkt</a>
-            <a href="/bauprojekt/">BPM</a>
-            <a href="/sanierung/">Sanierung</a>
-            <a href="/lab/">Lab</a>
-        </nav>
-        <nav class="main-nav">
-            <a href="/projekte.html">Projekte</a>
-            <a href="/leistungen.html">Leistungen</a>
-            <a href="/studio.html">Studio</a>
-            <a href="/kontakt.html">Kontakt</a>
-        </nav>
-        <button class="menu-toggle" aria-label="Menü">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-</header>
+    <!-- ═══════════════ UNIFIED HEADER ═══════════════ -->
+    <header class="site-header" id="header">
+        <div class="header-inner">
+            <a href="/" class="logo">İKİ</a>
+            <nav class="discipline-switcher">
+                <a href="/architektur/">Arch</a>
+                <a href="/ausstellung/">Ausstellung</a>
+                <a href="/produkt/">Produkt</a>
+                <a href="/bauprojekt/">BPM</a>
+                <a href="/sanierung/">Sanierung</a>
+                <a href="/lab/">Lab</a>
+            </nav>
+            <nav class="main-nav" id="nav">
+                <a href="/projekte.html">Projekte</a>
+                <a href="/leistungen.html">Leistungen</a>
+                <a href="/studio.html" class="active">Studio</a>
+                <a href="/kontakt.html">Kontakt</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menü">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
 
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="studio-hero">
+        <span class="studio-hero-overtitle">Sükûnet İçinde Hareket</span>
+        <p class="studio-hero-subtitle">Ruhe in Bewegung</p>
+        <h1>Wir bauen keine Räume.<br>Wir erschaffen Resonanz.</h1>
+    </section>
 
-    <main>
-        <section class="studio-hero">
-            <div class="studio-hero-inner">
-                <p class="studio-hero-overtitle">Sükûnet İçinde Hareket</p>
-                <p class="studio-hero-subtitle">Ruhe in Bewegung</p>
-                <h1>Wir bauen keine Räume.<br>Wir erschaffen Resonanz.</h1>
+    <!-- ═══════════════ PHILOSOPHY INTRO ═══════════════ -->
+    <section class="studio-section">
+        <h2>Architektur ist Leben in Balance</h2>
+        <p class="studio-lead">Zwischen Istanbul und Wien, zwischen Tradition und Innovation, zwischen Stille und Bewegung — İKİ verbindet Gegensätze zu einer neuen architektonischen Sprache.</p>
+        <p>Architektur entsteht dort, wo zwei Kräfte aufeinandertreffen — <em>Präzision und Sinnlichkeit. Bestand und Zukunft. Wien und Istanbul.</em></p>
+        <p>Wir wollen eine Welt, in der Gebäude und Orte radikal lebendiger, berührender und menschlicher sind.</p>
+        <p>Wir entwerfen für Emotion, Vielfalt und echte Verbindung — unabhängig von Maßstab oder Typologie.</p>
+        <p>Wir existieren, um Projekte zu schaffen, die das Leben für alle besser machen.</p>
+    </section>
+
+    <!-- ═══════════════ THREE PILLARS ═══════════════ -->
+    <section class="studio-section studio-pillars">
+        <span class="studio-label">Haltung</span>
+        <h2>Drei Kräfte, ein Entwurf</h2>
+
+        <div class="studio-pillars-grid">
+            <!-- Pillar 1 -->
+            <div class="studio-pillar-card">
+                <h3>Ethische Präsenz — Die Ruhe</h3>
+                <p>Jedes Projekt beginnt mit einer ehrlichen Frage: Was wird hier wirklich gebraucht? Wir stellen Selbstverständliches in Frage — und finden darin den Entwurf.</p>
+                <p>Wir suchen die kosmische Ordnung. Architektur, die sich nicht aufdrängt, sondern die Würde des Ortes bewahrt.</p>
+                <blockquote>„Architektur ist die Kunst, dem Leben einen würdevollen Rahmen zu geben."</blockquote>
+                <cite>Inspiriert von Turgut Cansever</cite>
             </div>
-        </section>
 
-        <section class="studio-philosophy-intro">
-            <div class="container">
-                <h2>Architektur ist Leben in Balance</h2>
-                <p class="studio-intro-text">Zwischen Istanbul und Wien, zwischen Tradition und Innovation, zwischen Stille und Bewegung — İKİ verbindet Gegensätze zu einer neuen architektonischen Sprache.</p>
-                <p class="studio-intro-text">Architektur entsteht dort, wo zwei Kräfte aufeinandertreffen — <em>Präzision und Sinnlichkeit. Bestand und Zukunft. Wien und Istanbul.</em></p>
-                <div class="studio-statements">
-                    <p class="studio-statement">Wir wollen eine Welt, in der Gebäude und Orte radikal lebendiger, berührender und menschlicher sind.</p>
-                    <p class="studio-statement">Wir entwerfen für Emotion, Vielfalt und echte Verbindung — unabhängig von Maßstab oder Typologie.</p>
-                    <p class="studio-statement">Wir existieren, um Projekte zu schaffen, die das Leben für alle besser machen.</p>
-                </div>
+            <!-- Pillar 2 -->
+            <div class="studio-pillar-card">
+                <h3>Atmosphärische Stille — Die Materie</h3>
+                <p>Von der Fassadenforschung bis zur Space Architecture — İKİ denkt über das Heute hinaus. Materialien, Klimatechnik und Extrembedingungen sind unser Labor.</p>
+                <p>Stein, der atmet. Holz, das Wärme speichert. Licht, das die Zeit misst.</p>
+                <blockquote>„Materialien haben ihre eigene Sprache. Wir müssen nur zuhören."</blockquote>
+                <cite>Inspiriert von Peter Zumthor</cite>
             </div>
-        </section>
 
-        <section class="studio-pillars">
-            <div class="container">
-                <span class="section-label-sm">Haltung</span>
-                <h2 class="section-title-lg">Drei Kräfte, ein Entwurf</h2>
-                <div class="studio-pillars-grid">
-                    <div class="pillar-card">
-                        <h4>Ethische Präsenz — Die Ruhe</h4>
-                        <p>Jedes Projekt beginnt mit einer ehrlichen Frage: Was wird hier wirklich gebraucht? Wir stellen Selbstverständliches in Frage — und finden darin den Entwurf.</p>
-                        <p>Wir suchen die kosmische Ordnung. Architektur, die sich nicht aufdrängt, sondern die Würde des Ortes bewahrt.</p>
-                        <div class="pillar-quote">
-                            <blockquote>„Architektur ist die Kunst, dem Leben einen würdevollen Rahmen zu geben."</blockquote>
-                            <cite>Inspiriert von Turgut Cansever</cite>
-                        </div>
-                    </div>
-                    <div class="pillar-card">
-                        <h4>Atmosphärische Stille — Die Materie</h4>
-                        <p>Von der Fassadenforschung bis zur Space Architecture — İKİ denkt über das Heute hinaus. Materialien, Klimatechnik und Extrembedingungen sind unser Labor.</p>
-                        <p>Stein, der atmet. Holz, das Wärme speichert. Licht, das die Zeit misst.</p>
-                        <div class="pillar-quote">
-                            <blockquote>„Materialien haben ihre eigene Sprache. Wir müssen nur zuhören."</blockquote>
-                            <cite>Inspiriert von Peter Zumthor</cite>
-                        </div>
-                    </div>
-                    <div class="pillar-card">
-                        <h4>Inspirierende Form — Die Bewegung</h4>
-                        <p>Zwischen Denkmal und Zukunft. Zwischen Wien und Istanbul. Zwischen dem Kleinen — einem Möbelstück — und dem Großen — einem Stadtquartier.</p>
-                        <p>Architektur als Skulptur — einzigartige Designs, die Identität stiften und begeistern.</p>
-                        <div class="pillar-quote">
-                            <blockquote>„Form folgt nicht nur Funktion, sondern auch Emotion."</blockquote>
-                            <cite>Inspiriert von Thomas Heatherwick</cite>
-                        </div>
-                    </div>
-                </div>
+            <!-- Pillar 3 -->
+            <div class="studio-pillar-card">
+                <h3>Inspirierende Form — Die Bewegung</h3>
+                <p>Zwischen Denkmal und Zukunft. Zwischen Wien und Istanbul. Zwischen dem Kleinen — einem Möbelstück — und dem Großen — einem Stadtquartier.</p>
+                <p>Architektur als Skulptur — einzigartige Designs, die Identität stiften und begeistern.</p>
+                <blockquote>„Form folgt nicht nur Funktion, sondern auch Emotion."</blockquote>
+                <cite>Inspiriert von Thomas Heatherwick</cite>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="studio-process">
-            <div class="container">
-                <h2>Vom Gebet zur Geometrie</h2>
-                <p>Wir beginnen jedes Projekt mit einer radikalen Frage nach dem menschlichen Gefühl.</p>
-                <div class="process-steps">
-                    <div class="process-step">
-                        <h4>Wir skizzieren die Bewegung des Lichts</h4>
-                        <p>Wie Zumthor verstehen wir, dass Architektur mit Licht atmet.</p>
-                    </div>
-                    <div class="process-step">
-                        <h4>Wir prüfen die moralische Verantwortung des Entwurfs</h4>
-                        <p>Im Geiste Cansevers fragen wir: Dient dieser Raum dem Leben?</p>
-                    </div>
-                    <div class="process-step">
-                        <h4>Wir erfinden die Form neu</h4>
-                        <p>Mit Heatherwicks Mut zur Innovation schaffen wir das Unerwartete.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- ═══════════════ PROCESS ═══════════════ -->
+    <section class="studio-section studio-process">
+        <h2>Vom Gebet zur Geometrie</h2>
+        <p class="studio-lead">Wir beginnen jedes Projekt mit einer radikalen Frage nach dem menschlichen Gefühl.</p>
 
-        <section class="studio-bridge">
-            <div class="container">
-                <h2>İKİ — Die Brücke zwischen zwei Welten</h2>
-                <div class="bridge-grid">
-                    <div class="bridge-city">
-                        <span class="bridge-city-label">Hauptsitz</span>
-                        <h3>Wien</h3>
-                        <p>Die Stadt der Präzision und des Maßes. Wo Ringstraße und Gründerzeit eine zeitlose Eleganz definieren. Denkmalschutz, Museen, Ziviltechnik — eine Stadt voller Geschichte.</p>
-                    </div>
-                    <div class="bridge-divider">İ</div>
-                    <div class="bridge-city">
-                        <span class="bridge-city-label">Expansion 2025/26</span>
-                        <h3>Istanbul</h3>
-                        <p>Die Stadt, wo Kontinente sich treffen. Wo byzantinische Kuppeln mit osmanischen Minaretten in Dialog treten. Energie, Kontrast, Verwandlung.</p>
-                    </div>
-                </div>
-                <p class="bridge-meaning">İKİ bedeutet „zwei" auf Türkisch. Wir sind die Synthese dieser beiden architektonischen Denkwelten — die Wärme und Lebendigkeit Istanbuls vereint mit der Präzision und Beständigkeit Wiens.</p>
+        <div class="studio-steps">
+            <div class="studio-step">
+                <h4>Wir skizzieren die Bewegung des Lichts</h4>
+                <p>Wie Zumthor verstehen wir, dass Architektur mit Licht atmet.</p>
             </div>
-        </section>
+            <div class="studio-step">
+                <h4>Wir prüfen die moralische Verantwortung des Entwurfs</h4>
+                <p>Im Geiste Cansevers fragen wir: Dient dieser Raum dem Leben?</p>
+            </div>
+            <div class="studio-step">
+                <h4>Wir erfinden die Form neu</h4>
+                <p>Mit Heatherwicks Mut zur Innovation schaffen wir das Unerwartete.</p>
+            </div>
+        </div>
+    </section>
 
-        <section class="studio-vision">
-            <div class="container">
-                <h2>Die Vision</h2>
-                <blockquote class="vision-quote">„Ich verbinde die tiefe Weisheit anatolischer Baukunst mit der sinnlichen Präzision der Schweizer Moderne und dem Innovationsgeist britischen Designs."</blockquote>
-                <p class="vision-text">Mein Ziel ist eine Architektur, die im Kern absolut still ist, aber in ihrer Form das Leben feiert. Eine Architektur, die nicht schreit, sondern flüstert — und gerade deshalb gehört wird.</p>
-                <p class="vision-text">Als Ziviltechnikerbüro in Wien arbeiten wir an der Schnittstelle von Forschung und Praxis, von Denkmalschutz und Space Architecture, von Microliving und öffentlichem Raum.</p>
-            </div>
-        </section>
+    <!-- ═══════════════ BRIDGE: WIEN & ISTANBUL ═══════════════ -->
+    <section class="studio-section studio-bridge">
+        <h2>İKİ — Die Brücke zwischen zwei Welten</h2>
 
-        <section class="studio-team">
-            <div class="container">
-                <h2>Team</h2>
-                <div class="team-card">
-                    <div class="team-photo">
-                        <div class="team-photo-placeholder">YÖ</div>
-                    </div>
-                    <div class="team-info">
-                        <h3>Dipl.-Ing. Yusuf Özdemir</h3>
-                        <span class="team-role">Gründer & Kreativdirektor</span>
-                        <p class="team-bio">Ziviltechniker für Architektur. Zwischen Wien und Istanbul. Forschung, Denkmalpflege, Museumsgestaltung und klimagerechtes Bauen.</p>
-                        <blockquote class="team-quote">„İKİ bedeutet Zwei. Zwei Städte, zwei Kulturen, zwei Kräfte — die sich in jedem Projekt zu einer einzigen, klaren Antwort verdichten."</blockquote>
-                    </div>
-                </div>
+        <div class="studio-bridge-grid">
+            <div class="studio-bridge-city">
+                <span class="studio-label">Hauptsitz</span>
+                <h3>Wien</h3>
+                <p>Die Stadt der Präzision und des Maßes. Wo Ringstraße und Gründerzeit eine zeitlose Eleganz definieren. Denkmalschutz, Museen, Ziviltechnik — eine Stadt voller Geschichte.</p>
             </div>
-        </section>
 
-        <section class="studio-kammer">
-            <div class="container">
-                <h2>Kammer & Befugnis</h2>
-                <p>İKİ ist ein eingetragenes Ziviltechnikerbüro für Architektur und Mitglied der <strong>Kammer der Ziviltechniker:innen für Wien, Niederösterreich und Burgenland</strong>.</p>
-                <p>Die Befugnis als Ziviltechniker umfasst die Berechtigung zur Planung und Einreichung, zur Örtlichen Bauaufsicht sowie zur Erstellung von Gutachten und Sachverständigentätigkeit.</p>
-                <p><a href="https://www.arching.at/" target="_blank" rel="noopener">www.arching.at</a></p>
-            </div>
-        </section>
+            <div class="studio-bridge-symbol">İ</div>
 
-        <section class="studio-cta">
-            <span class="section-label-sm">Zusammenarbeit</span>
-            <h2>Sprechen wir.</h2>
-            <p>Ob Museum, Privatprojekt oder Wettbewerb — wir freuen uns auf Ihre Anfrage.</p>
-            <a href="/kontakt.html" class="btn-white">Kontakt aufnehmen &rarr;</a>
-        </section>
-    </main>
+            <div class="studio-bridge-city">
+                <span class="studio-label">Expansion 2025/26</span>
+                <h3>Istanbul</h3>
+                <p>Die Stadt, wo Kontinente sich treffen. Wo byzantinische Kuppeln mit osmanischen Minaretten in Dialog treten. Energie, Kontrast, Verwandlung.</p>
+            </div>
+        </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>İKİ</h4>
-                    <p>Ziviltechnikerbüro<br>für Architektur</p>
-                    <p>Wien, Österreich</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Seiten</h4>
-                    <p><a href="/leistungen.html">Leistungen</a></p>
-                    <p><a href="/projekte.html">Projekte</a></p>
-                    <p><a 	href="/studio.html">Studio</a></p>
-                </div>
-                <div class="footer-col">
-                    <h4>Kontakt</h4>
-                    <p><a href="mailto:info@auswien.at">info@auswien.at</a></p>
-                    <p><a href="/kontakt.html">Kontaktformular</a></p>
-                </div>
-                <div class="footer-col">
-                    <h4>Rechtliches</h4>
-                    <p><a 	href="/impressum.html">Impressum</a></p>
-                    <p><a href="impressum.html#datenschutz">Datenschutz</a></p>
-                </div>
+        <p class="studio-bridge-statement">İKİ bedeutet „zwei" auf Türkisch. Wir sind die Synthese dieser beiden architektonischen Denkwelten — die Wärme und Lebendigkeit Istanbuls vereint mit der Präzision und Beständigkeit Wiens.</p>
+    </section>
+
+    <!-- ═══════════════ VISION ═══════════════ -->
+    <section class="studio-section studio-vision">
+        <h2>Die Vision</h2>
+        <blockquote>„Ich verbinde die tiefe Weisheit anatolischer Baukunst mit der sinnlichen Präzision der Schweizer Moderne und dem Innovationsgeist britischen Designs."</blockquote>
+        <p>Mein Ziel ist eine Architektur, die im Kern absolut still ist, aber in ihrer Form das Leben feiert. Eine Architektur, die nicht schreit, sondern flüstert — und gerade deshalb gehört wird.</p>
+        <p>Als Ziviltechnikerbüro in Wien arbeiten wir an der Schnittstelle von Forschung und Praxis, von Denkmalschutz und Space Architecture, von Microliving und öffentlichem Raum.</p>
+    </section>
+
+    <!-- ═══════════════ TEAM ═══════════════ -->
+    <section class="studio-section studio-team">
+        <h2>Team</h2>
+
+        <div class="studio-team-card">
+            <div class="studio-team-avatar">YÖ</div>
+            <div class="studio-team-info">
+                <h3>Dipl.-Ing. Yusuf Özdemir</h3>
+                <p class="studio-team-role">Gründer &amp; Kreativdirektor</p>
+                <p>Ziviltechniker für Architektur. Zwischen Wien und Istanbul. Forschung, Denkmalpflege, Museumsgestaltung und klimagerechtes Bauen.</p>
+                <blockquote>„İKİ bedeutet Zwei. Zwei Städte, zwei Kulturen, zwei Kräfte — die sich in jedem Projekt zu einer einzigen, klaren Antwort verdichten."</blockquote>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 İKİ Architektur. Alle Rechte vorbehalten.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════ KAMMER ═══════════════ -->
+    <section class="studio-section studio-kammer">
+        <h2>Kammer &amp; Befugnis</h2>
+        <p>İKİ ist ein eingetragenes Ziviltechnikerbüro für Architektur und Mitglied der <strong>Kammer der Ziviltechniker:innen für Wien, Niederösterreich und Burgenland</strong>.</p>
+        <p>Die Befugnis als Ziviltechniker umfasst die Berechtigung zur Planung und Einreichung, zur Örtlichen Bauaufsicht sowie zur Erstellung von Gutachten und Sachverständigentätigkeit.</p>
+        <a href="https://www.arching.at/" target="_blank" rel="noopener">www.arching.at</a>
+    </section>
+
+    <!-- ═══════════════ CTA ═══════════════ -->
+    <section class="studio-section studio-cta-dark">
+        <span class="studio-label">Zusammenarbeit</span>
+        <h2>Sprechen wir.</h2>
+        <p>Ob Museum, Privatprojekt oder Wettbewerb — wir freuen uns auf Ihre Anfrage.</p>
+        <a href="/kontakt.html" class="studio-cta-btn">Kontakt aufnehmen →</a>
+    </section>
+
+    <!-- ═══════════════ UNIFIED FOOTER ═══════════════ -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>İKİ</h4>
+                <p>Interdisziplinäres Büro für<br>Architektur, Gestaltung &amp; Forschung.</p>
             </div>
+            <div class="footer-col">
+                <h4>Disziplinen</h4>
+                <a href="/architektur/">Architektur</a>
+                <a href="/ausstellung/">Ausstellungsdesign</a>
+                <a href="/produkt/">Produktdesign</a>
+                <a href="/bauprojekt/">Bauprojektmanagement</a>
+                <a href="/sanierung/">Sanierung &amp; Denkmal</a>
+                <a href="/lab/">Lab</a>
+            </div>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <a href="mailto:info@auswien.at">info@auswien.at</a>
+                <a href="tel:+436801438091">+43 680 1438091</a>
+                <a href="/kontakt.html">Kontaktseite</a>
+            </div>
+            <div class="footer-col">
+                <h4>Rechtliches</h4>
+                <a href="/impressum.html">Impressum &amp; Datenschutz</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 İKİ Architektur Wien</p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>

@@ -1657,3 +1657,437 @@ a.typo-link:hover {
   .spot-section { padding: 0 1.25rem 60px; }
   .l-cta { padding: 40px 1.25rem 80px; }
 }
+/* ═══════════════════════════════════════════════
+   STUDIO PAGE
+   ═══════════════════════════════════════════════ */
+
+/* ── Hero ── */
+.studio-hero {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 160px 40px 80px;
+    background: #0a0a0a;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.studio-hero-overtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.03em;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.studio-hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 40px;
+}
+
+.studio-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #fff;
+    max-width: 800px;
+}
+
+/* ── Generic studio section ── */
+.studio-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 40px;
+}
+
+.studio-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+}
+
+.studio-lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.studio-section p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #444;
+    margin-bottom: 12px;
+}
+
+.studio-label {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 12px;
+}
+
+/* ── Pillars ── */
+.studio-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.studio-pillar-card {
+    background: #fafaf9;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 32px 28px;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.studio-pillar-card:hover {
+    border-color: #ccc;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+}
+
+.studio-pillar-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+}
+
+.studio-pillar-card p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.studio-pillar-card blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #777;
+    border-left: 2px solid #ddd;
+    padding-left: 16px;
+    margin: 16px 0 8px;
+}
+
+.studio-pillar-card cite {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #aaa;
+    font-style: normal;
+}
+
+/* ── Process steps ── */
+.studio-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 36px;
+}
+
+.studio-step {
+    padding: 24px;
+    border-top: 2px solid #eee;
+}
+
+.studio-step h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.studio-step p {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* ── Bridge (Wien / Istanbul) ── */
+.studio-bridge {
+    text-align: center;
+}
+
+.studio-bridge-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 32px;
+    align-items: center;
+    margin: 40px 0 32px;
+}
+
+.studio-bridge-city h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+.studio-bridge-city p {
+    text-align: left;
+    font-size: 0.88rem;
+    color: #666;
+}
+
+.studio-bridge-symbol {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #ccc;
+    line-height: 1;
+}
+
+.studio-bridge-statement {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #555;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* ── Vision ── */
+.studio-vision blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #555;
+    border-left: 3px solid #ddd;
+    padding-left: 24px;
+    margin: 0 0 28px;
+}
+
+/* ── Team ── */
+.studio-team-card {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    margin-top: 32px;
+    padding: 36px;
+    background: #fafaf9;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.studio-team-avatar {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.studio-team-info h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.studio-team-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 14px !important;
+}
+
+.studio-team-info p {
+    font-size: 0.88rem;
+    color: #555;
+}
+
+.studio-team-info blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: #777;
+    border-left: 2px solid #ddd;
+    padding-left: 16px;
+    margin-top: 16px;
+}
+
+/* ── Kammer ── */
+.studio-kammer {
+    background: #fafaf9;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    padding: 60px 40px;
+    max-width: 100%;
+}
+
+.studio-kammer h2 {
+    margin-bottom: 16px;
+}
+
+.studio-kammer p {
+    max-width: 680px;
+    margin: 0 auto 12px;
+    text-align: center;
+}
+
+.studio-kammer a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #888;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+}
+
+.studio-kammer a:hover {
+    color: #1a1a1a;
+}
+
+/* ── CTA dark ── */
+.studio-cta-dark {
+    background: #0a0a0a;
+    color: #fff;
+    text-align: center;
+    padding: 80px 40px;
+    max-width: 100%;
+}
+
+.studio-cta-dark .studio-label {
+    color: rgba(255,255,255,0.4);
+}
+
+.studio-cta-dark h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.studio-cta-dark p {
+    color: rgba(255,255,255,0.55);
+    max-width: 480px;
+    margin: 0 auto 32px;
+    text-align: center;
+}
+
+.studio-cta-btn {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 14px 36px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.studio-cta-btn:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.5);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .studio-hero {
+        padding: 140px 24px 60px;
+        min-height: 55vh;
+    }
+
+    .studio-section {
+        padding: 56px 24px;
+    }
+
+    .studio-pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .studio-steps {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .studio-bridge-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .studio-bridge-city p {
+        text-align: center;
+    }
+
+    .studio-bridge-symbol {
+        font-size: 2rem;
+    }
+
+    .studio-team-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 28px 20px;
+    }
+
+    .studio-team-info blockquote {
+        text-align: left;
+    }
+
+    .studio-cta-dark {
+        padding: 56px 24px;
+    }
+
+    .studio-kammer {
+        padding: 48px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .studio-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .studio-pillar-card {
+        padding: 24px 20px;
+    }
+}

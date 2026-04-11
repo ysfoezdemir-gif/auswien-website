@@ -4232,3 +4232,171 @@ a, button, .orbital-node, .home-disc-card, .discipline-pill,
         padding-bottom: max(1rem, env(safe-area-inset-bottom));
     }
 }
+/* ==============================================
+   MOBILE-FIX — Hamburger Fullscreen Menu
+   ============================================== */
+body.menu-open {
+    overflow: hidden !important;
+}
+
+.mobile-disc-links {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .site-header .main-nav {
+        display: none !important;
+    }
+
+    .site-header .menu-toggle {
+        display: flex !important;
+        position: relative;
+        z-index: 10001;
+    }
+
+    .site-header .main-nav.open {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #060608 !important;
+        z-index: 10000 !important;
+        justify-content: center;
+        align-items: center;
+        gap: 0 !important;
+        padding: 2rem;
+        overflow-y: auto;
+    }
+
+    .site-header .main-nav.open .mobile-disc-links {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        margin-bottom: 2.5rem;
+        padding-bottom: 2.5rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        width: 100%;
+    }
+
+    .site-header .main-nav.open .mobile-disc-links a {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: rgba(255,255,255,0.35);
+        padding: 0.6rem 0;
+        transition: color 0.2s;
+        text-decoration: none;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .site-header .main-nav.open .mobile-disc-links a:hover,
+    .site-header .main-nav.open .mobile-disc-links a.disc-active {
+        color: rgba(255,255,255,0.9);
+    }
+
+    .site-header .main-nav.open > a {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: #fff !important;
+        padding: 0.6rem 0;
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .site-header .main-nav.open > a:hover {
+        color: rgba(255,255,255,0.6) !important;
+    }
+
+    .site-header .menu-toggle.active span {
+        background: #fff !important;
+    }
+    .site-header .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .site-header .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .site-header .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+}
+
+/* ==============================================
+   MOBILE — Responsive Sections
+   ============================================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    .site-footer .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 1.25rem;
+    }
+
+    .site-footer .footer-bottom {
+        padding: 1rem 1.25rem 0;
+    }
+
+    .kontakt-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .kontakt-map iframe {
+        width: 100%;
+        height: 250px;
+    }
+
+    .kontakt-form input,
+    .kontakt-form textarea,
+    .kontakt-form select,
+    .lab-model-select {
+        font-size: 16px !important;
+    }
+
+    .studio-pillars-grid,
+    .studio-bridge-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .sno-projects-grid,
+    .featured-projects {
+        grid-template-columns: 1fr !important;
+    }
+
+    .sno-card-large,
+    .featured-card-large {
+        grid-column: 1 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-footer .footer-inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==============================================
+   iOS Safe Area
+   ============================================== */
+@supports (padding: env(safe-area-inset-top)) {
+    .site-header .header-inner {
+        padding-left: max(1.25rem, env(safe-area-inset-left));
+        padding-right: max(1.25rem, env(safe-area-inset-right));
+    }
+    .site-footer .footer-bottom {
+        padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+}

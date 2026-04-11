@@ -1,146 +1,169 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Architektur & Planung — İKİ</title>
-  <meta name="description" content="Wohnbau, Gewerbebau, öffentliche Bauten und Passivhaus-Planung. İKİ Architektur Wien.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architektur — İKİ Wien</title>
+    <meta name="description" content="Architektur von İKİ — Neubau, Sanierung, Denkmalschutz, Passivhaus. Ziviltechnikerbüro in Wien.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body data-discipline="architektur">
 
-  <header class="header" id="header">
-    <div class="header-inner">
-      <div class="header-left">
-        <a href="/" class="logo">İKİ</a>
-        <nav class="discipline-switcher">
-          <a href="/architektur/" class="disc-active">Arch</a>
-          <span class="disc-sep">·</span>
-          <a href="	/ausstellung/">Ausstellung</a>
-          <span class="disc-sep">·</span>
-          <a href="/produkt/">Produkt</a>
-          <span class="disc-sep">·</span>
-          <a href="/bauprojekt/"	>BPM</a>
-          <span class="disc-sep">·</span>
-          <a href="/sanierung/"		>Sanierung</a>
-          <span class="disc-sep">·</span>
-          <a href="/lab/">Lab</a>
-        </nav>
-      </div>
-      <nav class="nav" id="nav">
-        <a href="/architektur/" class="active">Projekte</a>
-        <a href="/leistungen.html">Leistungen</a>
-        <a href="/studio.html">Studio</a>
-        <a href="/kontakt.html">Kontakt</a>
-      </nav>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menü">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="disc-hero">
-    <div class="disc-hero-bg">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=85" alt="Architektur">
-    </div>
-    <div class="disc-hero-overlay"></div>
-    <div class="disc-hero-content">
-      <span class="disc-hero-label">Architektur & Planung</span>
-      <h1>Räume, die berühren und bestehen</h1>
-      <p class="disc-hero-desc">Vom Wohnbau bis zum öffentlichen Gebäude — wir entwerfen mit materialem Bewusstsein, klimatischer Verantwortung und dem Anspruch, dass jeder Raum etwas im Menschen auslöst.</p>
-    </div>
-  </section>
-
-  <!-- INTRO -->
-  <section class="disc-intro">
-    <div class="container">
-      <h2>Architektur ist die Sprache des Raums</h2>
-      <p>Jedes Projekt beginnt mit Zuhören. Wir verstehen den Ort, die Menschen, die Geschichte — und entwickeln daraus Gebäude, die nicht nur funktionieren, sondern resonieren. Von der ersten Skizze bis zur letzten Fuge.</p>
-      <p>Unser Spektrum reicht vom Mehrfamilienhaus in Holzhybrid-Bauweise über denkmalgeschützte Sanierungen bis zu Schulbauten und Passivhäusern.</p>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="disc-services">
-    <div class="container">
-      <h2>Leistungen</h2>
-      <div class="disc-services-grid">
-        <div class="disc-service-card">
-          <h3>Wohnbau</h3>
-          <p>Mehrgeschoßiger Wohnbau, Aufstockungen und Sanierungen — vom Entwurf bis zur Bauaufsicht.</p>
+    <!-- ═══════════════ HEADER ═══════════════ -->
+    <header class="site-header" id="header">
+        <div class="header-inner">
+            <a href="/" class="logo">İKİ</a>
+            <nav class="discipline-switcher">
+                <a href="/architektur/" class="disc-active">Architektur</a>
+                <a href="/bauprojekt/">BPM</a>
+                <a href="/interior/">Interior</a>
+                <a href="/produkt/">Produkt</a>
+                <a href="/lab/">Lab</a>
+            </nav>
+            <nav class="main-nav" id="nav">
+                <a href="/studio.html">Studio</a>
+                <a href="/kontakt.html">Kontakt</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menü">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-        <div class="disc-service-card">
-          <h3>Gewerbebau</h3>
-          <p>Bürogebäude, Geschäftslokale und Innenarchitektur mit Fokus auf Nutzbarkeit und Ästhetik.</p>
+    </header>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="disc-hero">
+        <div class="disc-container">
+            <span class="disc-label">Disziplin</span>
+            <h1>Architektur</h1>
+            <p class="disc-lead">Jedes Projekt beginnt mit Zuhören. Wir verstehen den Ort, die Menschen, die Geschichte — und entwickeln daraus Gebäude, die nicht nur funktionieren, sondern resonieren.</p>
         </div>
-        <div class="disc-service-card">
-          <h3>Öffentliche Bauten</h3>
-          <p>Schulen, Kindergärten, Gemeindezentren — barrierefreie Gebäude für alle.</p>
+    </section>
+
+    <!-- ═══════════════ INTRO ═══════════════ -->
+    <section class="disc-section">
+        <div class="disc-container">
+            <h2>Architektur ist die Sprache des Raums</h2>
+            <p>Von der ersten Skizze bis zur letzten Fuge. Unser Spektrum reicht vom Mehrfamilienhaus in Holzhybrid-Bauweise über denkmalgeschützte Sanierungen bis zu Schulbauten und Passivhäusern.</p>
+            <p>Als Ziviltechnikerbüro für Architektur in Wien begleiten wir Projekte von der Idee bis zur Fertigstellung — mit der Befugnis zur Planung, Einreichung und Bauaufsicht.</p>
         </div>
-        <div class="disc-service-card">
-          <h3>Passivhaus</h3>
-          <p>Klimaneutrales Bauen mit zirkulärer Materialstrategie und Passivhaus-Zertifizierung.</p>
+    </section>
+
+    <!-- ═══════════════ PROJEKTE ═══════════════ -->
+    <section class="disc-section disc-projects-section">
+        <div class="disc-container">
+            <span class="disc-label">Ausgewählte Arbeiten</span>
+            <h2>Projekte</h2>
+            <div class="disc-projects-grid" id="archProjekte"></div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROJECTS PREVIEW -->
-  <section class="disc-projects">
-    <div class="container">
-      <div class="disc-projects-header">
-        <h2>Ausgewählte Projekte</h2>
-        <a href="/projekte.html?filter=Wohnen" class="btn-text-arrow">Alle Projekte →</a>
-      </div>
-      <div class="sno-projects-grid" id="discProjectsGrid">
-        <!-- Filled by JS -->
-      </div>
-    </div>
-  </section>
+    <!-- ═══════════════ LEISTUNGEN ═══════════════ -->
+    <section class="disc-section disc-leistungen">
+        <div class="disc-container">
+            <span class="disc-label">Was wir anbieten</span>
+            <h2>Leistungen</h2>
 
-  <!-- CTA -->
-  <section class="section-cta-dark">
-    <div class="container">
-      <span class="section-label-sm" style="color:rgba(255,255,255,0.4)">Zusammenarbeit</span>
-      <h2 class="cta-title">Ihr Projekt beginnt hier.</h2>
-      <p class="cta-sub">Wir begleiten Sie von der Idee bis zur Schlüsselübergabe.</p>
-      <a href="/kontakt.html" class="btn-white">Kontakt aufnehmen →</a>
-    </div>
-  </section>
+            <div class="disc-leistungen-grid">
+                <div class="disc-leistung">
+                    <h3>Vorentwurf &amp; Entwurf</h3>
+                    <p>Konzept, Machbarkeit, Variantenstudien. Von der ersten Idee zur tragfähigen Lösung.</p>
+                </div>
+                <div class="disc-leistung">
+                    <h3>Einreichplanung</h3>
+                    <p>Behördenverfahren, Baubewilligung, Flächenwidmung. Wir kennen die Wiener Bauordnung.</p>
+                </div>
+                <div class="disc-leistung">
+                    <h3>Ausführungsplanung</h3>
+                    <p>Werkpläne, Detailplanung, Ausschreibung. Alles was die Baustelle braucht.</p>
+                </div>
+                <div class="disc-leistung">
+                    <h3>Generalplanung</h3>
+                    <p>Alle Fachplaner unter einem Dach — Statik, HKLS, Elektro, Bauphysik, Brandschutz.</p>
+                </div>
+                <div class="disc-leistung">
+                    <h3>Sanierung &amp; Denkmalschutz</h3>
+                    <p>Bestandsaufnahme, BDA-Abstimmung, Fassadenrestaurierung, thermische Sanierung, Dachgeschoßausbau.</p>
+                </div>
+                <div class="disc-leistung">
+                    <h3>Wettbewerbe</h3>
+                    <p>Offene und geladene Verfahren, Kooperationen. Wettbewerbe als Motor für Innovation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col"><h4>İKİ</h4><p>Ziviltechnikerbüro<br>für Architektur</p><p>Wien, Österreich</p></div>
-        <div class="footer-col"><h4>Disziplinen</h4><p><a href="/architektur/">Architektur</a></p><p><a href="	/ausstellung/">Ausstellung</a></p><p><a href="/produkt/">Produkt</a></p><p><a href="/bauprojekt/"	>BPM</a></p><p><a href="/sanierung/"		>Sanierung</a></p><p><a href="/lab/">Lab</a></p></div>
-        <div class="footer-col"><h4>Kontakt</h4><p><a href="mailto:info@auswien.at">info@auswien.at</a></p><p><a href="/kontakt.html">Kontaktformular</a></p></div>
-        <div class="footer-col"><h4>Rechtliches</h4><p><a href="/impressum.html">Impressum</a></p><p><a href="/impressum.html#datenschutz">Datenschutz</a></p></div>
-      </div>
-      <div class="footer-bottom"><p>&copy; 2026 İKİ Architektur. Alle Rechte vorbehalten.</p></div>
-    </div>
-  </footer>
+    <!-- ═══════════════ CTA ═══════════════ -->
+    <section class="disc-cta">
+        <div class="disc-container">
+            <h2>Ihr Projekt beginnt hier.</h2>
+            <p>Neubau, Sanierung oder Wettbewerb — erzählen Sie uns, was Sie vorhaben.</p>
+            <a href="/kontakt.html" class="disc-cta-btn">Kontakt aufnehmen →</a>
+        </div>
+    </section>
 
-  <script src="../js/projects-data.js"></script>
-  <script src="../js/main.js"></script>
-  <script>
-    // Show architecture-related projects
-    (function() {
-      var grid = document.getElementById('discProjectsGrid');
-      if (!grid || typeof projects === 'undefined') return;
-      var archCats = ['Wohnen', 'Gewerbe', 'Öffentlich'];
-      var filtered = projects.filter(function(p) { return archCats.indexOf(p.category) !== -1; });
-      var show = filtered.slice(0, 4);
-      for (var i = 0; i < show.length; i++) {
-        var card = createProjectCard(show[i], i);
-        if (i === 0) card.classList.add('sno-card-large');
-        grid.appendChild(card);
-      }
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>İKİ</h4>
+                <p>Interdisziplinäres Büro für<br>Architektur, Gestaltung &amp; Forschung.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Disziplinen</h4>
+                <a href="/architektur/">Architektur</a>
+                <a href="/bauprojekt/">Bauprojektmanagement</a>
+                <a href="/interior/">Interior Design</a>
+                <a href="/produkt/">Produktdesign</a>
+                <a href="/lab/">Lab</a>
+            </div>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <a href="mailto:info@auswien.at">info@auswien.at</a>
+                <a href="tel:+436801438091">+43 680 1438091</a>
+                <a href="/kontakt.html">Kontaktseite</a>
+            </div>
+            <div class="footer-col">
+                <h4>Rechtliches</h4>
+                <a href="/impressum.html">Impressum &amp; Datenschutz</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 İKİ Architektur Wien</p>
+        </div>
+    </footer>
+
+    <script src="/js/projects-data.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+    (function(){
+        var grid = document.getElementById('archProjekte');
+        if(!grid || typeof projects === 'undefined') return;
+
+        var filtered = projects.filter(function(p){
+            return p.discipline === 'architektur';
+        });
+
+        if(!filtered.length){
+            grid.innerHTML = '<p class="disc-no-projects">Projekte werden in Kürze ergänzt.</p>';
+            return;
+        }
+
+        grid.innerHTML = filtered.map(function(p){
+            return '<a href="/projekt.html?id=' + p.id + '" class="disc-project-card">' +
+                '<div class="disc-project-img">' +
+                    '<img src="' + (p.image || p.thumbnail || '') + '" alt="' + p.title + '" loading="lazy">' +
+                '</div>' +
+                '<div class="disc-project-info">' +
+                    '<span class="disc-project-meta">' + (p.category || '') + ' · ' + (p.year || '') + ' · ' + (p.status || '') + '</span>' +
+                    '<h3>' + p.title + '</h3>' +
+                    '<span class="disc-project-location">' + (p.location || '') + '</span>' +
+                '</div>' +
+            '</a>';
+        }).join('');
     })();
-  </script>
+    </script>
 </body>
 </html>

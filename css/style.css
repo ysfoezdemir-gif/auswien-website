@@ -196,6 +196,11 @@
 .discipline-switcher a.disc-active {
   background: var(--accent);
   color: var(--white);
+  .discipline-switcher a.disc-active {
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
 }
 /* Dark themes: active pill text */
 [data-discipline="sanierung"] .discipline-switcher a.disc-active,
@@ -2658,4 +2663,235 @@ a.typo-link:hover {
         margin-top: 48px;
         font-size: 1.4rem;
     }
+}
+/* ═══════════════════════════════════════════════
+   DISCIPLINE PAGES (shared)
+   ═══════════════════════════════════════════════ */
+
+.disc-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* ── Hero ── */
+.disc-hero {
+    padding: 160px 0 64px;
+    background: #fff;
+}
+
+.disc-label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 16px;
+}
+
+.disc-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 400;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+}
+
+.disc-lead {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #666;
+    max-width: 640px;
+}
+
+/* ── Sections ── */
+.disc-section {
+    padding: 64px 0;
+    border-top: 1px solid #f0f0f0;
+}
+
+.disc-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+
+.disc-section p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #555;
+    margin-bottom: 12px;
+    max-width: 700px;
+}
+
+/* ── Projects Grid ── */
+.disc-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.disc-project-card {
+    display: block;
+    text-decoration: none;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.disc-project-card:hover {
+    border-color: #ccc;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+}
+
+.disc-project-img {
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.disc-project-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.disc-project-card:hover .disc-project-img img {
+    transform: scale(1.03);
+}
+
+.disc-project-info {
+    padding: 20px;
+}
+
+.disc-project-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #999;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.disc-project-info h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.disc-project-location {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: #999;
+}
+
+.disc-no-projects {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #999;
+    font-style: italic;
+    padding: 40px 0;
+}
+
+/* ── Leistungen Grid ── */
+.disc-leistungen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.disc-leistung {
+    padding: 28px;
+    background: #fafaf9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: border-color 0.2s;
+}
+
+.disc-leistung:hover {
+    border-color: #ccc;
+}
+
+.disc-leistung h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.disc-leistung p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 0;
+    max-width: none;
+}
+
+/* ── CTA ── */
+.disc-cta {
+    background: #0a0a0a;
+    color: #fff;
+    text-align: center;
+    padding: 80px 40px;
+}
+
+.disc-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.disc-cta p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 28px;
+    max-width: none;
+}
+
+.disc-cta-btn {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 14px 36px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.disc-cta-btn:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.5);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .disc-container { padding: 0 24px; }
+    .disc-hero { padding: 140px 0 48px; }
+    .disc-section { padding: 48px 0; }
+    .disc-projects-grid { grid-template-columns: 1fr; }
+    .disc-leistungen-grid { grid-template-columns: 1fr; }
+    .disc-cta { padding: 56px 24px; }
 }
